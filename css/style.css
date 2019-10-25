@@ -90,7 +90,7 @@ h3 {
 }
 .logo {
 	color: #4CD7D0;
-	// voir police pour logo
+	/*// voir police pour logo*/
 }
 .underline {
 	text-decoration: underline;
@@ -278,14 +278,15 @@ nav .fa-biking {
 			left: 0;
 		}
 
-	
-
-
 /* ---------------------------------------- */ 
-/* ==            SECTION                */ 
+/* ==            MAP                */ 
 /*---------------------------------------- */ 
  
-/*     sous partie      */ 
+/*     Leaf Let MAP      */ 
+
+#mapid {
+	height: 200px;
+}
  
 /*     sous partie      */ 
  

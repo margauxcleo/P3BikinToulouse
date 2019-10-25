@@ -115,3 +115,17 @@ function getArrowID(event) {
     */
 }
 
+/* LEAF LET MAP */
+
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+L.tileLayer('https://api.jcdecaux.com/vls/v1/stations?contract={contract_name}&apiKey={c3dd05a552e530b07e97fa7db3d8fa095a6578b6}', {
+    maxZoom: 18,
+    "name" : "Toulouse",
+    "commercial_name" : "Vélô",
+    "country_code" : "FR",
+}).addTo(mymap);
+
+{
+  
+}
