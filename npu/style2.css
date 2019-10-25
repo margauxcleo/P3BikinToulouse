@@ -1,0 +1,186 @@
+/* ---------------------------------------- */
+/* ==            SUMMARY              */
+/*---------------------------------------- */ 
+ 
+/* L - 1 - */
+/* L - 2 - */ 
+/* L - 3 - */ 
+ 
+/* ---------------------------------------- */
+/* ==       COLOR CODES           */
+/*---------------------------------------- */
+/* 
+Black (text) : #000 
+Dark gray (links, h1) : #008dde 
+Mid gray (visited links) : #0006a1 
+Light gray (h2) : #747474 
+*/ 
+/* ---------------------------------------- */ 
+/* == DÉFINITIONS DES POLICES*/ 
+/*---------------------------------------- */ 
+ 
+@font-face
+{
+    font-family: 'BallparkWeiner';
+    src: url('polices/ballpark.eot');
+    src: url('polices/ballpark.eot?#iefix') format('embedded-opentype'),
+         url('polices/ballpark.woff') format('woff'),
+         url('polices/ballpark.ttf') format('truetype'),
+         url('polices/ballpark.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: 'Dayrom';
+    src: url('polices/dayrom.eot');
+    src: url('polices/dayrom.eot?#iefix') format('embedded-opentype'),
+         url('polices/dayrom.woff') format('woff'),
+         url('polices/dayrom.ttf') format('truetype'),
+         url('polices/dayrom.svg#Dayrom') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---------------------------------------- */ 
+/* == ÉLÉMENTS PRINCIPAUX */ 
+/*---------------------------------------- */ 
+
+body {
+	background-color: #FFF;
+}
+
+img {
+	width: 100%;
+}
+
+nav .fa-biking, nav .nav-link {
+	color: #4CD7D0!important;
+	font-weight: bold;
+}
+
+nav .fa-biking {
+	font-size: 2em;
+}
+
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            HEADER                */ 
+/*---------------------------------------- */ 
+ 
+/*     Navigation      */ 
+ 
+/*     Slider      */ 
+
+#slider{
+    position: relative;
+    height:200px;
+    max-width:1100px;
+    margin:auto;
+    overflow: hidden;  
+}
+#slider ul {
+    list-style: none;
+}
+#slider ul li{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+
+	/* boutons du slider */
+
+    #slider_prev, #slider_next {
+        position:absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4CD7D0;
+        font-size: 2em;
+    }
+    #slider_prev {
+        left: 0;
+    }
+    #slider_next {
+        right: 0;
+    }
+    .fa-angle-double-left, .fa-angle-double-right{
+        display: inline-block;
+        font-size: 1.5em;
+    }
+
+    /* boutons play et pause */ 
+    #play, #pause {
+        position:absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        color: #4CD7D0;
+        font-size: 1.5em;
+    }
+    #pause {
+        display: none;
+    }
+    .fa-play, .fa-pause {
+        display: inline-block;
+        font-size: 1.5em;
+    }
+
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==            FOOTER                 */ 
+/*---------------------------------------- */ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==       MEDIAS QUERIS        */ 
+/*---------------------------------------- */ 
+ 
+/*    à partir de 768 px    */ 
+@media(min-width:767.98px) {
+
+    #slider {
+        height: 300px;
+    }
+}
+ 
+/*  à partir de 1100 px      */
+
+@media(min-width:1100px) {
+
+    #slider {
+        height: 400px;
+    }
+}

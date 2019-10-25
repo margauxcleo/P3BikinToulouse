@@ -1,0 +1,193 @@
+/* ---------------------------------------- */
+/* ==            SUMMARY              */
+/*---------------------------------------- */ 
+ 
+/* L - 1 - */
+/* L - 2 - */ 
+/* L - 3 - */ 
+ 
+/* ---------------------------------------- */
+/* ==       COLOR CODES           */
+/*---------------------------------------- */
+/* 
+Black (text) : #000 
+Dark gray (links, h1) : #008dde 
+Mid gray (visited links) : #0006a1 
+Light gray (h2) : #747474 
+*/ 
+/* ---------------------------------------- */ 
+/* == DÉFINITIONS DES POLICES*/ 
+/*---------------------------------------- */ 
+ 
+@font-face
+{
+    font-family: 'BallparkWeiner';
+    src: url('polices/ballpark.eot');
+    src: url('polices/ballpark.eot?#iefix') format('embedded-opentype'),
+         url('polices/ballpark.woff') format('woff'),
+         url('polices/ballpark.ttf') format('truetype'),
+         url('polices/ballpark.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: 'Dayrom';
+    src: url('polices/dayrom.eot');
+    src: url('polices/dayrom.eot?#iefix') format('embedded-opentype'),
+         url('polices/dayrom.woff') format('woff'),
+         url('polices/dayrom.ttf') format('truetype'),
+         url('polices/dayrom.svg#Dayrom') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---------------------------------------- */ 
+/* == ÉLÉMENTS PRINCIPAUX */ 
+/*---------------------------------------- */ 
+
+body {
+	background-color: #FFF;
+}
+
+img {
+	width: 100%;
+}
+
+nav .fa-biking, nav .nav-link {
+	color: #4CD7D0!important;
+	font-weight: bold;
+}
+
+nav .fa-biking {
+	font-size: 2em;
+}
+
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            HEADER                */ 
+/*---------------------------------------- */ 
+ 
+/*     Navigation      */ 
+ 
+/*     Slider      */ 
+.slider {
+    position: relative;
+}
+.bloc_slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* methode chgt de background img */
+	background-image: url("../images/garonne.jpg");
+	background-repeat: no-repeat;
+	animation-name: slider1;
+    -webkit-animation: slider1;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    -webkit-backface-visibility: hidden;/*pas obligatoire, experimental */
+    backface-visibility: hidden; /*pas obligatoire, experimental */	
+    transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+	/* fin methode chgt de background img */
+
+}
+.slider-item {
+    width: 100%;
+    animation-name: slider_animation;
+    -webkit-animation: slider_animation;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    -webkit-backface-visibility: hidden;/*pas obligatoire, experimental */
+    backface-visibility: hidden; /*pas obligatoire, experimental */	
+    transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+}
+
+	/* boutons du slider */
+	.slider_prev {
+    	left: 0;
+    }
+	.slider_next {
+    	right: 0;
+	}
+	.slider_prev, .slider_next {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    z-index: 1;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    width: 15%;
+	    color: #4CD7D0;
+	    text-align: center;
+	    opacity: .5;
+	    transition: opacity .15s ease;
+    }
+    .slider_prev:hover, .slider_next:hover {
+    	color: #FFF;
+    	text-decoration: none;
+    }
+    .fa-angle-double-left, .fa-angle-double-right{
+    	display: inline-block;
+    	font-size: 3em;
+    }
+ 	
+/* == test autre solution */
+/* méthode changement de background */ 
+
+@keyframes slider1 { /* Safari, Opera, Chrome */
+    0%{background-image: url("images/garonne.jpg");}
+    33%{background-image: url("images/toulouse-canal-midi.jpg");} 
+ 	66%{background-image: url("images/image1.jpg");}
+}	
+
+@-webkit-keyframes slider1 {
+	0%{background-image: url("images/garonne.jpg");}
+    33%{background-image: url("images/toulouse-canal-midi.jpg");} 
+ 	66%{background-image: url("images/image1.jpg");}
+}
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==            FOOTER                 */ 
+/*---------------------------------------- */ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==       MEDIAS QUERIS        */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */

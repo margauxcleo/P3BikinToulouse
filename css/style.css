@@ -1,0 +1,365 @@
+/* ---------------------------------------- */
+/* ==            SUMMARY              */
+/*---------------------------------------- */ 
+ 
+/* L - 1 - */
+/* L - 2 - */ 
+/* L - 3 - */ 
+ 
+/* ---------------------------------------- */
+/* ==       COLOR CODES           */
+/*---------------------------------------- */
+/* 
+
+White (body background): #FFF;
+Cyan: (nav, step 1/intro) #4CD7D0
+Blue Gray (h2): #90ADC6;
+Slate Gray: #767D80;
+Tiffany Blue: #A4E8E0;
+Mint: #B4F8C8;
+Shiny Green (step 4): #71fb9a;
+Yellow (step 3): #F8EA8C; 
+Gold:#FEDE00;
+Rose Red: #D14153;
+Coral (step 2): #F88379;
+Charcoal: #FBE5C0;
+
+
+*/ 
+/* ---------------------------------------- */ 
+/* == DÉFINITIONS DES POLICES*/ 
+/*---------------------------------------- */ 
+ 
+@font-face
+{
+    font-family: 'BallparkWeiner';
+    src: url('polices/ballpark.eot');
+    src: url('polices/ballpark.eot?#iefix') format('embedded-opentype'),
+         url('polices/ballpark.woff') format('woff'),
+         url('polices/ballpark.ttf') format('truetype'),
+         url('polices/ballpark.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: 'Dayrom';
+    src: url('polices/dayrom.eot');
+    src: url('polices/dayrom.eot?#iefix') format('embedded-opentype'),
+         url('polices/dayrom.woff') format('woff'),
+         url('polices/dayrom.ttf') format('truetype'),
+         url('polices/dayrom.svg#Dayrom') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---------------------------------------- */ 
+/* == ÉLÉMENTS PRINCIPAUX */ 
+/*---------------------------------------- */ 
+
+body {
+	background-color: #FFF;
+	font-family: "Dayrom", sans-serif;
+	padding: 0px!important;
+}
+img {
+	width: 100%;
+}
+h1, h2, h3 {
+	padding: 15px;
+	border-radius: 30px;
+	text-align: center;
+	/*
+	background-color: rgba(255, 255, 255, 0.9);
+	*/
+}
+h1 {
+	font-size: 1.5em;
+	text-transform: uppercase;
+	color: #4CD7D0;
+	padding: 15px;
+}
+h2 {
+	font-size: 1.3em;
+	color: #FFF;
+}
+h3 {
+	font-size: 1.1em;
+	color: #D14153;
+}
+.logo {
+	color: #4CD7D0;
+	// voir police pour logo
+}
+.underline {
+	text-decoration: underline;
+}
+
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            HEADER                */ 
+/*---------------------------------------- */ 
+ 
+/*     Navigation      */ 
+
+nav .fa-biking, nav .nav-link {
+	color: #4CD7D0!important;
+	font-weight: bold;
+}
+
+nav .fa-biking {
+	font-size: 2em;
+}
+.navbar-brand p{
+	color: #4CD7D0;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+ 
+/*     Slider      */ 
+#slider {
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    height: 350px; /* important pr visuel */
+}
+#bloc_slider {
+    position: relative;
+    width: 400%!important;
+    height: 100%;
+    left: 0%;
+    right: 100%;
+    display: flex;
+    align-items: stretch;
+    transition: left 0.33s ease-in-out;
+    overflow: hidden;
+}
+#slider img {
+	display: block;
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
+    height: 350px; /* même données que slider-img pour que l'object-fit fonctionne */
+}
+
+	/* boutons du slider */
+	#slider_prev {
+    	left: 0;
+    }
+	#slider_next {
+    	right: 0;
+	}
+	#slider_prev, #slider_next {
+	    position: absolute;
+	    z-index: 500;
+	    top: 0;
+	    bottom: 0;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    width: 15%;
+	    color: #4CD7D0;
+	    text-align: center;
+	    transition: opacity .15s ease;
+	    cursor: pointer;
+    }
+    #slider_prev:hover, #slider_next:hover {
+    	color: #D14153;
+    	text-decoration: none;
+    }
+    .fa-angle-double-left, .fa-angle-double-right{
+    	display: inline-block;
+    	font-size: 3em;
+    }
+
+    /* boutons play et pause */ 
+    #play, #pause {
+        position:absolute;
+        z-index: 500;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        color: #4CD7D0;
+        font-size: 1.5em;
+    }
+    #play {
+        display: none;
+    }
+    .fa-play, .fa-pause {
+        display: inline-block;
+        font-size: 1.5em;
+    }
+
+    /* steps et imgs*/
+
+    	/* img */
+    .slider-img {
+    	width: 100%;
+    	height: 350px; /* important pr visuel */
+    	position: absolute;
+    	z-index: 1;
+    }
+    	/* step */
+    #step_1, #step_2, #step_3, #step_4 {
+    	position: relative;
+    	width: 100%;
+    	height: 100%;
+    }
+    #text_step_1, #text_step_2, #text_step_3, #text_step_4 {
+    	position: absolute;
+		z-index: 100;
+		top: 0;
+    }
+	.slider-step {
+		width: 100%;
+		height: 100%;
+		display: flex;
+    	justify-content: center;
+	    align-items: center;
+	    flex-direction: column;
+	    flex-wrap: wrap;	
+	}
+	#text_step_1 h1, #text_step_1 h2, #text_step_2 h2, #text_step_3 h2, #text_step_4 h2, #text_step_4 h3 {
+		width: 80%;
+	}
+
+	.welcome, #text_step_2 h2, #text_step_3 h2, #text_step_4 h2, #text_step_4 h3 {
+		background-color: rgba(255, 255, 255, 0.9);
+	}
+
+	.fa-map-marker-alt, .fa-wpforms, .fa-check, .fa-hourglass-start, .fa-user, .fa-file-signature {
+		font-size: 1.5em;
+	}
+	
+		/* intro */
+		.welcome {
+			border-radius: 30px;
+			padding: 10px;
+			word-break: keep-all;
+			color: #4CD7D0;
+		}
+		#text_step_1 h2 {
+			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 5px 5px 4px #FFF;
+		}
+
+		/* slide 2 - step 1 */
+		#text_step_2 h2 {
+			color: #F88379;
+		}
+		/* slide 3 - step 2 */
+		#text_step_3 h2 {
+			color: #E1C340;
+		}
+		#text_step_3 ul {
+			text-align: left;
+			list-style: square;
+		}
+		/* slide 4 - step 3 */
+		#text_step_4 h2 {
+			color: #71fb9a;
+		}
+		/* mask */
+		.mask {
+			background-color: rgba(255, 255, 255, 0.3);
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+		}
+
+	
+
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+
+/* ---------------------------------------- */ 
+/* ==            SECTION                */ 
+/*---------------------------------------- */ 
+ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==            FOOTER                 */ 
+/*---------------------------------------- */ 
+/*     sous partie      */ 
+ 
+/*     sous partie      */ 
+ 
+/* ---------------------------------------- */ 
+/* ==       MEDIAS QUERIS        */ 
+/*---------------------------------------- */ 
+ 
+/*    à partir de 768 px    */ 
+@media(min-width:767.98px) {
+
+    #slider {
+        height: 300px;
+    }
+    .slider-img {
+    	height: 300px;
+	}
+	#slider img {
+		height: 300px;
+	}
+
+	#text_step_1 h1, #text_step_1 h2 {
+		width: 80%;
+	}
+}
+ 
+/*  à partir de 1100 px      */
+
+@media(min-width:1100px) {
+
+    #slider {
+        height: 400px;
+    }
+    .slider-img {
+    	height: 400px;
+	}
+	#slider img {
+		height: 400px;
+	}
+	#text_step_1 h1 { 
+		width: 70%;
+	}
+}
+
+/*  à partir de 1350 px      */
+
+@media(min-width:1350px) {
+
+    #slider {
+        height: 600px;
+    }
+    .slider-img {
+    	height: 600px;
+	}
+	#slider img {
+		height: 600px;
+	}
+	#text_step_1 h1 { 
+		width: 60%;
+	}
+}
