@@ -92,7 +92,6 @@ document.addEventListener('keydown', getArrowID);
 
 function getArrowID(event) {
     arrowID = event.which; // on recupere le numero de la touche
-    console.log(arrowID);
     if (arrowID === 39) {
         next.trigger('click');
     } else if (arrowID === 37) {
@@ -113,19 +112,50 @@ function getArrowID(event) {
             consoe.log("erreur");
     }
     */
-}
+};
 
 /* LEAF LET MAP */
 
+// appel AJAX
+function getMap() {
+    var ajax = new XMLHttpRequest();
+    console.log("readyState après new: "+ajax.readyState); //permet de voir l'avancement de la requête / si 4 c'est ok
+    /* detection de l'avancement de l'appel */
+    ajax.onredadystatechange = function() {
+        console.log("readyState a changé et vaut: "+ajax.readyState);
+    }
+    /* détection de la fin de l'appel */
+    ajax.onload = function() { //onload = on précise la function à déclencher quand l'appel est terminé
+        console.log("Appel AJAX terminé");
+        console.log(" status : "+this.status); //code de retour serveur
+        console.log(" response : "+this.response); // contenu de la rep envoyée par le serveur
+        if (this.status == 200) {
+            var json = JSON.parse(this.response); // on convertit JSON      
+    }
+    var url = "https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6";
+    ajax.open("GET", url, true); //on démarre la requete AJAX avec OPEN
+    ajax.send(); /*on déclenche l'appel avec send */
+
+    /* infos de leaf let == PB*/
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        L.tileLayer('https://api.jcdecaux.com/vls/v3/contracts HTTP/1.1', {
+            maxZoom: 18,
+            minZoom: 1, 
+            "name" : "Toulouse",
+            "commercial_name" : "Vélô",
+            "country_code" : "FR",
+        }).addTo(mymap);
+    }
+};
+
+/*
+// infos de leaf let
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-L.tileLayer('https://api.jcdecaux.com/vls/v1/stations?contract={contract_name}&apiKey={c3dd05a552e530b07e97fa7db3d8fa095a6578b6}', {
+L.tileLayer('https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6', {
     maxZoom: 18,
     "name" : "Toulouse",
     "commercial_name" : "Vélô",
     "country_code" : "FR",
 }).addTo(mymap);
-
-{
-  
-}
+*/
