@@ -167,26 +167,39 @@ $(document).ready(function () {
     console.log("in ready");
     getMap();
     // on initialise une station 
-    var stationName = datas[i].name;
-    var stationLat = datas[i].position.lat;
-    var stationLng = datas[i].position.lng;
-    // on initialise la var marker
-    var marker = L.marker([element.position.lat, element.position.lng]).addTo(myMap);
-     
-    //on crée le tableau récap avec les donnees
-    var datas;
-    function afficherMarqueur (reponse) {
-        var infosStation = JSON.parse(reponse);
-        infosStation.forEach(element => {
-            var datas = [element.name, element.position.lat, element.position.lng];
-            
-            marker.bindPopup(element.name);
-        })
-    }  
+    /*
+    var totalNbStations = datas.length;
+    var stationName = datas.element.name;
+    var stationLat = datas.element.position.lat;
+    var stationLng = datas.element.position.lng;
+    */
+    /*
+    fruits.forEach(function(item, index, array) {
+    console.log(item, index);
+    });
+    */
+
+    arrayJC.forEach(function (element) { //on utilise une fonction anonyme
+        // on initialise la var marker
+        console.log(element);
+        var marker = L.marker([element.position.lat, element.position.lng]).addTo(myMap);
+        marker.bindPopup(element.name);
+    })
 });
+        
+    
+     /*
+    function afficherMarqueur (reponse) {
+    var infosStation = JSON.parse(reponse);
+    infosStation.forEach(element => {
+        var datas = [element.name, element.position.lat, element.position.lng];
+        
+        
+    })
+    */  
 
 // récuperation des données de l'API 
-$.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
+var arrayJC = $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
     console.log(datas);
     console.log("nb total de stations:" + datas.length);
     console.log("nom de la station indiqué en 2 dans le tableau datas" + datas[2].name);
