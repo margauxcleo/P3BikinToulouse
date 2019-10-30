@@ -114,48 +114,44 @@ function getArrowID(event) {
     */
 };
 
-/* LEAF LET MAP */
+// LEAF LET = MAP 
 
 // appel AJAX
-function getMap() {
-    var ajax = new XMLHttpRequest();
-    console.log("readyState après new: "+ajax.readyState); //permet de voir l'avancement de la requête / si 4 c'est ok
-    /* detection de l'avancement de l'appel */
-    ajax.onredadystatechange = function() {
-        console.log("readyState a changé et vaut: "+ajax.readyState);
-    }
-    /* détection de la fin de l'appel */
-    ajax.onload = function() { //onload = on précise la function à déclencher quand l'appel est terminé
-        console.log("Appel AJAX terminé");
-        console.log(" status : "+this.status); //code de retour serveur
-        console.log(" response : "+this.response); // contenu de la rep envoyée par le serveur
-        if (this.status == 200) {
-            var json = JSON.parse(this.response); // on convertit JSON      
-    }
-    var url = "https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6";
-    ajax.open("GET", url, true); //on démarre la requete AJAX avec OPEN
-    ajax.send(); /*on déclenche l'appel avec send */
 
-    /* infos de leaf let == PB*/
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-        L.tileLayer('https://api.jcdecaux.com/vls/v3/contracts HTTP/1.1', {
-            maxZoom: 18,
-            minZoom: 1, 
-            "name" : "Toulouse",
-            "commercial_name" : "Vélô",
-            "country_code" : "FR",
-        }).addTo(mymap);
-    }
+var myMap;
+
+function getMap() {
+
+    // infos de leaf let
+    // set view + latitude, longitude, zoom initial
+    myMap = L.map('mapid').setView([43.600000, 1.433333], 13);
+    // avec OpenStreetMap
+    /*
+    var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(myMap);
+    */
+
+    // avec MapBox 
+    var MapBox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyZ2F1eC12aXRleiIsImEiOiJjazJkMm14NDIwYmY3M25xYmFrcTh0OXNkIn0.vCdPdFrZ20BKHoHGx-xy9g', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'your.mapbox.access.token'
+    }).addTo(myMap);
 };
 
-/*
-// infos de leaf let
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+// appel de la fonction getMap qd HTML chargé 
+$(document).ready(function () {
+    console.log("in ready");
+    getMap();
+    var marker = L.marker([43.600000, 1.433333]).addTo(myMap);
+    marker.bindPopup("<b>Centre de Toulouse</b>");
+});
 
-L.tileLayer('https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6', {
-    maxZoom: 18,
-    "name" : "Toulouse",
-    "commercial_name" : "Vélô",
-    "country_code" : "FR",
-}).addTo(mymap);
-*/
+// récuperation des données de l'API 
+$.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (data) {
+    console.log(data);
+});
+
