@@ -124,7 +124,7 @@ function getMap() {
 
     // infos de leaf let
     // set view + latitude, longitude, zoom initial
-    myMap = L.map('mapid').setView([43.600000, 1.433333], 13);
+    myMap = L.map('mapid').setView([43.600000, 1.433333], 11);
     // avec OpenStreetMap
     /*
     var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -134,7 +134,7 @@ function getMap() {
     */
 
     // avec MapBox 
-    var MapBox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyZ2F1eC12aXRleiIsImEiOiJjazJkMm14NDIwYmY3M25xYmFrcTh0OXNkIn0.vCdPdFrZ20BKHoHGx-xy9g', {
+    var mapBox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFyZ2F1eC12aXRleiIsImEiOiJjazJkMm14NDIwYmY3M25xYmFrcTh0OXNkIn0.vCdPdFrZ20BKHoHGx-xy9g', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
@@ -142,6 +142,8 @@ function getMap() {
     }).addTo(myMap);
 };
 
+// A CONSERVER => fonctionne 
+/*
 // appel de la fonction getMap qd HTML chargé 
 $(document).ready(function () {
     console.log("in ready");
@@ -154,4 +156,38 @@ $(document).ready(function () {
 $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (data) {
     console.log(data);
 });
+*/
 
+
+
+// en cours - pour afficher un marqueur sur chaque station 
+
+// appel de la fonction getMap qd HTML chargé 
+$(document).ready(function () {
+    console.log("in ready");
+    getMap();
+    // on initialise une station 
+    var stationName = datas[i].name;
+    var stationLat = datas[i].position.lat;
+    var stationLng = datas[i].position.lng;
+    // on initialise la var marker
+    var marker = L.marker([element.position.lat, element.position.lng]).addTo(myMap);
+     
+    //on crée le tableau récap avec les donnees
+    var datas;
+    function afficherMarqueur (reponse) {
+        var infosStation = JSON.parse(reponse);
+        infosStation.forEach(element => {
+            var datas = [element.name, element.position.lat, element.position.lng];
+            
+            marker.bindPopup(element.name);
+        })
+    }  
+});
+
+// récuperation des données de l'API 
+$.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
+    console.log(datas);
+    console.log("nb total de stations:" + datas.length);
+    console.log("nom de la station indiqué en 2 dans le tableau datas" + datas[2].name);
+}); 

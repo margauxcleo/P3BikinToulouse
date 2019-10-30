@@ -283,7 +283,8 @@ nav .fa-biking {
 /*     Leaf Let MAP      */ 
 
 #mapid {
-	height: 200px;
+	height: 300px;
+	width: 90%; /* TEMPORAIRE ! utiliser bootstrap pour que le scroll sur la plage fonctionne 
 }
  
 /*     sous partie      */ 
@@ -360,5 +361,8 @@ nav .fa-biking {
 	}
 	#text_step_1 h1 { 
 		width: 60%;
+	}
+	#mapid {
+	height: 400px;
 	}
 }
