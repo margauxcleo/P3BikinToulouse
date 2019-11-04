@@ -282,9 +282,10 @@ nav .fa-biking {
  
 /*     Leaf Let MAP      */ 
 
-#mapid {
+#map_id {
 	height: 300px;
 	width: 90%; /* TEMPORAIRE ! utiliser bootstrap pour que le scroll sur la plage fonctionne */
+	position: relative;
 }
  
 /*     bloc infos stations      */ 
@@ -292,6 +293,13 @@ nav .fa-biking {
 #infos_stations {
 	background-color: #FFF;
 	opacity: 0.6;
+	width: 300px;
+	height: 100%; /* toujours indiqué idem que map_id */
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	display: none;
 }
  
 /*     sous partie      */ 

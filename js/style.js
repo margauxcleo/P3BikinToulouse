@@ -52,13 +52,13 @@ var animation = setInterval(function() {
     clearInterval(animation);
     pause.css('display', 'none');
     // AR 
-    play.css('position', 'absolute');
-    play.css('bottom', '0');
-    play.css('left', '0');
-    play.css('right', '0');
-    play.css('display', 'flex');
-    play.css('justify-content', 'center');
-    play.css('align-items', 'flex-end');
+    play.css('position', 'absolute')
+    .css('bottom', '0')
+    .css('left', '0')
+    .css('right', '0')
+    .css('display', 'flex')
+    .css('justify-content', 'center')
+    .css('align-items', 'flex-end');
  });
 
 // si clic sur play 
@@ -124,7 +124,7 @@ function getMap() {
 
     // infos de leaf let
     // set view + latitude, longitude, zoom initial
-    myMap = L.map('mapid').setView([43.600000, 1.433333], 11);
+    myMap = L.map('map_id').setView([43.600000, 1.433333], 11);
     // avec OpenStreetMap
     /*
     var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -182,8 +182,18 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
     //Gestion des popups. On boucle sur les données contenues dans le fichier json
     for ( var i=0; i < stations.length; ++i )
     {
-        L.marker([stations[i].position.lat, stations[i].position.lng],{}).bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
+        L.marker([stations[i].position.lat, stations[i].position.lng]).bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
+        // au clic sur le marqueur de la station 
+        L.marker([stations[i].position.lat, stations[i].position.lng]).on('click', function(e) {
+            $('#infos_stations').css('display', 'block');
+            $('#infos_stations').append('<h2 id=stationName>' + stations[i].name + '</h2>');
+            $('#infos_stations').append('<p id=stationAdress>' + stations[i].address + '</p>');
+            $('#infos_stations').append('<p id=stationStatus>' + stations[i].status + 'element.status </p>');
+            $('#infos_stations').append('<div id=stationMainStands>' + stations[i].mainStands + '</div>');
+        }).addTo(myMap);
     }
+
+
 }); 
 
 //TEST pour remplacement du pop up par un hover 
