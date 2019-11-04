@@ -162,66 +162,39 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 
 // en cours - pour afficher un marqueur sur chaque station 
 
+
 // appel de la fonction getMap qd HTML chargé 
 $(document).ready(function () {
     console.log("in ready");
     getMap();
-    var marker = L.marker([datas[200].position.lat, datas[200].position.lng]).addTo(myMap);
-    marker.bindPopup(datas[200].name);
-    // on initialise une station 
     /*
-    var totalNbStations = datas.length;
-    var stationName = datas.element.name;
-    var stationLat = datas.element.position.lat;
-    var stationLng = datas.element.position.lng;
-    */
-    /*
-    fruits.forEach(function(item, index, array) {
-    console.log(item, index);
-    });
-    */
-    /*
-    arrayJC.forEach(function (element) { //on utilise une fonction anonyme
-        // on initialise la var marker
-        console.log(element);
-        var marker = L.marker([datas[200].position.lat, datas[200].position.lng]).addTo(myMap);
-        marker.bindPopup(datas[200].name);
-    })
+    var marker = L.marker([stationLat, stationLng]).addTo(myMap);
+    marker.bindPopup(stationName);
     */
 });
-        
-    
-     /*
-    function afficherMarqueur (reponse) {
-    var infosStation = JSON.parse(reponse);
-    infosStation.forEach(element => {
-        var datas = [element.name, element.position.lat, element.position.lng];
-        
-        
-    })
-    */  
+  
 
 // récuperation des données de l'API 
 $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
-    console.log(datas);
-    var stations = [];
-    $.each( datas, function( key, val ) {
-        stations.push( "<li id='" + key + "'>" + val + "</li>" );
-    }).appendTo("#infos_stations");
-    console.log("nb total de stations:" + datas.length);
-    console.log("nom de la station indiqué en 2 dans le tableau datas" + datas[2].name);
-    var stationName = datas[4].name;
-    /*
-    var stationLat = datas.element.position.lat;
-    var stationLng = datas.element.position.lng;
-    */
-    console.log(stationName);
-    console.log(datas[200].position.lat);
+    var stations = datas;
+    console.log(stations);   
 
-    //creation en html de l'element station 
-
+    //Gestion des popups. On boucle sur les données contenues dans le fichier json
+    for ( var i=0; i < stations.length; ++i )
+    {
+        L.marker([stations[i].position.lat, stations[i].position.lng],{}).bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
+    }
 }); 
 
+//TEST pour remplacement du pop up par un hover 
+/*
+station[i].on('mouseover', station[i].openPopup.bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>')).addTo(myMap);
+*/
+
+
+
+
+//creation en html de l'element station 
 /*
 // clic sur le marqueur
 marker.on('click', function(event) {
