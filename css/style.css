@@ -284,10 +284,15 @@ nav .fa-biking {
 
 #mapid {
 	height: 300px;
-	width: 90%; /* TEMPORAIRE ! utiliser bootstrap pour que le scroll sur la plage fonctionne 
+	width: 90%; /* TEMPORAIRE ! utiliser bootstrap pour que le scroll sur la plage fonctionne */
 }
  
-/*     sous partie      */ 
+/*     bloc infos stations      */ 
+
+#infos_stations {
+	background-color: #FFF;
+	opacity: 0.6;
+}
  
 /*     sous partie      */ 
 

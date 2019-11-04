@@ -166,6 +166,8 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 $(document).ready(function () {
     console.log("in ready");
     getMap();
+    var marker = L.marker([datas[200].position.lat, datas[200].position.lng]).addTo(myMap);
+    marker.bindPopup(datas[200].name);
     // on initialise une station 
     /*
     var totalNbStations = datas.length;
@@ -178,13 +180,14 @@ $(document).ready(function () {
     console.log(item, index);
     });
     */
-
+    /*
     arrayJC.forEach(function (element) { //on utilise une fonction anonyme
         // on initialise la var marker
         console.log(element);
-        var marker = L.marker([element.position.lat, element.position.lng]).addTo(myMap);
-        marker.bindPopup(element.name);
+        var marker = L.marker([datas[200].position.lat, datas[200].position.lng]).addTo(myMap);
+        marker.bindPopup(datas[200].name);
     })
+    */
 });
         
     
@@ -199,8 +202,39 @@ $(document).ready(function () {
     */  
 
 // récuperation des données de l'API 
-var arrayJC = $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
+$.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
     console.log(datas);
+    var stations = [];
+    $.each( datas, function( key, val ) {
+        stations.push( "<li id='" + key + "'>" + val + "</li>" );
+    }).appendTo("#infos_stations");
     console.log("nb total de stations:" + datas.length);
     console.log("nom de la station indiqué en 2 dans le tableau datas" + datas[2].name);
+    var stationName = datas[4].name;
+    /*
+    var stationLat = datas.element.position.lat;
+    var stationLng = datas.element.position.lng;
+    */
+    console.log(stationName);
+    console.log(datas[200].position.lat);
+
+    //creation en html de l'element station 
+
 }); 
+
+/*
+// clic sur le marqueur
+marker.on('click', function(event) {
+    $('#infos_stations').css('display', 'block');
+    $('#infos_stations').css('height', '50px'); // AR, parametre en phase test 
+});
+
+// au clic sur le marqueur, voici ce qui doit s'afficher:
+// creer un element ac jquery
+// EXEMPLE: jQuery(monElement).append('<div id=maDiv class=classe>Coucou</div>');
+
+var stationName = $("#infos_stations").append('<div id=stationName> element.name </div');
+var stationAddress = $("#infos_stations").append('<div id=stationAdress> element.address </div');
+var stationStatus = $("#infos_stations").append('<div id=stationStatus> element.status </div');
+var stationMainStands = $("#infos_stations").append('<div id=stationMainStands> element.mainStands" </div');
+*/
