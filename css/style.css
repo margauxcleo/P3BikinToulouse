@@ -292,14 +292,17 @@ nav .fa-biking {
 
 #infos_stations {
 	background-color: #FFF;
-	opacity: 0.6;
+	opacity: 1;
 	width: 300px;
 	height: 100%; /* toujours indiqué idem que map_id */
 	position: absolute;
-	z-index: 1;
+	z-index: 1000;
 	top: 0;
 	right: 0;
 	display: none;
+}
+#stationName, #stationAdress,#stationStatus, #available_bikes, #available_bike_stands {
+	color: #4CD7D0;
 }
  
 /*     sous partie      */ 
