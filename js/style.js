@@ -180,13 +180,26 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
     console.log(stations); 
 
     //Gestion des popups. On boucle sur les données contenues dans le fichier json
-    for ( var i=0; i < stations.length; i++ )
-    {
-        var marker = L.marker([stations[i].position.lat, stations[i].position.lng]).addTo(myMap);
+    stations.forEach(function(station) {
+        
+        // creer 2 icones
+        // mettre conditions pour type icones 
+        var marker = L.marker([station.position.lat, station.position.lng]).addTo(myMap);
         /*
         .bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
-        */       
-    }
+        */
+        marker.on('click', function(e) {
+            $('#infos_stations').html("");
+            $('#infos_stations').css('display', 'block');
+            $('#infos_stations').append('<h2 id=stationName>' + station.name + '</h2>');
+            $('#infos_stations').append('<p id=stationAdress>Adresse de la station : ' + station.address + '</p>');
+            $('#infos_stations').append('<p id=stationStatus>' + station.status + '</p>');
+            $('#infos_stations').append('<div id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</div>');
+            $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
+        });    
+    });
+    
+    
 
     // CE QU'ON VEUT FAIRE
         // pour chaque marqueur, au clic, on veut que le volet d'info de la station s'affiche.
@@ -217,7 +230,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
         });
     })
     */
-
+    /*
     // TEST 3 AFFICHER INFO STATION 
     stations.forEach(station => {
         $('.leaflet-marker-icon').on('click', function(e) {
@@ -229,6 +242,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
         });
     })
+    */
 
     // au clic sur le marqueur de la station 
     
