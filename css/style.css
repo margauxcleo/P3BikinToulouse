@@ -305,7 +305,21 @@ nav .fa-biking {
 	color: #4CD7D0;
 }
  
-/*     sous partie      */ 
+/*     MARKERS     */ 
+.open_marker, .closed_marker {
+	text-align: center;
+	/* Horizontally center the text (icon) */
+	line-height: 20px;
+	/* Vertically center the text (icon) */
+}
+
+.open_marker {
+	color: #4CD7D0;
+}
+
+.closed_marker {
+	color: #F88379;
+}
 
 /* ---------------------------------------- */ 
 /* ==            SECTION                */ 

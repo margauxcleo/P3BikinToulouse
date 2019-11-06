@@ -124,7 +124,7 @@ function getMap() {
 
     // infos de leaf let
     // set view + latitude, longitude, zoom initial
-    myMap = L.map('map_id').setView([43.600000, 1.433333], 11);
+    myMap = L.map('map_id').setView([43.600000, 1.433333], 14);
     // avec OpenStreetMap
     /*
     var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -158,12 +158,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 });
 */
 
-
-
-// en cours - pour afficher un marqueur sur chaque station 
-
-
-// appel de la fonction getMap qd HTML chargé 
+// INFO = appel de la fonction getMap qd HTML chargé 
 $(document).ready(function () {
     console.log("in ready");
     getMap();
@@ -174,20 +169,45 @@ $(document).ready(function () {
 });
   
 
-// récuperation des données de l'API 
+// INFO = récuperation des données de l'API 
 $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3dd05a552e530b07e97fa7db3d8fa095a6578b6", function (datas) {
     var stations = datas;
     console.log(stations); 
 
-    //Gestion des popups. On boucle sur les données contenues dans le fichier json
+    // INFO = on boucle sur les données contenues dans le fichier json
     stations.forEach(function(station) {
         
         // creer 2 icones
-        // mettre conditions pour type icones 
+        var openMarker = L.divIcon({
+            html: '<i class="fas fa-map-marker-alt"></i>',
+            iconSize: [20, 20],
+            className: 'open_marker'
+        });
+
+        var closedMarker = L.divIcon({
+            html: '<i class="fas fa-map-marker-alt"></i>',
+            iconSize: [20, 20],
+            className: 'closed_marker'
+        });
+
+        // mettre conditions pour type icones
+        if (station.status === 'OPEN') {
+            console.log(station.status);
+            var marker = L.marker([station.position.lat, station.position.lng], {icon: openMarker}).addTo(myMap);
+        } else {
+            marker = L.marker([station.position.lat, station.position.lng], {icon: closedMarker}).addTo(myMap);
+        }
+
+        // A CONSERVER = > FONCTIONNE 
+        /*
+        // INFO = MARKER SUR CHAQUE STATION  
         var marker = L.marker([station.position.lat, station.position.lng]).addTo(myMap);
         /*
         .bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
         */
+
+
+        // INFO = VOLET STATION 
         marker.on('click', function(e) {
             $('#infos_stations').html("");
             $('#infos_stations').css('display', 'block');
@@ -196,96 +216,12 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').append('<p id=stationStatus>' + station.status + '</p>');
             $('#infos_stations').append('<div id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</div>');
             $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
-        });    
-    });
-    
-    
-
-    // CE QU'ON VEUT FAIRE
-        // pour chaque marqueur, au clic, on veut que le volet d'info de la station s'affiche.
-            // clic => récuperer l'index de la station => COMMENT ??? 
-    /*
-    // TEST 1 AFFICHER INFO STATION
-    for ( i = 5; i < stations.length; i++ ) {
-        $('.leaflet-marker-icon').on('click', function(e) {
-            $('#infos_stations').css('display', 'block');
-            $('#infos_stations').append('<h2 id=stationName>' + stations[5].name + '</h2>');
-            $('#infos_stations').append('<p id=stationAdress>Adresse de la station : ' + stations[5].address + '</p>');
-            $('#infos_stations').append('<p id=stationStatus>' + stations[5].status + '</p>');
-            $('#infos_stations').append('<div id=available_bikes>Nombre de vélos disponibles:' + stations[5].available_bikes + '</div>');
-            $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + stations[5].available_bike_stands + '</div>');
         }); 
-    }
-    /*
 
-    //TEST 2 AFFICHER INFO STATION 
-    /*
-    $('.leaflet-marker-icon').each(function (index) {
-        $('.leaflet-marker-icon').on('click', function(e) {
-            $('#infos_stations').css('display', 'block');
-            $('#infos_stations').append('<h2 id=stationName>' + stations[i].name + '</h2>');
-            $('#infos_stations').append('<p id=stationAdress>' + stations[i].address + '</p>');
-            $('#infos_stations').append('<p id=stationStatus>' + stations[i].status + '</p>');
-            $('#infos_stations').append('<div id=stationMainStands>' + stations[i].mainStands + '</div>');
-        });
-    })
-    */
-    /*
-    // TEST 3 AFFICHER INFO STATION 
-    stations.forEach(station => {
-        $('.leaflet-marker-icon').on('click', function(e) {
-            $('#infos_stations').css('display', 'block');
-            $('#infos_stations').append('<h2 id=stationName>' + station.name + '</h2>');
-            $('#infos_stations').append('<p id=stationAdress>Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=stationStatus>' + station.status + '</p>');
-            $('#infos_stations').append('<div id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</div>');
-            $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
-        });
-    })
-    */
-
-    // au clic sur le marqueur de la station 
-    
-
-        /* // TEST 2 - NE FONCTIONNE PAS 
-        // ou autre facon de faire pour que le volet d'info soit caché quand on reclique sur le marqueur
-        function getStationInfos(e) {
-            $('#infos_stations').css('display', 'block');
-            $('#infos_stations').append('<h2 id=stationName>' + stations[i].name + '</h2>');
-            $('#infos_stations').append('<p id=stationAdress>' + stations[i].address + '</p>');
-            $('#infos_stations').append('<p id=stationStatus>' + stations[i].status + 'element.status </p>');
-            $('#infos_stations').append('<div id=stationMainStands>' + stations[i].mainStands + '</div>');
-        }
-
-        marker.on('click', getStationInfos);
-        marker.off('click', getStationInfos);
-        */ // FIN TEST 2 
-    
-    
-}); 
-
-//TEST pour remplacement du pop up par un hover 
-/*
-station[i].on('mouseover', station[i].openPopup.bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>')).addTo(myMap);
-*/
-
-
-
-
-//creation en html de l'element station 
-/*
-// clic sur le marqueur
-marker.on('click', function(event) {
-    $('#infos_stations').css('display', 'block');
-    $('#infos_stations').css('height', '50px'); // AR, parametre en phase test 
-});
-
-// au clic sur le marqueur, voici ce qui doit s'afficher:
-// creer un element ac jquery
-// EXEMPLE: jQuery(monElement).append('<div id=maDiv class=classe>Coucou</div>');
-
-var stationName = $("#infos_stations").append('<div id=stationName> element.name </div');
-var stationAddress = $("#infos_stations").append('<div id=stationAdress> element.address </div');
-var stationStatus = $("#infos_stations").append('<div id=stationStatus> element.status </div');
-var stationMainStands = $("#infos_stations").append('<div id=stationMainStands> element.mainStands" </div');
-*/
+        // FAIRE ICI le mouseover sur le marker 
+        marker.on('mouseover', function(e) {
+            .bindPopup('<b>' + station.name + '</b>');
+        })
+          
+    }); 
+});    
