@@ -22,6 +22,7 @@ Yellow (step 3): #F8EA8C;
 Gold:#FEDE00;
 Rose Red: #D14153;
 Coral (step 2): #F88379;
+Coral (main ??): #ff7077;
 Charcoal: #FBE5C0;
 
 
@@ -75,7 +76,7 @@ h1, h2, h3 {
 h1 {
 	font-size: 1.5em;
 	text-transform: uppercase;
-	color: #4CD7D0;
+	color: #ff7077;
 	padding: 15px;
 }
 h2 {
@@ -87,7 +88,7 @@ h3 {
 	color: #D14153;
 }
 .logo {
-	color: #4CD7D0;
+	color: #ff7077;
 	/*// voir police pour logo*/
 }
 .underline {
@@ -107,7 +108,7 @@ h3 {
 /*     Navigation      */ 
 
 nav .fa-biking, nav .nav-link {
-	color: #4CD7D0!important;
+	color: #ff7077!important;
 	font-weight: bold;
 }
 
@@ -115,7 +116,7 @@ nav .fa-biking {
 	font-size: 2em;
 }
 .navbar-brand p{
-	color: #4CD7D0;
+	color: #ff7077;
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -162,13 +163,13 @@ nav .fa-biking {
 	    align-items: center;
 	    justify-content: center;
 	    width: 15%;
-	    color: #4CD7D0;
+	    color: #ff7077;
 	    text-align: center;
 	    transition: opacity .15s ease;
 	    cursor: pointer;
     }
     #slider_prev:hover, #slider_next:hover {
-    	color: #D14153;
+    	color: #4CD7D0;
     	text-decoration: none;
     }
     .fa-angle-double-left, .fa-angle-double-right{
@@ -186,7 +187,7 @@ nav .fa-biking {
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        color: #4CD7D0;
+        color: #ff7077;
         font-size: 1.5em;
     }
     #play {
@@ -243,7 +244,7 @@ nav .fa-biking {
 			border-radius: 30px;
 			padding: 10px;
 			word-break: keep-all;
-			color: #4CD7D0;
+			color: #ff7077;
 		}
 		#text_step_1 h2 {
 			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 5px 5px 4px #FFF;
@@ -311,6 +312,9 @@ nav .fa-biking {
 	/* Horizontally center the text (icon) */
 	line-height: 20px;
 	/* Vertically center the text (icon) */
+	font-size: 1.5em;
+	text-shadow: 5px 6px #c3c3c3;
+	border: 0.5mm solid rgba(195, 195, 195, .6);
 }
 
 .open_marker {
@@ -320,6 +324,7 @@ nav .fa-biking {
 .closed_marker {
 	color: #F88379;
 }
+
 
 /* ---------------------------------------- */ 
 /* ==            SECTION                */ 

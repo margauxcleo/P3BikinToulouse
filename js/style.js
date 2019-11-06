@@ -218,10 +218,14 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
         }); 
 
-        // FAIRE ICI le mouseover sur le marker 
-        marker.on('mouseover', function(e) {
-            .bindPopup('<b>' + station.name + '</b>');
-        })
-          
+        // FAIRE ICI le mouseover sur le marker
+        // POP UP en MOUSEOVER => ne fonctionne pas, à voir ensemble. 
+        marker.bindPopup("<b>" + station.name + "</b>");
+        marker.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        marker.on('mouseout', function (e) {
+            this.closePopup();
+        });          
     }); 
 });    
