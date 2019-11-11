@@ -13,6 +13,7 @@
 
 White (body background): #FFF;
 Coral (nav, step 1/intro): #ff7077;
+Coral (pale-pour background info station):#fdeaeb;
 Cyan: (markers) #4CD7D0
 Blue Gray (h2): #90ADC6;
 Coral (step 2): #F88379;
@@ -294,7 +295,7 @@ nav .fa-biking {
 /*     bloc infos stations      */ 
 
 #infos_stations {
-	background-color: #FFF;
+	background-color: #fdeaeb;
 	opacity: 1;
 	width: 300px;
 	height: 100%; /* toujours indiqué idem que map_id */

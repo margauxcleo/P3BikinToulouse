@@ -228,8 +228,8 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 $('#infos_stations').append('<p id=stationStatus> Statut: fermée. Indisponible à la location. </p>');
             }
             $('#infos_stations').append('<p id=stationAdress> <span> <i class="fas fa-location-arrow"></i> </span> Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=available_bikes> <span> <i class="fas fa-biking"></i> </span> Nombre de vélos disponibles:' + station.available_bikes + '</p>');
-            $('#infos_stations').append('<p id=available_bike_stands> <span> <i class="fas fa-parking"></i> </span> Nombre d\'emplacements disponibles:' + station.available_bike_stands + '</p>');
+            $('#infos_stations').append('<p id=available_bikes> <span> <i class="fas fa-biking"></i> </span> Nombre de vélos disponibles:<span class="badge badge-primary">' + station.available_bikes + '</span></p>');
+            $('#infos_stations').append('<p id=available_bike_stands> <span> <i class="fas fa-parking"></i> </span> Nombre d\'emplacements disponibles: <span class="badge badge-secondary">' + station.available_bike_stands + '</span></p>');
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');
