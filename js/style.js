@@ -213,7 +213,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
         marker.bindPopup("<b>" + station.name + "</b>");
 
         marker.on('click', function(e) {
-            marker.bindPopup("<b>" + station.name + "</b>");
+            marker.openPopup();
             $('#infos_stations').html("");
             $('#infos_stations').css('display', 'flex');
             $('#infos_stations').css('flex-direction', 'column');
@@ -223,13 +223,13 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
                 $('#title_info').append('<span> <i id=close_infos_cross class="fas fa-times"></i> </span>');
             if (station.status === 'OPEN') {
-                $('#infos_stations').append('<p id=stationStatus> Statut: ouverte </p>');
+                $('#infos_stations').append('<p id=stationStatusOpen> Statut: ouverte </p>');
             } else {
-                $('#infos_stations').append('<p id=stationStatus> Statut: fermée. Indisponible à la location. </p>');
+                $('#infos_stations').append('<p id=stationStatusClosed> Statut: fermée. Indisponible à la location. </p>');
             }
             $('#infos_stations').append('<p id=stationAdress> <span> <i class="fas fa-location-arrow"></i> </span> Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=available_bikes> <span> <i class="fas fa-biking"></i> </span> Nombre de vélos disponibles:<span class="badge badge-primary">' + station.available_bikes + '</span></p>');
-            $('#infos_stations').append('<p id=available_bike_stands> <span> <i class="fas fa-parking"></i> </span> Nombre d\'emplacements disponibles: <span class="badge badge-secondary">' + station.available_bike_stands + '</span></p>');
+            $('#infos_stations').append('<p id=available_bikes> Vélos disponibles:<span class="badge badge-primary"> <span><i class="fas fa-biking"></i></span> ' + station.available_bikes + '</span></p>');
+            $('#infos_stations').append('<p id=available_bike_stands> Emplacements disponibles: <span class="badge badge-secondary"> <span><i class="fas fa-parking"></i></span> ' + station.available_bike_stands + '</span></p>');
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');
@@ -238,8 +238,6 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             });
 
         }); 
-
-        
 
            
         // FAIRE ICI le mouseover sur le marker

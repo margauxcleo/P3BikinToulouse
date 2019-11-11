@@ -306,18 +306,26 @@ nav .fa-biking {
 	display: none;
 	padding: 0 15px 0 15px;	
 }
-#stationName, #stationAdress, #stationStatus, #available_bikes, #available_bike_stands {
+#stationName, #stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands {
+	color: #767D80;
+}
+#stationStatusOpen, #stationStatusClosed {
+	text-decoration: underline;
+}
+#stationStatusOpen {
 	color: #4CD7D0;
 }
-#stationAdress, #stationStatus, #available_bikes, #available_bike_stands {
+#stationStatusClosed {
+	color: #ff7077;
+}
+#available_bikes .fa-biking, #available_bikes_stands .fa-parking {
+	color: #FFF;	
+}
+#stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands {
 	font-size: 1.2em;
 }
 #stationAdress {
-	color: #767D80;
 	font-style: italic;
-}
-#stationStatus {
-	text-decoration: underline;
 }
 	/* div nom station + croix */
 	#title_info {
@@ -332,6 +340,17 @@ nav .fa-biking {
 	.fa-times {
 		font-size: 1.8em;
 	}
+	/* velos et parkings */
+	.badge {
+		font-size: 1.3em;
+	}
+	.badge-primary {
+		background-color: #4CD7D0;
+	}
+	.badge-secondary { 
+		background-color: #ff7077;;
+	}
+
 
  
 /*     MARKERS     */ 
@@ -341,7 +360,7 @@ nav .fa-biking {
 	line-height: 20px;
 	/* Vertically center the text (icon) */
 	font-size: 1.5em;
-	text-shadow: 0.1em 0.1em 0.2em black; // à conserver pour l'ombre
+	text-shadow: 0.1em 0.1em 0.2em black; /* à conserver pour l'ombre */
 	border: 0.5mm solid rgba(195, 195, 195, .6);
 }
 
