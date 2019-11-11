@@ -301,9 +301,19 @@ nav .fa-biking {
 	top: 0;
 	right: 0;
 	display: none;
+	padding: 0 15px 0 15px;	
 }
-#stationName, #stationAdress,#stationStatus, #available_bikes, #available_bike_stands {
+#stationName, #stationAdress, #stationStatus, #available_bikes, #available_bike_stands {
 	color: #4CD7D0;
+}
+#title_info {
+	display: flex;
+	align-content: space-around;
+	align-items: baseline;
+}
+.fa-times {
+	color: #ff7077;
+	font-size: 1.5em;
 }
  
 /*     MARKERS     */ 
@@ -313,7 +323,7 @@ nav .fa-biking {
 	line-height: 20px;
 	/* Vertically center the text (icon) */
 	font-size: 1.5em;
-	text-shadow: 5px 6px #c3c3c3;
+	text-shadow: 0.1em 0.1em 0.2em black; // à conserver pour l'ombre
 	border: 0.5mm solid rgba(195, 195, 195, .6);
 }
 

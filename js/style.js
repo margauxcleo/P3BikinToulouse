@@ -178,12 +178,14 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
     stations.forEach(function(station) {
         
         // creer 2 icones
+        // si station = OPEN 
         var openMarker = L.divIcon({
             html: '<i class="fas fa-map-marker-alt"></i>',
             iconSize: [20, 20],
             className: 'open_marker'
         });
 
+        // si station = CLOSED
         var closedMarker = L.divIcon({
             html: '<i class="fas fa-map-marker-alt"></i>',
             iconSize: [20, 20],
@@ -192,7 +194,6 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 
         // mettre conditions pour type icones
         if (station.status === 'OPEN') {
-            console.log(station.status);
             var marker = L.marker([station.position.lat, station.position.lng], {icon: openMarker}).addTo(myMap);
         } else {
             marker = L.marker([station.position.lat, station.position.lng], {icon: closedMarker}).addTo(myMap);
@@ -206,26 +207,45 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
         .bindPopup('<b>' + stations[i].name + '</b>' + '<p> Statut :' + stations[i].status + '</p>').addTo(myMap);
         */
 
+        
 
         // INFO = VOLET STATION 
+        marker.bindPopup("<b>" + station.name + "</b>");
+
         marker.on('click', function(e) {
+            marker.bindPopup("<b>" + station.name + "</b>");
             $('#infos_stations').html("");
-            $('#infos_stations').css('display', 'block');
-            $('#infos_stations').append('<h2 id=stationName>' + station.name + '</h2>');
+            $('#infos_stations').css('display', 'flex');
+            $('#infos_stations').css('flex-direction', 'column');
+            $('#infos_stations').css('justify-content', 'space-around');
+            $('#infos_stations').css('align-items', 'flex-start');
+            $('#infos_stations').append('<div id=title_info> </div>');
+                $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
+                $('#title_info').append('<span> <i id=close_infos_cross class="fas fa-times"></i> </span>');
             $('#infos_stations').append('<p id=stationAdress>Adresse de la station : ' + station.address + '</p>');
             $('#infos_stations').append('<p id=stationStatus>' + station.status + '</p>');
-            $('#infos_stations').append('<div id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</div>');
-            $('#infos_stations').append('<div id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</div>');
+            $('#infos_stations').append('<p id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</p>');
+            $('#infos_stations').append('<p id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</p>');
+        
+            // fermeture manuelle du volet info station 
+            var closeInfos = $('#close_infos_cross');
+            closeInfos.on('click', function(e) {
+                $('#infos_stations').css('display', 'none');
+            });
+
         }); 
 
+        
+
+           
         // FAIRE ICI le mouseover sur le marker
         // POP UP en MOUSEOVER => ne fonctionne pas, à voir ensemble. 
-        marker.bindPopup("<b>" + station.name + "</b>");
         marker.on('mouseover', function (e) {
-            this.openPopup();
+            marker.openPopup();
         });
         marker.on('mouseout', function (e) {
-            this.closePopup();
-        });          
+            marker.closePopup();
+        });
+              
     }); 
 });    
