@@ -217,15 +217,19 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').html("");
             $('#infos_stations').css('display', 'flex');
             $('#infos_stations').css('flex-direction', 'column');
-            $('#infos_stations').css('justify-content', 'space-around');
+            $('#infos_stations').css('justify-content', 'flex-start');
             $('#infos_stations').css('align-items', 'flex-start');
             $('#infos_stations').append('<div id=title_info> </div>');
                 $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
                 $('#title_info').append('<span> <i id=close_infos_cross class="fas fa-times"></i> </span>');
-            $('#infos_stations').append('<p id=stationAdress>Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=stationStatus>' + station.status + '</p>');
-            $('#infos_stations').append('<p id=available_bikes>Nombre de vélos disponibles:' + station.available_bikes + '</p>');
-            $('#infos_stations').append('<p id=available_bike_stands>Nombre d\'emplacements disponibles' + station.available_bike_stands + '</p>');
+            if (station.status === 'OPEN') {
+                $('#infos_stations').append('<p id=stationStatus> Statut: ouverte </p>');
+            } else {
+                $('#infos_stations').append('<p id=stationStatus> Statut: fermée. Indisponible à la location. </p>');
+            }
+            $('#infos_stations').append('<p id=stationAdress> <span> <i class="fas fa-location-arrow"></i> </span> Adresse de la station : ' + station.address + '</p>');
+            $('#infos_stations').append('<p id=available_bikes> <span> <i class="fas fa-biking"></i> </span> Nombre de vélos disponibles:' + station.available_bikes + '</p>');
+            $('#infos_stations').append('<p id=available_bike_stands> <span> <i class="fas fa-parking"></i> </span> Nombre d\'emplacements disponibles:' + station.available_bike_stands + '</p>');
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');

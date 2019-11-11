@@ -12,18 +12,20 @@
 /* 
 
 White (body background): #FFF;
-Cyan: (nav, step 1/intro) #4CD7D0
+Coral (nav, step 1/intro): #ff7077;
+Cyan: (markers) #4CD7D0
 Blue Gray (h2): #90ADC6;
+Coral (step 2): #F88379;
+Yellow (step 3): #F8EA8C; 
+Shiny Green (step 4): #71fb9a;
+
+non utilisés:
 Slate Gray: #767D80;
 Tiffany Blue: #A4E8E0;
 Mint: #B4F8C8;
-Shiny Green (step 4): #71fb9a;
-Yellow (step 3): #F8EA8C; 
 Gold:#FEDE00;
 Rose Red: #D14153;
-Coral (step 2): #F88379;
-Coral (main ??): #ff7077;
-Charcoal: #FBE5C0;
+Charcoal (jaune pale): #FBE5C0;
 
 
 */ 
@@ -306,15 +308,30 @@ nav .fa-biking {
 #stationName, #stationAdress, #stationStatus, #available_bikes, #available_bike_stands {
 	color: #4CD7D0;
 }
-#title_info {
-	display: flex;
-	align-content: space-around;
-	align-items: baseline;
+#stationAdress, #stationStatus, #available_bikes, #available_bike_stands {
+	font-size: 1.2em;
 }
-.fa-times {
-	color: #ff7077;
-	font-size: 1.5em;
+#stationAdress {
+	color: #767D80;
+	font-style: italic;
 }
+#stationStatus {
+	text-decoration: underline;
+}
+	/* div nom station + croix */
+	#title_info {
+		display: flex;
+		align-content: space-between;
+		align-items: baseline;
+	}
+	#stationName, .fa-times {
+		font-size: 1.6em;
+		color: #ff7077; 
+	}
+	.fa-times {
+		font-size: 1.8em;
+	}
+
  
 /*     MARKERS     */ 
 .open_marker, .closed_marker {
