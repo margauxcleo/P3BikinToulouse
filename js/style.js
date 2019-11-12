@@ -221,15 +221,19 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').css('align-items', 'flex-start');
             $('#infos_stations').append('<div id=title_info> </div>');
                 $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
-                $('#title_info').append('<span> <i id=close_infos_cross class="fas fa-times"></i> </span>');
+                $('#title_info').append('<span> <i class="fas fa-times-circle"></i> </span>');
             if (station.status === 'OPEN') {
                 $('#infos_stations').append('<p id=stationStatusOpen> Statut: ouverte </p>');
             } else {
                 $('#infos_stations').append('<p id=stationStatusClosed> Statut: fermée. Indisponible à la location. </p>');
             }
             $('#infos_stations').append('<p id=stationAdress> <span> <i class="fas fa-location-arrow"></i> </span> Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=available_bikes> Vélos disponibles:<span class="badge badge-primary"> <span><i class="fas fa-biking"></i></span> ' + station.available_bikes + '</span></p>');
+            $('#infos_stations').append('<p id=available_bikes> Vélos disponibles: <span class="badge badge-primary"> <span><i class="fas fa-biking"></i></span> ' + station.available_bikes + '</span></p>');
             $('#infos_stations').append('<p id=available_bike_stands> Emplacements disponibles: <span class="badge badge-secondary"> <span><i class="fas fa-parking"></i></span> ' + station.available_bike_stands + '</span></p>');
+            // form 
+            $('#infos_stations').append('<form id=form_resa> </form');
+                $('#form_resa').append('<div class="form-group"> <label for=first_name> Votre prénom </label> <input type=text class="form-control" id=first_name/> </div>');
+                $('#form_resa').append('<div class="form-group"> <label for=last_name> Votre nom </label> <input type=text class="form-control" id=last_name/> </div>');
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');

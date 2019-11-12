@@ -19,9 +19,10 @@ Blue Gray (h2): #90ADC6;
 Coral (step 2): #F88379;
 Yellow (step 3): #F8EA8C; 
 Shiny Green (step 4): #71fb9a;
+Slate Gray (volet station): #767D80;
 
 non utilisés:
-Slate Gray: #767D80;
+
 Tiffany Blue: #A4E8E0;
 Mint: #B4F8C8;
 Gold:#FEDE00;
@@ -123,6 +124,9 @@ nav .fa-biking {
 	text-transform: uppercase;
 	font-weight: bold;
 }
+.navbar.bg-light {
+	border-bottom: 2mm #ff7077 solid;
+}
  
 /*     Slider      */ 
 #slider {
@@ -130,6 +134,7 @@ nav .fa-biking {
     overflow: hidden;
     margin: auto;
     height: 350px; /* important pr visuel */
+    border-bottom: 2px solid #767D80;
 }
 #bloc_slider {
     position: relative;
@@ -287,8 +292,9 @@ nav .fa-biking {
 /*     Leaf Let MAP      */ 
 
 #map_id {
-	height: 300px;
-	width: 90%; /* TEMPORAIRE ! utiliser bootstrap pour que le scroll sur la plage fonctionne */
+	height: 400px;
+	width: 98%; /* !! à modifier à la fin */ 
+	margin:auto;
 	position: relative;
 }
  
@@ -305,6 +311,8 @@ nav .fa-biking {
 	right: 0;
 	display: none;
 	padding: 0 15px 0 15px;	
+	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
+	overflow: auto;
 }
 #stationName, #stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands {
 	color: #767D80;
@@ -333,11 +341,11 @@ nav .fa-biking {
 		align-content: space-between;
 		align-items: baseline;
 	}
-	#stationName, .fa-times {
+	#stationName, .fa-times-circle{
 		font-size: 1.6em;
 		color: #ff7077; 
 	}
-	.fa-times {
+	.fa-times-circle {
 		font-size: 1.8em;
 	}
 	/* velos et parkings */
@@ -348,8 +356,18 @@ nav .fa-biking {
 		background-color: #4CD7D0;
 	}
 	.badge-secondary { 
-		background-color: #ff7077;;
+		background-color: #ff7077;
 	}
+	/* form */ 
+	#form_resa {
+		color: #767D80;
+		font-size: 1.2em;
+	}
+	.form-control:focus, .form-control:active {
+	    border-color:#ff7077;
+        box-shadow: 0 0 0 0.2rem rgba(255,112,119,.25);
+	}
+
 
 
  
@@ -374,9 +392,13 @@ nav .fa-biking {
 
 
 /* ---------------------------------------- */ 
-/* ==            SECTION                */ 
+/* ==            FOOTER               */ 
 /*---------------------------------------- */ 
- 
+
+footer {
+	background-color: #F88379;
+	color: #FFF;
+}
 /*     sous partie      */ 
  
 /*     sous partie      */ 
@@ -393,8 +415,10 @@ nav .fa-biking {
 /*---------------------------------------- */ 
  
 /*    à partir de 768 px    */ 
+
 @media(min-width:767.98px) {
 
+	/* slider */
     #slider {
         height: 300px;
     }
@@ -404,21 +428,25 @@ nav .fa-biking {
 	#slider img {
 		height: 300px;
 	}
-
 	#text_step_1 h1, #text_step_1 h2 {
 		width: 80%;
 	}
+	/* map */
+	#map_id {
+		height: 300px;
+	}
 }
  
-/*  à partir de 1100 px      */
+/*  à partir de 1024 px      */
 
-@media(min-width:1100px) {
+@media(min-width:1024px) {
 
-    #slider {
-        height: 400px;
-    }
-    .slider-img {
-    	height: 400px;
+	/* slider */
+	#slider {
+	    height: 400px;
+	}
+	.slider-img {
+		height: 400px;
 	}
 	#slider img {
 		height: 400px;
@@ -426,12 +454,21 @@ nav .fa-biking {
 	#text_step_1 h1 { 
 		width: 70%;
 	}
+
+	/* map */
+	#map_id {
+		height: 400px;
+	}
+	#infos_stations {
+		width:400px;
+	}
 }
 
 /*  à partir de 1350 px      */
 
 @media(min-width:1350px) {
 
+	/* slider */
     #slider {
         height: 600px;
     }
@@ -444,7 +481,12 @@ nav .fa-biking {
 	#text_step_1 h1 { 
 		width: 60%;
 	}
-	#mapid {
-	height: 400px;
+	
+	/* map */
+	#map_id {
+		height: 600px;
+	}
+	#infos_stations {
+		width:500px;
 	}
 }
