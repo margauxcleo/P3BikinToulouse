@@ -314,7 +314,7 @@ nav .fa-biking {
 	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
 	overflow: auto;
 }
-#stationName, #stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands {
+#stationName, #stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands, #form_title {
 	color: #767D80;
 }
 #stationStatusOpen, #stationStatusClosed {
@@ -362,13 +362,21 @@ nav .fa-biking {
 	#form_resa {
 		color: #767D80;
 		font-size: 1.2em;
+		width: 100%;
 	}
-	.form-control:focus, .form-control:active {
+	.form-control:focus, .form-control:active, #form_resa button:focus, #form_resa button:active {
 	    border-color:#ff7077;
         box-shadow: 0 0 0 0.2rem rgba(255,112,119,.25);
 	}
-
-
+	#form_resa button {
+		background-color: #ff7077;
+	    border-color: #ff7077;
+	}
+	#form_title {
+		border-bottom: ridge #767D80 2px;
+		border-radius: 0px;
+		text-transform: uppercase;
+	}
 
  
 /*     MARKERS     */ 

@@ -231,16 +231,17 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#infos_stations').append('<p id=available_bikes> Vélos disponibles: <span class="badge badge-primary"> <span><i class="fas fa-biking"></i></span> ' + station.available_bikes + '</span></p>');
             $('#infos_stations').append('<p id=available_bike_stands> Emplacements disponibles: <span class="badge badge-secondary"> <span><i class="fas fa-parking"></i></span> ' + station.available_bike_stands + '</span></p>');
             // form 
-            $('#infos_stations').append('<form id=form_resa> </form');
+            $('#infos_stations').append('<form id=form_resa name=bikin_form> <h3 id=form_title> Formulaire de réservation </h3> </form');
                 $('#form_resa').append('<div class="form-group"> <label for=first_name> Votre prénom </label> <input type=text class="form-control" id=first_name/> </div>');
                 $('#form_resa').append('<div class="form-group"> <label for=last_name> Votre nom </label> <input type=text class="form-control" id=last_name/> </div>');
+                $('#form_resa').append('<button type="submit" class="btn btn-primary">Submit</button>');
+
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');
             closeInfos.on('click', function(e) {
                 $('#infos_stations').css('display', 'none');
             });
-
         }); 
 
            
