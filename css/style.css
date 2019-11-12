@@ -306,7 +306,7 @@ nav .fa-biking {
 	width: 300px;
 	height: 100%; /* toujours indiqué idem que map_id */
 	position: absolute;
-	z-index: 1000;
+	z-index: 5000;
 	top: 0;
 	right: 0;
 	display: none;
@@ -371,12 +371,20 @@ nav .fa-biking {
 	#form_resa button {
 		background-color: #ff7077;
 	    border-color: #ff7077;
+	    margin-bottom: 15px;
 	}
 	#form_title {
 		border-bottom: ridge #767D80 2px;
 		border-radius: 0px;
 		text-transform: uppercase;
 	}
+		/* CANVAS */
+		#canvas {
+			width: 150px;
+			height: 150px;
+		  	border:1px solid #000;
+
+		}
 
  
 /*     MARKERS     */ 
