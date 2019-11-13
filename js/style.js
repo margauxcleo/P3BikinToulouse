@@ -215,29 +215,25 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
         // au clic, affichage du volet station 
         marker.on('click', function(e) {
             marker.openPopup();
-            $('#infos_stations').html("");
-            $('#infos_stations').css('display', 'flex');
-            $('#infos_stations').append('<div id=title_info> </div>');
-                $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
-                /*
-                $('#stationName').html(station.name);
-                */
-                $('#title_info').append('<span> <i class="fas fa-times-circle"></i> </span>');
-            if (station.status === 'OPEN') {
-                $('#infos_stations').append('<p id=stationStatusOpen> Statut: ouverte </p>');
-            } else {
-                $('#infos_stations').append('<p id=stationStatusClosed> Statut: fermée. Indisponible à la location. </p>');
-            }
-            $('#infos_stations').append('<p id=stationAdress> <span> <i class="fas fa-location-arrow"></i> </span> Adresse de la station : ' + station.address + '</p>');
-            $('#infos_stations').append('<p id=available_bikes> Vélos disponibles: <span class="badge badge-primary"> <span><i class="fas fa-biking"></i></span> ' + station.available_bikes + '</span></p>');
-            $('#infos_stations').append('<p id=available_bike_stands> Emplacements disponibles: <span class="badge badge-secondary"> <span><i class="fas fa-parking"></i></span> ' + station.available_bike_stands + '</span></p>');
-            // form 
-            $('#infos_stations').append('<form id=form_resa name=bikin_form> <h3 id=form_title> Formulaire de réservation </h3> </form');
-                $('#form_resa').append('<div class="form-group"> <label for=first_name> Votre prénom </label> <input type=text class="form-control" id=first_name name=first_name/> </div>');
-                $('#form_resa').append('<div class="form-group"> <label for=last_name> Votre nom </label> <input type=text class="form-control" id=last_name name=last_name/> </div>');
-                $('#form_resa').append('<canvas id=canvas> </canvas><br/>');
-                $('#form_resa').append('<button type="submit" class="btn btn-primary">Submit</button>');
+            /*
+            // on efface le contenu d'une autre station 
+            $('#station_name').html("");
+            $('#station_address').html("");
+            $('#available_bikes').html("");
+            $('#available_bike_stands').html("");
+            */
 
+            // on incrémente avec les infos de la station selectionnée
+            $('#infos_stations').css('display', 'flex');
+            $('#station_name').html(station.name);
+            if (station.status === 'OPEN') {
+                $('#station_status_open').css('display', 'block');
+            } else {
+                $('#station_status_closed').css('display', 'block');
+            }
+            $('#info_station_address').html(station.address);
+            $('#info_available_bikes').html(station.available_bikes);
+            $('#info_available_bike_stands').html(station.available_bike_stands);
         
             // fermeture manuelle du volet info station 
             var closeInfos = $('#close_infos_cross');
@@ -276,114 +272,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             // CANVAS 
 
             var canvas  = $('#canvas');
-            var context = canvas.getContext('2d');
-
-
-
-            /*
-            Toutes le fonctions ci-dessous peuvent être optimisées
-            elles sont même volontairement non optimisées
-            Elles sont là juste pour vous présenter le concept à vous de les améliorer 
-            */
-            //code récupéré 
-            /*
-            function moveDrawligne(oEvent){ 
-              var oCanvas = oEvent.currentTarget,
-                  oCtx = null, oPos = null;
-              if(oCanvas.bDraw ==false){
-                return false;
-              }//if
-              oPos = getPosition(oEvent, oCanvas);
-              oCtx = oCanvas.getContext('2d');
-              
-              //dessine
-              oCtx.strokeStyle = '#000000';
-              oCtx.lineWidth = 3;
-              oCtx.beginPath(); 
-              oCtx.moveTo((oCanvas.posX), oCanvas.posY);
-              oCtx.lineTo(oPos.posX, oPos.posY);
-              oCtx.stroke();
-              
-              oCanvas.posX = oPos.posX;
-              oCanvas.posY = oPos.posY; 
-            } //fct
-
-            function getPosition(oEvent, oCanvas){
-              var oRect = oCanvas.getBoundingClientRect(),
-                  oEventEle = oEvent.changedTouches? oEvent.changedTouches[0]:oEvent;
-              return {
-                posX : (oEventEle.clientX - oRect.left) / (oRect.right - oRect.left) * oCanvas.width,
-                posY : (oEventEle.clientY - oRect.top) / (oRect.bottom - oRect.top) * oCanvas.height
-              };//
-            }//fct
-
-            function downDrawligne(oEvent){ 
-              oEvent.preventDefault(); 
-              var  oCanvas = oEvent.currentTarget,
-                  oPos = getPosition(oEvent, oCanvas);
-              oCanvas.posX = oPos.posX;
-              oCanvas.posY = oPos.posY;
-              oCanvas.bDraw = true;
-              capturer(false);
-            }//fct
-
-            function upDrawligne(oEvent){
-              var oCanvas = oEvent.currentTarget;
-              oCanvas.bDraw = false; 
-              capturer(true);
-            }//fct
-
-            function initCanvas(){
-              var oCanvas = document.getElementById("canvas");
-              oCanvas.bDraw = false;
-              oCanvas.width = 200 ;
-              oCanvas.height = 150;
-              oCtx = oCanvas.getContext('2d'); 
-              oCanvas.addEventListener("mousedown", downDrawligne);
-              oCanvas.addEventListener("mouseup", upDrawligne);
-              oCanvas.addEventListener("mousemove", moveDrawligne);
-              oCanvas.addEventListener("touchstart", downDrawligne);
-              oCanvas.addEventListener("touchend", upDrawligne);
-              oCanvas.addEventListener("touchmove", moveDrawligne); 
-            }//fct
-
-            /**
-              * Récupère le canva sous forme d'image 
-              * si l'image des plus grande que le canvas
-              * c'est que vous avez oublié de presiser la taille du canva en javascript
-              * oCanvas.width = 200 ;
-              * oCanvas.height = 150;
-        
-            function capturer(bAction){
-              var oCapture = document.getElementById("capture");
-              oCapture.innerHTML = '';
-              if(bAction == true){ 
-                var oImage = document.createElement('img'),
-                    oCanvas = document.getElementById("canvas");
-                oImage.src = oCanvas.toDataURL("image/png");
-                oCapture.appendChild(oImage);
-              }//if
-            }//fct
-
-            
-              //Vide les dessin du canvas
-              
-            function nettoyer(oEvent){
-              var  oCanvas = document.getElementById("canvas"),
-                  oCtx = oCanvas.getContext('2d');
-              oCtx.clearRect(0,0,oCanvas.width,oCanvas.height); 
-              capturer(false);
-            }//fct
-
-            document.addEventListener('DOMContentLoaded',function(){
-              initCanvas();
-              document.getElementById("bt-clear").addEventListener("click", nettoyer); 
-            });
-
-            // fin code récupéré 
-            */
-
-                       
+            var context = canvas.getContext('2d');         
         }); 
 
         // POP UP en MOUSEOVER 

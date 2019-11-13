@@ -162,19 +162,40 @@
         <!-- MAP PART -->
 
         <div id="map_id">
-            <div id="infos_stations"></div>
-                <div id="title_info"></div>
+            <div id="infos_stations">
+                <div id="title_info">
                     <h2 id="station_name"></h2>
                     <span>
                         <i class="fas fa-times-circle"></i>
                     </span>
                 </div>
-                <div>
-                    <p id="station_adress"></p>
-                    <p id="available_bikes"></p>
-                    <p id="available_bike_stands"></p>
+                <div id="status">
+                    <p id=station_status_open> Statut: ouverte </p>
+                    <p id=station_status_closed> Statut: fermée. Indisponible à la location. </p>
                 </div>
-                <form>
+                <div>
+                    <p id="station_address">
+                        <span><i class="fas fa-location-arrow"></i></span> 
+                        Adresse de la station : 
+                        <span id="info_station_address"></span>
+                    </p>
+                    <p id="available_bikes">
+                        Vélos disponibles: 
+                        <span class="badge badge-primary">  
+                            <span><i class="fas fa-biking"></i></span>
+                            <span id="info_available_bikes"></span>
+                        </span>
+                    </p>
+                    <p id="available_bike_stands">
+                        Emplacements disponibles: 
+                        <span class="badge badge-secondary"> 
+                            <span><i class="fas fa-parking"></i></span>
+                            <span id="info_available_bike_stands"></span>
+                        </span>
+                    </p>
+                </div>
+                <form id=form_resa name=bikin_form>
+                    <h3 id=form_title> Formulaire de réservation </h3>
                     <div class="form-group">
                         <label for=first_name> Votre prénom </label> 
                         <input type=text class="form-control" id=first_name name=first_name />
@@ -183,11 +204,12 @@
                         <label for=last_name> Votre nom </label> 
                         <input type=text class="form-control" id=last_name name=last_name/>
                     </div>
-                    <canvas></canvas>
+                    <canvas id="canvas"></canvas>
+                    <br/>
                     <button type="submit" class="btn btn-primary"> Submit
                     </button>
                 </form>
-
+            </div>
         </div>
         
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

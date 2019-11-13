@@ -301,6 +301,7 @@ nav .fa-biking {
 /*     bloc infos stations      */ 
 
 #infos_stations {
+	display: none;
 	background-color: #fdeaeb;
 	opacity: 1;
 	width: 300px;
@@ -309,30 +310,33 @@ nav .fa-biking {
 	z-index: 5000;
 	top: 0;
 	right: 0;
-	display: none;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 	padding: 0 15px 0 15px;	
 	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
 	overflow: auto;
 }
-#stationName, #stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands, #form_title {
+#station_name, #station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands, #form_title {
 	color: #767D80;
 }
-#stationStatusOpen, #stationStatusClosed {
+#station_status_open, #station_status_closed {
 	text-decoration: underline;
+	display: none;
 }
-#stationStatusOpen {
+#station_status_open {
 	color: #4CD7D0;
 }
-#stationStatusClosed {
+#station_status_closed {
 	color: #ff7077;
 }
 #available_bikes .fa-biking, #available_bikes_stands .fa-parking {
 	color: #FFF;	
 }
-#stationAdress, #stationStatusOpen, #stationStatusClosed, #available_bikes, #available_bike_stands {
+#station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands {
 	font-size: 1.2em;
 }
-#stationAdress {
+#station_address {
 	font-style: italic;
 }
 	/* div nom station + croix */
@@ -341,7 +345,7 @@ nav .fa-biking {
 		align-content: space-between;
 		align-items: baseline;
 	}
-	#stationName, .fa-times-circle{
+	#station_name, .fa-times-circle{
 		font-size: 1.6em;
 		color: #ff7077; 
 	}
