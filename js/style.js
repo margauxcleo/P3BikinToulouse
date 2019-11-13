@@ -217,11 +217,11 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             marker.openPopup();
             $('#infos_stations').html("");
             $('#infos_stations').css('display', 'flex');
-            $('#infos_stations').css('flex-direction', 'column');
-            $('#infos_stations').css('justify-content', 'flex-start');
-            $('#infos_stations').css('align-items', 'flex-start');
             $('#infos_stations').append('<div id=title_info> </div>');
                 $('#title_info').append('<h2 id=stationName>' + station.name + '</h2>');
+                /*
+                $('#stationName').html(station.name);
+                */
                 $('#title_info').append('<span> <i class="fas fa-times-circle"></i> </span>');
             if (station.status === 'OPEN') {
                 $('#infos_stations').append('<p id=stationStatusOpen> Statut: ouverte </p>');
@@ -247,34 +247,38 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 
             //stockage des données 1 = prénom 
             var firstName = $('#first_name');
+            var lastName = $('#last_name');
 
-            //TEST 2 
-            if (sessionStorage.getItem("first_name")) {
+            if (localStorage.getItem("first_name")) {
                 // Restauration du contenu du champ
-                firstName.value = sessionStorage.getItem("first_name");
+                firstName.val(localStorage.getItem("first_name"));
             }
 
             // Écoute des changements de valeur du champ
             firstName.on("change", function() {
-            // Enregistrement de la saisie utilisateur dans le stockage de session
-            sessionStorage.setItem("first_name", firstName.value);
+                // Enregistrement de la saisie utilisateur dans le stockage de session
+                localStorage.setItem("first_name", firstName.val());
             });
 
-            // TEST 1
-            /*
-            if(typeof sessionStorage!== "undefined") {
-                if('first_name' in sessionStorage) {
-                    $('#first_name').value = sessionStorage.getItem('first_name');
-                } else {
-                    console.log("sessionStorage n'est pas supporté");
-                }
+            //last 
+            if (localStorage.getItem("last_name")) {
+                // Restauration du contenu du champ
+                lastName.val(localStorage.getItem("last_name"));
             }
-            */ 
+
+            // Écoute des changements de valeur du champ
+            lastName.on("change", function() {
+                // Enregistrement de la saisie utilisateur dans le stockage de session
+                localStorage.setItem("last_name", lastName.val());
+            });
+
 
             // CANVAS 
 
             var canvas  = $('#canvas');
             var context = canvas.getContext('2d');
+
+
 
             /*
             Toutes le fonctions ci-dessous peuvent être optimisées
