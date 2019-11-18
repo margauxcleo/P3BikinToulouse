@@ -126,7 +126,38 @@ nav .fa-biking {
 }
 .navbar.bg-light {
 	border-bottom: 2mm #ff7077 solid;
+	border-radius: 30px;
 }
+
+	/* button */
+	/*---- header & footer ----*/
+
+    .btn-footer, .btn-header
+    {
+        background-color: #FFF;
+        border-color: #ff7077;
+    }
+    .btn-footer:hover, .btn-header:hover
+    {
+        background-color: #ff7077;
+        border-color: #ff7077;
+        color: #FFF!important;
+    }
+    .btn-header:not(:disabled):not(.disabled):active, .btn-footer:not(:disabled):not(.disabled):active
+    {
+        background-color: #FFF;
+        border-color: #ff7077;
+    }
+    .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
+	}
+    .btn-header:focus, .btn-footer:focus
+    {
+       box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
+    }
+    footer [type=button], footer [type=reset], footer [type=submit], footer button, header [type=button], header [type=reset], header [type=submit], header button {
+    -webkit-appearance: none;
+    }
  
 /*     Slider      */ 
 #slider {
@@ -135,6 +166,7 @@ nav .fa-biking {
     margin: auto;
     height: 350px; /* important pr visuel */
     border-bottom: 2px solid #767D80;
+    border-radius: 30px;
 }
 #bloc_slider {
     position: relative;
@@ -292,10 +324,12 @@ nav .fa-biking {
 /*     Leaf Let MAP      */ 
 
 #map_id {
-	height: 400px;
-	width: 98%; /* !! à modifier à la fin */ 
-	margin:auto;
+	height: 400px; 
+	/*
+	margin-right: 20px!important; /*pour simplifier le scroll 
+	*/
 	position: relative;
+	border-radius: 30px;
 }
  
 /*     bloc infos stations      */ 
@@ -304,7 +338,7 @@ nav .fa-biking {
 	display: none;
 	background-color: #fdeaeb;
 	opacity: 1;
-	width: 300px;
+	width: 75%; /*en test*/
 	height: 100%; /* toujours indiqué idem que map_id */
 	position: absolute;
 	z-index: 5000;
@@ -316,6 +350,7 @@ nav .fa-biking {
 	padding: 0 15px 0 15px;	
 	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
 	overflow: auto;
+	border-radius: 25px;
 }
 #station_name, #station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands, #form_title {
 	color: #767D80;
@@ -455,6 +490,9 @@ footer {
 	#map_id {
 		height: 300px;
 	}
+	#infos_stations {
+		width:50%;
+	}
 }
  
 /*  à partir de 1024 px      */
@@ -478,9 +516,6 @@ footer {
 	/* map */
 	#map_id {
 		height: 400px;
-	}
-	#infos_stations {
-		width:400px;
 	}
 }
 
@@ -507,6 +542,6 @@ footer {
 		height: 600px;
 	}
 	#infos_stations {
-		width:500px;
+		width: 40%;
 	}
 }
