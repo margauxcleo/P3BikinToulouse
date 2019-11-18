@@ -441,6 +441,7 @@ nav .fa-biking {
 	}
 		/* CANVAS */
 		#canvas {
+			display: none; /* en atttendant, phase de test */
 			width: 150px;
 			height: 150px;
 		  	border:1px solid #000;
