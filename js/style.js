@@ -270,9 +270,7 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 
 
             // CANVAS 
-
-            var canvas  = $('#canvas');
-            var context = canvas.getContext('2d');         
+         
         }); 
 
         // POP UP en MOUSEOVER 

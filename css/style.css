@@ -12,11 +12,9 @@
 /* 
 
 White (body background): #FFF;
-Coral (nav, step 1/intro): #ff7077;
+Coral (nav, step 1/intro, step 2): #ff7077;
 Coral (pale-pour background info station):#fdeaeb;
 Cyan: (markers) #4CD7D0
-Blue Gray (h2): #90ADC6;
-Coral (step 2): #F88379;
 Yellow (step 3): #F8EA8C; 
 Shiny Green (step 4): #71fb9a;
 Slate Gray (volet station): #767D80;
@@ -24,6 +22,7 @@ Slate Gray (volet station): #767D80;
 non utilisés:
 
 Tiffany Blue: #A4E8E0;
+Blue Gray: #90ADC6;
 Mint: #B4F8C8;
 Gold:#FEDE00;
 Rose Red: #D14153;
@@ -100,6 +99,10 @@ h3 {
 	font-size: 1.1em;
 	color: #D14153;
 }
+footer h3 {
+	text-align: left!important;
+	color: #FFF;
+}
 .logo {
 	color: #ff7077;
 	/*// voir police pour logo*/
@@ -144,28 +147,28 @@ nav .fa-biking {
 }
 
 	/* button */
-	/*---- header & footer ----*/
+	/*---- header (+footer idem)----*/
 
-    .btn-footer, .btn-header
+    .btn-header
     {
         background-color: #FFF;
         border-color: #ff7077;
     }
-    .btn-footer:hover, .btn-header:hover
+    .btn-header:hover
     {
         background-color: #ff7077;
         border-color: #ff7077;
         color: #FFF!important;
     }
-    .btn-header:not(:disabled):not(.disabled):active, .btn-footer:not(:disabled):not(.disabled):active
+    .btn-header:not(:disabled):not(.disabled):active
     {
         background-color: #FFF;
         border-color: #ff7077;
     }
-    .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    .btn-header:not(:disabled):not(.disabled).active:focus, .btn-header:not(:disabled):not(.disabled):active:focus, .show>.btn-header.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
 	}
-    .btn-header:focus, .btn-footer:focus
+    .btn-header:focus
     {
        box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
     }
@@ -308,7 +311,7 @@ nav .fa-biking {
 
 		/* slide 2 - step 1 */
 		#text_step_2 h2 {
-			color: #F88379;
+			color: #ff7077;
 		}
 		/* slide 3 - step 2 */
 		#text_step_3 h2 {
@@ -352,7 +355,7 @@ nav .fa-biking {
 
 #infos_stations {
 	display: none;
-	background-color: #fdeaeb;
+	background-color: #FFF;
 	opacity: 1;
 	width: 75%; /*en test*/
 	height: 100%; /* toujours indiqué idem que map_id */
@@ -367,6 +370,9 @@ nav .fa-biking {
 	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
 	overflow: auto;
 	border-radius: 25px;
+}
+#infos_stations h2 {
+	color: #ff7077!important;
 }
 #station_name, #station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands, #form_title {
 	color: #767D80;
@@ -458,7 +464,7 @@ nav .fa-biking {
 }
 
 .closed_marker {
-	color: #F88379;
+	color: #ff7077;
 }
 
 /* ---------------------------------------- */ 
@@ -470,24 +476,47 @@ nav .fa-biking {
 /*---------------------------------------- */ 
 
 footer {
-	background-color: #F88379;
-	color: #FFF;
+	background-color: #ff7077;
+	color: #FFF;;
+	padding-top: 10px;
+	margin: 0px!important;
 }
 .div-footer ul {
 	list-style: none;
 	padding-inline-start: 0px;
 }
-/*     sous partie      */ 
+/*     buttons      */ 
+/* button */
+	/*---- footer ----*/
+
+    .btn-footer
+    {
+        background-color: #FFF;
+        border-color: #ff7077;
+        color: #ff7077;
+    }
+    .btn-footer:hover
+    {
+        background-color: #ff7077;
+        border-color: #FFF;
+        color: #FFF!important;
+    }
+    .btn-footer:not(:disabled):not(.disabled):active
+    {
+        background-color: #ff7077;
+        border-color: #ff7077;
+    }
+    .btn-footer:focus
+    {
+       box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
+    }
+    .btn-footer:not(:disabled):not(.disabled).active:focus, .btn-footer:not(:disabled):not(.disabled):active:focus, .show>.btn-footer.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
+	}
  
 /*     sous partie      */ 
  
-/* ---------------------------------------- */ 
-/* ==            FOOTER                 */ 
-/*---------------------------------------- */ 
-/*     sous partie      */ 
- 
-/*     sous partie      */ 
- 
+
 /* ---------------------------------------- */ 
 /* ==       MEDIAS QUERIS        */ 
 /*---------------------------------------- */ 
