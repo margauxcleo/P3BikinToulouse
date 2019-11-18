@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Bik'in Toulouse </title>
+        <meta name="description" content="La plateforme toulousaine de location de vélo!">
+        <link rel="shortcut icon" type="image/x-icon" href="" /> <!-- ==à renseigner -->
+
+         
+        <!-- CDN Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- CDC de fontawesome -->
+        <script src="https://kit.fontawesome.com/d9b0e2adfb.js"></script> 
+        <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+        <!-- ajout CSS de Leaf Let -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""
+        />
+        <!-- feuille de style perso -->
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
+            <a class="navbar-brand" id="main-brand"href="#">
+                <span class="logo">
+                    <i class="fas fa-biking"></i>
+                    Bik'in Toulouse
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- si besoin 
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                -->
+                <ul class="navbar-nav ml-auto" id="nav-networks">
+                    <a class="navbar-brand" href="#">
+                        Suivez-nous
+                    </a>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header"
+                        href="https://www.facebook.com/" type="button"> 
+                            <span>
+                                <i class="fab fa-facebook-square"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header" href="https://www.instagram.com/?hl=fr" type="button">
+                            <span>
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header" href="https://twitter.com/?lang=fr" type="button">
+                            <span>
+                                <i class="fab fa-twitter-square"></i> 
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <body class="container-fluid admin_page">
+
+        <h1 class="col-12"> Mentions légales </h1>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Régie Bik'in Toulouse </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                Adresse : XX rue XXXXX, CPXXXXX XXXXXXXVILLEXXXXXXX
+                <br/>
+                Email : margaux.vitez@hotmail.fr ou admin@bikin-toulouse.fr
+                <br/>
+                Téléphone : +33 X XX XX XX XX
+                <br/>
+                SIREN : ‎XXX XXX XXX 
+                <br/>
+                TVA INTRACOMMUNAUTAIRE : FR XX XXXXXXXXXX
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Editeur </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+            Le site accessible à l’adresse INDIQUER URL ICI et est edité par Margaux VITEZ, dans le cadre d'une formation de Développeuse Web Junior. Ce site est donc fictif, il s'agit d'un exercice. 
+            <br/>
+            Siège social : XX rue XXXXX, CPXXXXX XXXXXXXVILLEXXXXXXX
+            <br/>
+            Téléphone : +33 X XX XX XX XX
+            <br/>
+            Directrice de la publication : Margaux VITEZ
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Limitation de responsabilité </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                Bik'in Toulouse s'efforce d'assurer au mieux de ses possibilités, l'exactitude et la mise à jour des informations diffusées sur le Site et l'Application Mobile, dont elle se réserve le droit de corriger, à tout moment et sans préavis, le contenu. Toutefois, Bik'in Toulouse ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à la disposition sur le Site.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> En conséquence, Bik'in Toulouse décline toute responsabilité :
+                <ul class="col-sm-12 offset-md-1 col-md-10">
+                    <li> pour toute interruption du Site ; </li>
+                    <li> pour toute survenance de bogues ; </li>
+                    <li> pour toute inexactitude ou omission portant sur des informations disponibles sur le Site ;</li>
+                    <li> pour tous dommages résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à la disposition sur le Site ;</li>
+                    <li> plus généralement, pour tout dommage direct et indirect, quelles qu'en soient les causes, origines, natures ou conséquences en ce y compris notamment les coûts pouvant survenir du fait de l'acquisition de biens proposés sur le Site, les pertes de profits, de clientèle, de données ou tout autre perte de biens incorporels pouvant survenir à raison de l'accès de quiconque au site ou de l'impossibilité d'y accéder ou du crédit accordé à une quelconque information provenant directement ou indirectement de ces dernier.
+                    </li>
+                </ul>
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                L’utilisateur s’engage à respecter les présentes et à utiliser le Site sous sa responsabilité. L’utilisateur est réputé avoir accepté la dernière version des présentes du simple fait de la navigation sur le Site.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Protection des données personnelles </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Dans le cadre des services disponibles sur le Site ou l'Application Mobile, Bik'in Toulouse, responsable de traitement, met en œuvre des traitements automatisés de données à caractère personnel pour la gestion des utilisateurs des vélos en libre-service bicloo de la métropole de Nantes, en conformité avec les dispositions de la Politique de Protection des Données METTRE LIEN VERS PAGE CONCERNEE.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Hyperliens </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse autorise la mise en place d’un hyperlien vers le Site pour tout autre site, à l’exclusion de ceux diffusant des informations à caractère polémique, pornographique, xénophobe ou pouvant, dans une plus large mesure, porter atteinte aux intérêts de Bik'in Toulouse ou à la sensibilité du plus grand nombre. Aucune partie du Site ne doit être intégrée à l’intérieur d’un autre site.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse se réserve le droit de demander la suppression d’un hyperlien si elle estime qu’il ne respecte pas les règles ainsi définies.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Le Site peut inclure des hyperliens vers d'autres sites. Dans la mesure où Bik'in Toulouse ne peut contrôler ces sites, Bik'in Toulouse ne peut être tenu pour responsable de la mise à disposition de ces sites et ne peut supporter aucune responsabilité quant au contenu, publicités, produits, services ou tout autre matériel disponible sur ou à partir de ces sites et applications mobiles. De plus, Bik'in Toulousee ne pourra être tenu responsable de tous dommages ou pertes avérés ou allégués consécutifs ou en relation avec l'utilisation ou avec le fait d'avoir fait confiance au contenu, à des biens ou des services disponibles sur ces sites.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Propriété intellectuelle </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                Le Site ainsi que tout logiciel utilisé nécessairement en relation avec celui-ci peuvent contenir des informations confidentielles et protégées par le droit de propriété intellectuelle en vigueur ou toute autre loi. Ainsi, sauf mention contraire, les droits de propriété intellectuelle sur le contenu du Site et chacun des éléments créés pour le Site sont la propriété exclusive de Bik'in Toulouse, celle-ci ne concédant aucune licence, ni aucun autre droit que celui de consulter le Site.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                En particulier, les marques, les bases de données et les autres droits de propriété intellectuelle utilisés sur le Site sont la propriété des entités concernées affiliées de Bik'in Toulouse et/ou de Mme Margaux VITEZ. La reproduction de tout ou partie du contenu publié sur le Site est seulement autorisée aux fins exclusives d'information pour un usage personnel et privé, toute reproduction et toute utilisation de copies réalisées à d'autres fins étant expressément interdites. Il est également interdit de copier, modifier, créer une œuvre dérivée, inverser la conception ou l'assemblage ou de toute autre manière tenter de trouver le code source (à l'exception des cas prévus par la loi), vendre, attribuer, sous-licencier ou transférer de quelque manière que ce soit tout droit afférent au Site. De même, il est également interdit de modifier le Site ou d'utiliser de versions modifiées du Site notamment (sans que cette énumération soit limitative) en vue d'obtenir un accès non autorisé et d'accéder au Site par un autre moyen que par les interfaces qui sont fournies à l’utilisateur par Bik'in Toulouse à cet effet.
+            </p>
+        </section>
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Hébergeur </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                Le Site est hébergé par Margaux VITEZ, un particulier.
+                <br/>
+                Adresse : XX rue XXXXX, CPXXXXX XXXXXXXVILLEXXXXXXX
+                <br/>
+                Téléphone : +33 X XX XX XX XX
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Droit applicable </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Le Site ainsi que les présentes sont régis par le droit français.
+                <br/>
+                En cas de contestation ou de litige relatif à l’interprétation ou à l’exécution des présentes, les tribunaux de Paris seront seuls compétents.
+            </p>
+        </section>
+        
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Leaf Let JS -->
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin="">
+        </script>
+        <!-- My JS  -->
+        <script src="js/style.js"></script>
+    </body>
+
+    <footer>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-xl-3 div-footer"> 
+            <h3> Réseaux sociaux </h3>
+            <ul class="btn-group-vertical" id="reseaux_sociaux" role="group">
+                <li> 
+                    <a class="btn btn-primary btn-footer"
+                    href="https://www.facebook.com/" type="button"> 
+                        <i class="fab fa-facebook-square"></i>
+                        Voir la page Facebook
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="https://www.instagram.com/?hl=fr" type="button">
+                        <i class="fab fa-instagram"></i>
+                        Instagram du livre
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="https://www.instagram.com/?hl=fr" type="button">
+                        <i class="fab fa-instagram"></i>
+                        Instagram de J.Forteroche 
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="https://twitter.com/?lang=fr" type="button">
+                        <i class="fab fa-twitter-square"></i>
+                        Twitter 
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-xl-3 div-footer">
+            <h3> Plus d'informations </h3>
+            <ul class="btn-group-vertical" role="group">
+                
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=cgu" type="button">
+
+                        <i class="fas fa-thumbtack"></i>
+                        Conditions d'utilisations
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="index.php?action=legalNotice" type="button">
+                        <i class="fas fa-landmark"></i>
+                        Mentions légales
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=cookies" type="button">
+                        <i class="fas fa-eye"></i>
+                        Politique de protection des données personnelles  
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=contactMe" type="button">
+                        <i class="fas fa-envelope"></i>
+                        Contact 
+                    </a>
+                </li>
+            </ul>
+        </div>
+    
+        <p class="copyright offset-xs-2 col-xs-8 offset-sm-4 offset-lg-4 offset-lg-5"> 
+            <i class="fas fa-copyright"></i>
+            2019 - Site crée par Margaux.Vitez 
+        </p>
+    </footer>
+
+</html>

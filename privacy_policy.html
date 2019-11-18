@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Bik'in Toulouse </title>
+        <meta name="description" content="La plateforme toulousaine de location de vélo!">
+        <link rel="shortcut icon" type="image/x-icon" href="" /> <!-- ==à renseigner -->
+
+         
+        <!-- CDN Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- CDC de fontawesome -->
+        <script src="https://kit.fontawesome.com/d9b0e2adfb.js"></script> 
+        <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+        <!-- ajout CSS de Leaf Let -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""
+        />
+        <!-- feuille de style perso -->
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
+            <a class="navbar-brand" id="main-brand"href="#">
+                <span class="logo">
+                    <i class="fas fa-biking"></i>
+                    Bik'in Toulouse
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- si besoin 
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                -->
+                <ul class="navbar-nav ml-auto" id="nav-networks">
+                    <a class="navbar-brand" href="#">
+                        Suivez-nous
+                    </a>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header"
+                        href="https://www.facebook.com/" type="button"> 
+                            <span>
+                                <i class="fab fa-facebook-square"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header" href="https://www.instagram.com/?hl=fr" type="button">
+                            <span>
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn btn-primary btn-header" href="https://twitter.com/?lang=fr" type="button">
+                            <span>
+                                <i class="fab fa-twitter-square"></i> 
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <body class="container-fluid admin_page">
+
+        <h1> Politique de protection des données à caractère personnel & de la vie privée </h1>
+
+        <section class="col-12"> 
+            <h2 class="col-sm-12 offset-md-1"> Site Bik'in Toulouse </h2>
+            <ul class="col-sm-12 offset-md-1 col-md-10">
+                <li>Préambule</li>
+                <li>Champ d’application</li>
+                <li>Données collectées</li>
+                <li>Finalités de la collecte</li>
+                <li>Information des personnes</li>
+                <li>Destinataires des données collectées</li>
+                <li>Conservation des données</li>
+                <li>Cookies</li>
+                <li>Sécurité</li>
+                <li>Droits des personnes concernées</li>
+                <li>Formalités</li>
+                <li>Contact</li>
+            </ul>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Préambule </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse est particulièrement attaché au respect de la vie privée et à la protection des données à caractère personnel. C’est pourquoi ces valeurs constituent un des engagements sociétaux de Bik'in Toulouse au sein de sa politique de développement durable. 
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse s’engage, conformément à la règlementation en vigueur en france et en europe, à mettre en œuvre des mesures adéquates pour assurer la protection, la confidentialité et la sécurité des données à caractère personnel de toute personne auprès de laquelle des données sont collectées. 
+            </p class="col-sm-12 offset-md-1 col-md-10">
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Pour veiller à la mise en œuvre de ces mesures, Bik'in Toulouse a désigné en 2010 un correspondant informatique et libertés (CIL), votre interlocuteur privilégié pour toute question relative au traitement des données vous concernant et le référent auprès de la commission nationale de l’informatique et des libertés (CNIL).
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                La présente politique de protection des données a pour objectif de vous informer sur les engagements pris par Bik'in Toulouse afin de veiller au respect de vos données à caractère personnel. Cette politique pourra évoluer en fonction du contexte légal et réglementaire et de la doctrine de la cnil.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Champ d'application </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Cette politique de protection des données à caractère personnel s’applique à tous les traitements de données à caractère personnel, mis en œuvre par Bik'in Toulouse, relatifs aux personnes extérieures (notamment les clients, partenaires, candidats au recrutement, fournisseurs, internautes).
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Définitions </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                « Données à caractère personnel » / « Données personnelles » : toute donnée permettant d’identifier directement ou indirectement une personne physique.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Traitement de données » : opérations réalisées sur des données à caractère personnel, notamment la collecte, l’enregistrement, l’utilisation, la transmission ou la communication. 
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                « Responsable de traitement » : entité juridique en charge de déterminer les finalités du traitement et les moyens mis en œuvre.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Données collectées </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                De manière générale, vous pouvez entrer en contact avec Bik'in Toulouse et visiter les sites internet du groupe sans qu’il soit nécessaire de nous communiquer vos données personnelles.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Toutefois, afin d’être en mesure de vous apporter certains services, Bik'in Toulouse peut vous demander de lui fournir des données personnelles, par exemple, pour répondre à une demande de contact, suivre un dossier de candidature, envoyer une newsletter ou gérer votre abonnement à l’un de nos dispositifs de vélos en libre-service.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Peuvent notamment être collectées vos coordonnées (nom, adresse, numéro de téléphone, adresse électronique, etc.) et d’autres informations, telles que celles indispensables à la création de votre compte lorsque vous vous abonnez à un de nos systèmes de vélos en libre-service ou des données liées à votre parcours professionnel lorsque vous postulez sur nos sites.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Dans tous les cas, Bik'in Toulouse veille à collecter et à traiter des données personnelles pertinentes, adéquates, non excessives et strictement nécessaires à l’atteinte des finalités qui ont été préalablement déterminées. Bik'in Toulouse prend toutes les dispositions utiles pour que vos données soient exactes, complètes et, si nécessaire, mises à jour.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Finalités de la collecte </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> Bik'in Toulouse s’engage à collecter et traiter vos données personnelles de façon loyale et licite. 
+                <br/>
+                Les traitements mis en œuvre par Bik'in Toulouse répondent à des finalités explicites, légitimes et déterminées.
+                <br/>
+                Vos données peuvent notamment être traitées pour les finalités suivantes :
+                <ul class="col-sm-12 offset-md-1 col-md-10">
+                    <li> Suivi de votre dossier de candidature déposé en ligne sur l’un de nos sites internet ;</li>
+                    <li> Diffusion de nos newsletters ;</li>
+                    <li> Réponse à vos demandes de contacts ;</li>
+                    <li> Gestion de votre abonnement à l’un de nos services de vélos en libre-service.</li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Information des personnes </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> Conformément à la loi informatique et libertés, Bik'in Toulouse s’engage à vous informer sur le traitement de vos données personnelles.</p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> Ainsi, Bik'in Toulouse vous informe, de manière claire, lors de chaque collecte de vos données, notamment :
+                <ul class="col-sm-12 offset-md-1 col-md-10">
+                    <li> de l’identité du responsable de traitement (il s’agit de l’entité juridique de Bik'in Toulouse responsable du traitement de vos données) ; </li>
+                    <li> de la finalité pour laquelle vos données sont collectées ; </li>
+                    <li> du caractère facultatif ou obligatoire des réponses ; </li>
+                    <li> du (des) destinataire(s) des données ; </li>
+                    <li> de l’existence et des modalités d’exercice des droits d’interrogation, d’accès, de rectification et d’opposition relativement à l’ensemble des données vous concernant.
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Destinataires des données collectées </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse ne communique vos données à caractère personnel qu’à des destinataires habilités et déterminés.
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Les destinataires de vos données sont les services concernés de Bik'in Toulouse, ainsi que, le cas échéant, les personnels habilités de sociétés partenaires ou prestataires..
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Conservation des données </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse conserve vos données pour la durée nécessaire aux opérations pour lesquelles elles ont été collectées, dans le respect de la législation en vigueur.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Cookies</h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Les cookies sont des données stockées dans l’équipement terminal d’un internaute et utilisées par un site internet pour envoyer des informations au navigateur de l’internaute, et permettant à ce navigateur de renvoyer des informations au site d’origine (par exemple un identifiant de session, le choix d’une langue ou une date).
+            </p>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Vous êtes informé(e) que, lors de vos visites sur nos sites internet, des cookies (témoins de connexion) peuvent être installés sur votre logiciel de navigation.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Sécurité </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Bik'in Toulouse assure la sécurité de vos données à caractère personnel en mettant en place une protection des données par l’utilisation de moyens de sécurisation physiques et logiques.
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Droit des personnes concernées </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                En application de la loi informatique et libertés du 6 janvier 1978 modifiée, toute personne dont les données ont été collectées par Bik'in Toulouse dispose d’un droit d’interrogation, d’accès, de rectification et d’opposition pour motifs légitimes relativement à l’ensemble des données la concernant. ces droits s’exercent auprès du correspondant informatique et libertés du groupe Bik'in Toulouse, par courrier électronique à l’adresse suivante : infos@bikin-toulouse.com ou par courrier postal à l’adresse suivante : correspondant informatique et libertés du groupe Bik'in Toulouse, XX rue XXXXX, CPXXXXX XXXXXXXVILLEXXXXXXX, accompagné d’une copie d’un titre d’identité signé
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Formalités </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10">
+                Les traitements de données à caractère personnel font l’objet de formalités auprès de notre correspondant informatique et libertés (CIL) ou, si requis, auprès de la commission nationale de l’informatique et des libertés (CNIL).
+            </p>
+        </section>
+
+        <section class="col-12">
+            <h2 class="col-sm-12 offset-md-1"> Contact </h2>
+            <p class="col-sm-12 offset-md-1 col-md-10"> 
+                Pour toute demande d’information relative à cette politique de protection des données à caractère personnel et de la vie privée, vous pouvez vous adresser à infos@bikin-toulouse.com.
+            </p>
+        </section>
+
+        <p class="col-12"> Cette politique peut être mise à jour à tout moment, aussi nous vous conseillons de la consulter régulièrement. </p>
+
+        
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Leaf Let JS -->
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin="">
+        </script>
+        <!-- My JS  -->
+        <script src="js/style.js"></script>
+    </body>
+
+    <footer>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-xl-3 div-footer"> 
+            <h3> Réseaux sociaux </h3>
+            <ul class="btn-group-vertical" id="reseaux_sociaux" role="group">
+                <li> 
+                    <a class="btn btn-primary btn-footer"
+                    href="https://www.facebook.com/" type="button"> 
+                        <i class="fab fa-facebook-square"></i>
+                        Voir la page Facebook
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="https://www.instagram.com/?hl=fr" type="button">
+                        <i class="fab fa-instagram"></i>
+                        Instagram du livre
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="https://www.instagram.com/?hl=fr" type="button">
+                        <i class="fab fa-instagram"></i>
+                        Instagram de J.Forteroche 
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="https://twitter.com/?lang=fr" type="button">
+                        <i class="fab fa-twitter-square"></i>
+                        Twitter 
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-xl-3 div-footer">
+            <h3> Plus d'informations </h3>
+            <ul class="btn-group-vertical" role="group">
+                
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=cgu" type="button">
+
+                        <i class="fas fa-thumbtack"></i>
+                        Conditions d'utilisations
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-footer" href="index.php?action=legalNotice" type="button">
+                        <i class="fas fa-landmark"></i>
+                        Mentions légales
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=cookies" type="button">
+                        <i class="fas fa-eye"></i>
+                        Politique de protection des données personnelles  
+                    </a>
+                </li>
+                <li> 
+                    <a class="btn btn-primary btn-footer" href="index.php?action=contactMe" type="button">
+                        <i class="fas fa-envelope"></i>
+                        Contact 
+                    </a>
+                </li>
+            </ul>
+        </div>
+    
+        <p class="copyright offset-xs-2 col-xs-8 offset-sm-4 offset-lg-4 offset-lg-5"> 
+            <i class="fas fa-copyright"></i>
+            2019 - Site crée par Margaux.Vitez 
+        </p>
+    </footer>
+
+</html>

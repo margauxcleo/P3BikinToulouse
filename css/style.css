@@ -69,7 +69,7 @@ body {
 img {
 	width: 100%;
 }
-h1, h2, h3 {
+#home_page h1, #home_page h2, #home_page h3 {
 	padding: 15px;
 	border-radius: 30px;
 	text-align: center;
@@ -82,10 +82,19 @@ h1 {
 	text-transform: uppercase;
 	color: #ff7077;
 	padding: 15px;
+	text-align: center;
 }
 h2 {
 	font-size: 1.3em;
+}
+#home_page h2 {
 	color: #FFF;
+}
+.admin_page h2 {
+	color: #4CD7D0;
+}
+.admin_page p {
+	text-align: justify;
 }
 h3 {
 	font-size: 1.1em;
@@ -119,10 +128,15 @@ nav .fa-biking, nav .nav-link {
 nav .fa-biking {
 	font-size: 2em;
 }
-.navbar-brand p{
-	color: #ff7077;
+.navbar-brand {
+	color: #ff7077!important;
+}
+#main-nav #main-brand {
 	text-transform: uppercase;
 	font-weight: bold;
+}
+#nav-networks .navbar-brand {
+	font-style: italic;
 }
 .navbar.bg-light {
 	border-bottom: 2mm #ff7077 solid;
@@ -159,7 +173,9 @@ nav .fa-biking {
     -webkit-appearance: none;
     }
  
-/*     Slider      */ 
+/* ---------------------------------------- */ 
+/* ==            HOME PAGE - SLIDER          */ 
+/*---------------------------------------- */
 #slider {
     position: relative;
     overflow: hidden;
@@ -318,7 +334,7 @@ nav .fa-biking {
 		}
 
 /* ---------------------------------------- */ 
-/* ==            MAP                */ 
+/* ==           HOME PAGE - MAP                */ 
 /*---------------------------------------- */ 
  
 /*     Leaf Let MAP      */ 
@@ -445,6 +461,9 @@ nav .fa-biking {
 	color: #F88379;
 }
 
+/* ---------------------------------------- */ 
+/* == ADMIN PAGES (legal notices, privacy policy,...) */ 
+/*---------------------------------------- */
 
 /* ---------------------------------------- */ 
 /* ==            FOOTER               */ 
@@ -453,6 +472,10 @@ nav .fa-biking {
 footer {
 	background-color: #F88379;
 	color: #FFF;
+}
+.div-footer ul {
+	list-style: none;
+	padding-inline-start: 0px;
 }
 /*     sous partie      */ 
  
