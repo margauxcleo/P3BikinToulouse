@@ -222,8 +222,11 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#available_bikes').html("");
             $('#available_bike_stands').html("");
             */
-
+            var openSign = $('#btn-form-1');
+            var divCanvas = $('#div_canvas');
             // on incrémente avec les infos de la station selectionnée
+            $('#mask_infos_stations').css('display', 'none'); // on remet à zéro
+            divCanvas.css('display', 'none'); // on remet à zéro
             $('#infos_stations').css('display', 'flex');
             $('#station_name').html(station.name);
             if (station.status === 'OPEN') {
@@ -270,11 +273,10 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
 
 
             // CANVAS
-            var goToSign = $('#btn-form-1');
-            var divCanvas = $('#div_canvas');
-            goToSign.on('click', function (e) {
+            //Affichage du canvas 
+            openSign.on('click', function (e) {
                 divCanvas.css('display', 'flex');
-                $('#mask_infos_stations').css('display', 'flex');
+                $('#mask_infos_stations').css('display', 'block');
             });
 
          
