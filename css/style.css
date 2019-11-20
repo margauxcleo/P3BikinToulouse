@@ -351,6 +351,20 @@ nav .fa-biking {
 	border-radius: 30px;
 }
  
+/* masque infos stations */
+
+#mask_infos_stations {
+	display: none;
+	background-color: rgba(255, 255, 255, 0.6);
+	width: 75%; /*en test*/
+	height: 100%; /* toujours indiqué idem que map_id */
+	position: absolute;
+	z-index: 3000;
+	top: 0;
+	right: 0;
+	overflow: auto;
+	border-radius: 25px;
+} 
 /*     bloc infos stations      */ 
 
 #infos_stations {
@@ -360,14 +374,14 @@ nav .fa-biking {
 	width: 75%; /*en test*/
 	height: 100%; /* toujours indiqué idem que map_id */
 	position: absolute;
-	z-index: 5000;
+	z-index: 2000;
 	top: 0;
 	right: 0;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
 	padding: 0 15px 0 15px;	
-	box-shadow: 0 0 0 0.2rem rgba(118,125,128,.25);
+	box-shadow: 0 0 0 0.2rem rgba(118, 125 ,128 , .25);
 	overflow: auto;
 	border-radius: 25px;
 }
@@ -424,6 +438,7 @@ nav .fa-biking {
 		color: #767D80;
 		font-size: 1.2em;
 		width: 100%;
+		position: relative;
 	}
 	.form-control:focus, .form-control:active, #form_resa button:focus, #form_resa button:active {
 	    border-color:#ff7077;
@@ -440,12 +455,29 @@ nav .fa-biking {
 		text-transform: uppercase;
 	}
 		/* CANVAS */
+		#div_canvas {
+			background-color: #FFF;
+			border: solid #767D80 2px;
+			display: none;
+			position: absolute;
+			justify-content: flex-start;
+			align-items: center;
+			flex-direction: column;
+			right: 5px;
+			top: 85px;
+			z-index: 5000;
+			color: #767D80;
+		}
 		#canvas {
-			display: none; /* en atttendant, phase de test */
-			width: 150px;
-			height: 150px;
+			width: 200px;
+			height: 100px;
 		  	border:1px solid #000;
-
+		}
+		#btns_canvas {
+			width: 90%;
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
 		}
 
  

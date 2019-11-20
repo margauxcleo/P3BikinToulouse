@@ -269,7 +269,14 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             });
 
 
-            // CANVAS 
+            // CANVAS
+            var goToSign = $('#btn-form-1');
+            var divCanvas = $('#div_canvas');
+            goToSign.on('click', function (e) {
+                divCanvas.css('display', 'flex');
+                $('#mask_infos_stations').css('display', 'flex');
+            });
+
          
         }); 
 

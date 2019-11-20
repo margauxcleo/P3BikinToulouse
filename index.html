@@ -191,6 +191,7 @@
         <!-- MAP PART -->
 
         <div id="map_id">
+            <div id="mask_infos_stations"></div>
             <div id="infos_stations">
                 <div id="title_info">
                     <h2 id="station_name"></h2>
@@ -233,9 +234,20 @@
                         <label for=last_name> Votre nom </label> 
                         <input type=text class="form-control" id=last_name name=last_name/>
                     </div>
-                    <canvas id="canvas"></canvas>
-                    <button type="submit" class="btn btn-primary"> Signer et réserver
+                    <button id="btn-form-1" type="button" class="btn btn-primary">
+                        Signer et réserver
                     </button>
+                    <div id="div_canvas">
+                        <h3> 
+                            <span><i class="fas fa-file-signature"></i></span>
+                            Signez dans le cadre ci-dessous pour finaliser la réservation. 
+                        </h3>
+                        <canvas id="canvas"></canvas>
+                        <div id="btns_canvas">
+                            <button type="submit" class="btn btn-primary" id="buttonAccept"> Valider </button>
+                            <button type="button" class="btn btn-primary" id="buttonClear"> Annuler </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
