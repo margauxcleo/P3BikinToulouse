@@ -68,14 +68,6 @@ body {
 img {
 	width: 100%;
 }
-#home_page h1, #home_page h2, #home_page h3 {
-	padding: 15px;
-	border-radius: 30px;
-	text-align: center;
-	/*
-	background-color: rgba(255, 255, 255, 0.9);
-	*/
-}
 h1 {
 	font-size: 1.5em;
 	text-transform: uppercase;
@@ -86,21 +78,10 @@ h1 {
 h2 {
 	font-size: 1.3em;
 }
-#home_page h2 {
-	color: #FFF;
-}
-.admin_page h2 {
-	color: #4CD7D0;
-}
-.admin_page p {
-	text-align: justify;
-}
 h3 {
 	font-size: 1.1em;
-	color: #D14153;
 }
-footer h3 {
-	text-align: left!important;
+#home_page h2 {
 	color: #FFF;
 }
 .logo {
@@ -204,6 +185,15 @@ nav .fa-biking {
     border-style: none;
     object-fit: cover;
     height: 350px; /* même données que slider-img pour que l'object-fit fonctionne */
+}
+#slider h1, #slider h2, #slider h3 {
+	padding: 15px;
+	border-radius: 30px;
+	text-align: center;
+}
+#slider h3 {
+	font-size: 1.1em;
+	color: #D14153;
 }
 
 	/* boutons du slider */
@@ -339,15 +329,16 @@ nav .fa-biking {
 /* ---------------------------------------- */ 
 /* ==           HOME PAGE - MAP                */ 
 /*---------------------------------------- */ 
- 
+
+/* Div map + volet */
+#map_and_volet_infos {
+	display: flex;
+}
 /*     Leaf Let MAP      */ 
 
 #map_id {
 	height: 400px; 
-	/*
-	margin-right: 20px!important; /*pour simplifier le scroll 
-	*/
-	position: relative;
+	width: 100%;
 	border-radius: 30px;
 }
  
@@ -369,14 +360,12 @@ nav .fa-biking {
 
 #infos_stations {
 	display: none;
+	position: relative;
 	background-color: #FFF;
 	opacity: 1;
-	width: 75%; /*en test*/
-	height: 100%; /* toujours indiqué idem que map_id */
-	position: absolute;
+	width: 115%; 
+	height: 400px; /* toujours indiqué idem que map_id */
 	z-index: 2000;
-	top: 0;
-	right: 0;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -384,6 +373,7 @@ nav .fa-biking {
 	box-shadow: 0 0 0 0.2rem rgba(118, 125 ,128 , .25);
 	overflow: auto;
 	border-radius: 25px;
+	font-size: 1em;
 }
 #infos_stations h2 {
 	color: #ff7077!important;
@@ -405,27 +395,31 @@ nav .fa-biking {
 	color: #FFF;	
 }
 #station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands {
-	font-size: 1.2em;
+	font-size: 1em;
 }
 #station_address {
 	font-style: italic;
 }
 	/* div nom station + croix */
 	#title_info {
+		width: 100%;
 		display: flex;
-		align-content: space-between;
+		justify-content: space-between;
 		align-items: baseline;
 	}
-	#station_name, .fa-times-circle{
-		font-size: 1.6em;
-		color: #ff7077; 
+	#title_info {
+		color: #ff7077;
+		margin-top: 10px;
 	}
 	.fa-times-circle {
-		font-size: 1.8em;
+		font-size: 1.5em;
+	}
+	#station_name, #infos_stations .fa-biking, #infos_stations .fa-parking {
+		font-size: 1.2em;
 	}
 	/* velos et parkings */
 	.badge {
-		font-size: 1.3em;
+		font-size: 1.1em;
 	}
 	.badge-primary {
 		background-color: #4CD7D0;
@@ -436,9 +430,13 @@ nav .fa-biking {
 	/* form */ 
 	#form_resa {
 		color: #767D80;
-		font-size: 1.2em;
 		width: 100%;
 		position: relative;
+	}
+	#form_resa h3 {
+		color: #767D80;
+		text-align: center;
+		padding: 10px;
 	}
 	.form-control:focus, .form-control:active, #form_resa button:focus, #form_resa button:active {
 	    border-color:#ff7077;
@@ -451,30 +449,33 @@ nav .fa-biking {
 	}
 	#form_title {
 		border-bottom: ridge #767D80 2px;
-		border-radius: 0px;
 		text-transform: uppercase;
 	}
 		/* CANVAS */
 		#div_canvas {
 			background-color: #FFF;
 			border: solid #767D80 2px;
+			border-radius: 25px;
 			display: none;
 			position: absolute;
 			justify-content: flex-start;
 			align-items: center;
 			flex-direction: column;
 			right: 5px;
-			top: 85px;
+			top: 35px; /* à adapter media queries */
 			z-index: 5000;
 			color: #767D80;
 		}
 		#canvas {
 			width: 200px;
 			height: 100px;
+			padding: 5px;
 		  	border:1px solid #000;
+		  	border-radius: 25px;
 		}
 		#btns_canvas {
 			width: 90%;
+			padding: 5px;
 			display: flex;
 			justify-content: space-around;
 			flex-direction: row;
@@ -504,6 +505,13 @@ nav .fa-biking {
 /* == ADMIN PAGES (legal notices, privacy policy,...) */ 
 /*---------------------------------------- */
 
+.admin_page h2 {
+	color: #4CD7D0;
+}
+.admin_page p {
+	text-align: justify;
+}
+
 /* ---------------------------------------- */ 
 /* ==            FOOTER               */ 
 /*---------------------------------------- */ 
@@ -513,6 +521,10 @@ footer {
 	color: #FFF;;
 	padding-top: 10px;
 	margin: 0px!important;
+}
+footer h3 {
+	text-align: left!important;
+	color: #FFF;
 }
 .div-footer ul {
 	list-style: none;
@@ -575,8 +587,12 @@ footer {
 	#map_id {
 		height: 300px;
 	}
+	#mask_infos_stations {
+		height: 300px;
+	}
 	#infos_stations {
-		width:50%;
+		width:100%;
+		height: 300px;
 	}
 }
  
@@ -600,6 +616,12 @@ footer {
 
 	/* map */
 	#map_id {
+		height: 400px;
+	}
+	#mask_infos_stations {
+		height: 400px;
+	}
+	#infos_stations {
 		height: 400px;
 	}
 }
@@ -626,7 +648,13 @@ footer {
 	#map_id {
 		height: 600px;
 	}
+	#mask_infos_stations {
+		height: 600px
+	}
 	#infos_stations {
-		width: 40%;
+		height: 600px;
+	}
+	#div_canvas {
+		right: 70px;
 	}
 }
