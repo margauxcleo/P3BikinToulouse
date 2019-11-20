@@ -253,19 +253,19 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 firstName.val(localStorage.getItem("first_name"));
             }
 
-            // Écoute des changements de valeur du champ
+            // Prise en compte des hangements de valeur du champ
             firstName.on("change", function() {
                 // Enregistrement de la saisie utilisateur dans le stockage de session
                 localStorage.setItem("first_name", firstName.val());
             });
 
-            //last 
+            //stockage des données 1 = nom de famille 
             if (localStorage.getItem("last_name")) {
                 // Restauration du contenu du champ
                 lastName.val(localStorage.getItem("last_name"));
             }
 
-            // Écoute des changements de valeur du champ
+            // Prise en compte des  changements de valeur du champ
             lastName.on("change", function() {
                 // Enregistrement de la saisie utilisateur dans le stockage de session
                 localStorage.setItem("last_name", lastName.val());
@@ -349,6 +349,19 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             };
 
             let canvas = new Canvas();
+
+            // Session storage avec canvas 
+
+            if (sessionStorage.getItem("canvas")) {
+            // Restauration du contenu du champ
+                canvas.val(sessionStorage.getItem("canvas"));
+            }
+
+            // Prise en compte des changements de valeur du champ
+            canvas.on("change", function() {
+                // Enregistrement de la saisie utilisateur dans le stockage de session
+                canvas.setItem("canvas", canvas.val());
+            });
  
         }); 
 

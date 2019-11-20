@@ -624,6 +624,9 @@ footer h3 {
 	#infos_stations {
 		height: 400px;
 	}
+	#btns_canvas {
+		width: 60%;
+	}
 }
 
 /*  à partir de 1350 px      */
@@ -656,5 +659,8 @@ footer h3 {
 	}
 	#div_canvas {
 		right: 70px;
+	}
+	#btns_canvas {
+		width: 50%;
 	}
 }
