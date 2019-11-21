@@ -345,13 +345,23 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                         this.relache(); 
                         console.log('touchend', e);         
                     });
+                };
+                clearCanvas() {
+                    $('#buttonClear').addEventListener('click', (e) => {
+                        this.context.clearRect(0, 0, 200, 100);
+                    });
                 }
+                // vider le contexte du canvas 
+                
             };
 
             let canvas = new Canvas();
 
-            // Session storage avec canvas 
-
+            $('#buttonClear').on('click', function (e) {
+                canvas.context.clearRect(0, 0, 200, 100);
+            });
+            
+            // Session storage avec canvas  
             if (sessionStorage.getItem("canvas")) {
             // Restauration du contenu du champ
                 canvas.val(sessionStorage.getItem("canvas"));
