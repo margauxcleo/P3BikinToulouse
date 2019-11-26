@@ -356,18 +356,14 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 $('#div_canvas').css('display', 'none');
                 $('#mask_infos_stations').css('display', 'none');    
             });
-            
-            /*
+
+            //session storage sur canvas
             if (sessionStorage.getItem("canvas")) {
-            // Restauration du contenu du champ
                 canvasSign.val(sessionStorage.getItem("canvas"));
             };
-            // Prise en compte des changements de valeur du champ
             canvasSign.on("change", function() {
-                // Enregistrement de la saisie utilisateur dans le stockage de session
                 canvasSign.setItem("canvas", canvasSign.val());
             });
-            */
         }); // fermeture partie volet station 
 
         // POP UP en MOUSEOVER 
