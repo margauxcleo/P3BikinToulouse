@@ -551,6 +551,9 @@ nav .fa-biking {
 .admin_page p {
 	text-align: justify;
 }
+#infos_mv {
+	color: #ff7077;
+}
 
 /* ---------------------------------------- */ 
 /* ==            FOOTER               */ 
