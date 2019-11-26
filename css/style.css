@@ -362,6 +362,7 @@ nav .fa-biking {
 	display: none;
 	position: relative;
 	background-color: #FFF;
+	color: #767D80;
 	opacity: 1;
 	width: 140%; 
 	height: 400px; /* toujours indiqué idem que map_id */
@@ -427,6 +428,11 @@ nav .fa-biking {
 	}
 	.badge-secondary { 
 		background-color: #ff7077;
+	}
+	/* if no bikes available */
+	#if_no_bike_available {
+		color: #ff7077;
+		font-weight: bold;
 	}
 	/* form */ 
 	#form_resa {
