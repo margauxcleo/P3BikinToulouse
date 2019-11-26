@@ -234,14 +234,6 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             $('#info_available_bike_stands').html(station.available_bike_stands);
 
             // condition: si pas de velo, on affiche pas le formulaire de resas
-            /*
-            if (station.available_bikes > 0) {
-                
-            } else {
-                form.css('display', 'none');
-                $( "#infos_stations").append( "<p>Désolé, aucun vélo n'est disponible à la réservation !</p>" );
-            }
-            */
             if (station.available_bikes < 1) {
                 form.css('display', 'none');
                 $('#if_no_bike_available').css('display', 'block');
@@ -382,11 +374,11 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
             // au clic sur btn valider la resa 
             var saveResa = $('#buttonAccept');
             saveResa.on('click', function (e) {
+                console.log("ok pour click sur btn");
                 $('#mask_map').css('display', 'block');
                 $('#infos_resa').css('display', 'block');
-                $('#infos_resa').append("<p> Vélo réservé à la station" + station_name + "au nom de" + first_name + lastName + "</p>");
-                $('#infos_resa').append("Temps restant: ");
-                
+                $('#infos_resa').append("<p> Vélo réservé à la station" + station_name + "au nom de" + getItem("first_name") + getItem("last_name") + "</p>");
+                $('#infos_resa').append("Temps restant: ");  
             });
             
         }); // fermeture partie volet station 
