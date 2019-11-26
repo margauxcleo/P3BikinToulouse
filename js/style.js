@@ -369,13 +369,26 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 $('#mask_infos_stations').css('display', 'none');    
             });
 
-            //session storage sur canvas
+            // HELP - ne fonctionne pas - session storage sur canvas
+            /*
             if (sessionStorage.getItem("canvas")) {
                 canvasSign.val(sessionStorage.getItem("canvas"));
             };
             canvasSign.on("change", function() {
                 canvasSign.setItem("canvas", canvasSign.val());
             });
+            */
+
+            // au clic sur btn valider la resa 
+            var saveResa = $('#buttonAccept');
+            saveResa.on('click', function (e) {
+                $('#mask_map').css('display', 'block');
+                $('#infos_resa').css('display', 'block');
+                $('#infos_resa').append("<p> Vélo réservé à la station" + station_name + "au nom de" + first_name + lastName + "</p>");
+                $('#infos_resa').append("Temps restant: ");
+                
+            });
+            
         }); // fermeture partie volet station 
 
         // POP UP en MOUSEOVER 
