@@ -252,8 +252,6 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 // Restauration du contenu du champ
                 firstName.val(localStorage.getItem("first_name"));
             }
-
-            // Prise en compte des hangements de valeur du champ
             firstName.on("change", function() {
                 // Enregistrement de la saisie utilisateur dans le stockage de session
                 localStorage.setItem("first_name", firstName.val());
@@ -264,8 +262,6 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 // Restauration du contenu du champ
                 lastName.val(localStorage.getItem("last_name"));
             }
-
-            // Prise en compte des  changements de valeur du champ
             lastName.on("change", function() {
                 // Enregistrement de la saisie utilisateur dans le stockage de session
                 localStorage.setItem("last_name", lastName.val());
@@ -291,9 +287,8 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                     this.context.lineWidth = this.lineWidth;
                     this.isClicking = false;
                     this.initEvent();        
-                }
+                };
                 deplacement(e) {
-
                     if(this.isClicking === true){
                         this.context.lineTo(e.offsetX, e.offsetY);
                         this.context.stroke();          
@@ -303,16 +298,16 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                         this.context.beginPath();
                         this.context.moveTo(e.offsetX, e.offsetY);          
                     } 
-                }     
+                };    
                 appuie(e){      
                     this.isClicking = true;
                     this.deplacement(e);
-                }
+                };
 
                 relache(){
                     this.isClicking = false;      
                     this.context.beginPath();/*se desengage du chemin precedent*/
-                }
+                };
 
                 initEvent(){
                     this.canvas.addEventListener("mousedown", (e) => {          
@@ -345,35 +340,29 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                         this.relache(); 
                         console.log('touchend', e);         
                     });
-                };
-                clearCanvas() {
-                    $('#buttonClear').addEventListener('click', (e) => {
-                        this.context.clearRect(0, 0, 200, 100);
-                    });
-                }
-                // vider le contexte du canvas 
-                
-            };
-
-            let canvas = new Canvas();
-
-            $('#buttonClear').on('click', function (e) {
-                canvas.context.clearRect(0, 0, 200, 100);
-            });
-            
-            // Session storage avec canvas  
-            if (sessionStorage.getItem("canvas")) {
-            // Restauration du contenu du champ
-                canvas.val(sessionStorage.getItem("canvas"));
+                };  
             }
 
-            // Prise en compte des changements de valeur du champ
-            canvas.on("change", function() {
-                // Enregistrement de la saisie utilisateur dans le stockage de session
-                canvas.setItem("canvas", canvas.val());
+            let canvasSign = new Canvas();
+
+            // vider le contexte du canvas
+            $('#buttonClear').on('click', function (e) {
+                console.log("appuie sur btn annuler");
+                canvasSign.context.clearRect(0, 0, 200, 100);
             });
- 
-        }); 
+
+            /*
+            if (sessionStorage.getItem("canvas")) {
+            // Restauration du contenu du champ
+                canvasSign.val(sessionStorage.getItem("canvas"));
+            };
+            // Prise en compte des changements de valeur du champ
+            canvasSign.on("change", function() {
+                // Enregistrement de la saisie utilisateur dans le stockage de session
+                canvasSign.setItem("canvas", canvasSign.val());
+            });
+            */
+        }); // fermeture partie volet station 
 
         // POP UP en MOUSEOVER 
         marker.on('mouseover', function (e) {
