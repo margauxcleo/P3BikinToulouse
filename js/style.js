@@ -351,6 +351,12 @@ $.getJSON ("https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=c3
                 canvasSign.context.clearRect(0, 0, 200, 100);
             });
 
+            //fermer le canvas et revenir au volet
+            $('#close_canvas_cross').on('click', function(e) {
+                $('#div_canvas').css('display', 'none');
+                $('#mask_infos_stations').css('display', 'none');    
+            });
+            
             /*
             if (sessionStorage.getItem("canvas")) {
             // Restauration du contenu du champ

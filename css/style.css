@@ -363,7 +363,7 @@ nav .fa-biking {
 	position: relative;
 	background-color: #FFF;
 	opacity: 1;
-	width: 115%; 
+	width: 140%; 
 	height: 400px; /* toujours indiqué idem que map_id */
 	z-index: 2000;
 	flex-direction: column;
@@ -413,6 +413,7 @@ nav .fa-biking {
 	}
 	.fa-times-circle {
 		font-size: 1.5em;
+		color: #ff7077;
 	}
 	#station_name, #infos_stations .fa-biking, #infos_stations .fa-parking {
 		font-size: 1.2em;
@@ -456,15 +457,20 @@ nav .fa-biking {
 			background-color: #FFF;
 			border: solid #767D80 2px;
 			border-radius: 25px;
+			padding: 0px 2px 0 2px;
 			display: none;
 			position: absolute;
 			justify-content: flex-start;
 			align-items: center;
 			flex-direction: column;
-			right: 5px;
 			top: 35px; /* à adapter media queries */
 			z-index: 5000;
 			color: #767D80;
+		}
+		#title_canvas {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
 		}
 		#canvas {
 			width: 200px;
@@ -479,6 +485,12 @@ nav .fa-biking {
 			display: flex;
 			justify-content: space-around;
 			flex-direction: row;
+		}
+		#buttonAccept {
+			margin-right: 1px;
+		}
+		#buttonClear {
+			margin-left: 1px;
 		}
 
  
