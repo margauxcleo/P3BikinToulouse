@@ -12,6 +12,15 @@ class Form {
 
         this.noAvailableBikeMsg =  $('#if_no_bike_available'); 
 
+        this.maskMap = $('#mask_map');
+        this.infoConfirmationResa = $('#infos_resa');
+
+        // on instancie la classe Canvas
+        this.canvasForSign = new Canvas();
+
+        // on ajoute le compte à rebours
+        this.resaCountdown = new Timer();
+
         this.saveResa();   
     }
     // condition: si pas de velo, on affiche pas le formulaire de resas
@@ -48,22 +57,28 @@ class Form {
             localStorage.setItem("last_name", this.getLastName.val());
         });
     }
-
-
-    saveResa() {
+    saveResa(stationName, getFirstName, getLastName) {
         // au clic sur btn valider la resa 
-        var formResa = $('#form_resa');
-        formResa.off('submit');
-        formResa.on('submit', function (e) {
+        this.form.off('submit');
+        this.form.on('submit', (e) => {
             e.preventDefault(); // pour arrêter le comportement normal de submit 
             console.log("ok pour click sur btn");
-            $('#mask_map').css('display', 'block');
-            $('#infos_resa').css('display', 'block');
-            $('#infos_resa').append("<p> Vélo réservé à la station" + station_name + "au nom de" + firstName + lastName + "</p>");
-            $('#infos_resa').append("Temps restant: ");  
-            // on ajoute le compte à rebours
-            let ResaTimer = new Timer();
+            // mettre en place le session storage
+            sessionStorage.setItem('canvas', this.canvasForSign.context.val());
+            //remettre le compte à rebours à 0
+            clearInterval(this.resaCountdown.timerAnim);
+            // Afficher le message de confirmation 
+            this.showConfirmation(stationName, getFirstName, getLastName    );
+            //appeler le timer de l'instanciation
+            this.resaCountdown.setTimer();
         });  
+    }
+    showConfirmation(stationName, getFirstName, getLastName) {
+        //Afficher le message d'info
+        this.maskMap.css('display', 'block');
+        this.infoConfirmationResa.css('display', 'block');
+        this.infoConfirmationResa.append("<p> Vélo réservé à la station" + station_name + "au nom de" + firstName + lastName + "</p>");
+        this.infoConfirmationResa.append("Temps restant: ");         
     }
 }
 

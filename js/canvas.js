@@ -91,14 +91,7 @@ class Canvas {
     closeCanvas() {
         this.closeCanvasCross.on('click', (e) => {
             this.divCanvas.css('display', 'none');
-            this.$maskOnStationInfos.css('display', 'none');    
+            this.maskOnStationInfos.css('display', 'none');    
         });
     } 
 }
-
-
-
-
-
-
-

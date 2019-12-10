@@ -16,15 +16,14 @@ class Map {
         }).addTo(this.map);
         // AR => voir avec Quentin si on doit instancier la class Form ici (ne fonctionne pas!)
         this.formForResa = new Form();
-        // on instancie la classe Canvas
-        this.canvasForSign = new Canvas();
-
+        
         // on définit les variables le block infos station
         this.maskOnStationInfos = $('#mask_infos_stations');
         this.divCanvas = $('#div_canvas');
         this.form = $('#form_resa');
 
         this.stationInfos = $('#infos_stations');
+        this.closeInfos = $('#close_infos_cross');
         this.getStationName = $('#station_name');
         this.getStationAddress = $('#info_station_address');
         this.getAvailableBikesInfo = $('#info_available_bikes');
@@ -97,7 +96,7 @@ class Map {
             // on affiche/masque au besoin
             this.maskOnStationInfos.css('display', 'none'); // on remet à zéro
             this.divCanvas.css('display', 'none'); // on remet à zéro
-            this.stationInfos .css('display', 'flex'); // on affiche la div qui contient les infos de la station
+            this.stationInfos.css('display', 'flex'); // on affiche la div qui contient les infos de la station
 
             //on incrémente avec les infos de JC DECAUX
             this.getStationName.html(stationName); // TEST on remplace station.name par stationName
@@ -116,14 +115,10 @@ class Map {
             this.formForResa.saveFirstName();
             this.formForResa.saveLastName(); 
 
-            /*
-            
-            //appeler canvas 
-            this.canvasForSign.initCanvas();
-            */
+            //partie réservation - affichage du message de confirmation 
+            this.formForResa.saveResa(stationName);
 
-            
-
+            /*          
             // HELP - ne fonctionne pas - session storage sur canvas
             /*
             if (sessionStorage.getItem("canvas")) {
@@ -138,8 +133,7 @@ class Map {
 
     // fermeture manuelle du volet info station 
     closeInfosStation() {
-        let closeInfos = $('#close_infos_cross');
-        closeInfos.on('click', (e) => {
+        this.closeInfos.on('click', (e) => {
             this.stationInfos.css('display', 'none');
         });
     } 
