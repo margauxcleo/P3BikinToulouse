@@ -5,6 +5,8 @@ class Canvas {
         this.openSign = $('#btn_form_1');
         this.divCanvas = $('#div_canvas');
         this.maskOnStationInfos = $('#mask_infos_stations');
+        this.clearBtn = $('#buttonClear');
+        this.closeCanvasCross = $('#close_canvas_cross');
         this.color = "#ff7077";
         this.lineWidth=3; //definit la largeur du trait
         this.context = this.canvas.getContext('2d');
@@ -14,7 +16,9 @@ class Canvas {
         this.context.lineWidth = this.lineWidth;
         this.isClicking = false;
         this.initCanvas();
-        this.initEvent();        
+        this.initEvent();
+        this.clearCanvas();
+        this.closeCanvas();        
     };
     initCanvas() {
         //Affichage du canvas 
@@ -75,19 +79,26 @@ class Canvas {
             this.relache(); 
             console.log('touchend', e);         
         });
-    };  
+    }; 
+
+    // vider le contexte du canvas
+    clearCanvas() {
+        this.clearBtn.on('click', (e) => {
+            this.context.clearRect(0, 0, 200, 100);
+        });  
+    }
+    //fermer le canvas et revenir au volet
+    closeCanvas() {
+        this.closeCanvasCross.on('click', (e) => {
+            this.divCanvas.css('display', 'none');
+            this.$maskOnStationInfos.css('display', 'none');    
+        });
+    } 
 }
 
 
 
-// vider le contexte du canvas
-$('#buttonClear').on('click', function (e) {
-    console.log("appuie sur btn annuler");
-    canvasSign.context.clearRect(0, 0, 200, 100);
-});
 
-//fermer le canvas et revenir au volet
-$('#close_canvas_cross').on('click', function(e) {
-    $('#div_canvas').css('display', 'none');
-    $('#mask_infos_stations').css('display', 'none');    
-});
+
+
+
