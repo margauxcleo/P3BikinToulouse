@@ -1,7 +1,10 @@
 //Fonctionnement du canvas
 class Canvas {
-    constructor () {
+    constructor() {
         this.canvas = $('#canvas')[0];
+        this.openSign = $('#btn_form_1');
+        this.divCanvas = $('#div_canvas');
+        this.maskOnStationInfos = $('#mask_infos_stations');
         this.color = "#ff7077";
         this.lineWidth=3; //definit la largeur du trait
         this.context = this.canvas.getContext('2d');
@@ -10,7 +13,15 @@ class Canvas {
         this.context.clearRect(0, 0, 200, 100);//canvas vierge
         this.context.lineWidth = this.lineWidth;
         this.isClicking = false;
+        this.initCanvas();
         this.initEvent();        
+    };
+    initCanvas() {
+        //Affichage du canvas 
+        this.openSign.on('click', (e) => { // !!! voir si arrow function est efficace ici
+            this.divCanvas.css('display', 'flex');
+            this.maskOnStationInfos.css('display', 'block');
+        });
     };
     deplacement(e) {
         if(this.isClicking === true){
@@ -67,7 +78,7 @@ class Canvas {
     };  
 }
 
-let canvasSign = new Canvas();
+
 
 // vider le contexte du canvas
 $('#buttonClear').on('click', function (e) {
