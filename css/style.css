@@ -191,7 +191,7 @@ nav .fa-biking {
 	border-radius: 30px;
 	text-align: center;
 }
-#slider h3 {
+#slider h3, #timerInfo {
 	font-size: 1.1em;
 	color: #D14153;
 }
@@ -312,7 +312,7 @@ nav .fa-biking {
 			list-style: square;
 		}
 		/* slide 4 - step 3 */
-		#text_step_4 h2 {
+		#text_step_4 h2, #infosResaOn {
 			color: #71fb9a;
 		}
 		/* mask */
@@ -333,11 +333,12 @@ nav .fa-biking {
 /* Div map + volet */
 #map_and_volet_infos {
 	display: flex;
+	position: relative;
 }
 /* mask */
 #mask_map {
 	display: none;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.8);
 	width: 100%;
 	height: 400px;
 	z-index: 5000; /*met masque devant volet*/
@@ -536,9 +537,32 @@ nav .fa-biking {
 #infos_resa {
 	display: none;
 	z-index: 6000; /* etre au dessus du mask */
+	width: 100%;
+	height: 100%;
+	z-index: 5000; /*met masque devant volet*/
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow: auto;
+	border-radius: 25px;
 }
-#cancelledResa {
+#infosResaOn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#cancelledResaMsg, #timeOut {
 	display: none;
+	margin: 20px;
+}
+#cancelledResaMsg p {
+	padding: 15px;
 }
 
 /* ---------------------------------------- */ 
@@ -626,6 +650,10 @@ footer h3 {
 	#text_step_1 h1, #text_step_1 h2 {
 		width: 80%;
 	}
+	/* mask map et volet */
+	#mask_map {
+		height: 300px;
+	}
 	/* map */
 	#map_id {
 		height: 300px;
@@ -655,6 +683,11 @@ footer h3 {
 	}
 	#text_step_1 h1 { 
 		width: 70%;
+	}
+
+	/* mask map et volet */
+	#mask_map {
+		height: 400px;
 	}
 
 	/* map */
@@ -690,6 +723,11 @@ footer h3 {
 		width: 60%;
 	}
 	
+	/* mask map et volet */
+	#mask_map {
+		height: 600px;
+	}
+
 	/* map */
 	#map_id {
 		height: 600px;

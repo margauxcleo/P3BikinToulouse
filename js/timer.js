@@ -1,25 +1,26 @@
 class Timer {
 	setTimer () {
         this.finishTime = new Date().getTime() + 1200000; //20 minutes
-        console.log(finishTime);
+        console.log(this.finishTime);
 
         this.timerAnim = setInterval( () => {
             let now = new Date().getTime(); // on récupère l'heure de l'utilisateur
 
-            let remainingTime = finishTime - now; 
+            let remainingTime = this.finishTime - now;
+            sessionStorage.setItem("remainingTime", remainingTime);
 
-            let timerBlock = $('#timer');
-            let cancelled = $('#cancelledResa');
+            this.timerBlock = $('#timer');
+            let timeOut = $('#timeOut');
             let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
             // Afficher le résultat dans l'élément timer du DOM
-            timerBlock.html(minutes +" mn " + seconds + " s");
+            this.timerBlock.html(minutes +" mn " + seconds + " s");
 
             // Si le compte à rebours est fini : afficher le texte
             if (remainingTime < 0) {
-                clearInterval(timerAnim); // on arrête le compte à rebours
-                cancelled.css('display', 'block');
-                timerBlock.css('display', 'none');
+                clearInterval(this.timerAnim); // on arrête le compte à rebours
+                timeOut.css('display', 'block');
+                this.timerBlock.css('display', 'none');
             }
         }, 999); // toutes les secondes 
     };

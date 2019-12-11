@@ -7,13 +7,19 @@ class Form {
         this.form = $('#form_resa');
         this.getFirstName = $('#first_name');
         this.getLastName = $('#last_name');
+        this.firstNameResaOn = $('#first_name_resa');
+        this.lastNameResaOn = $('#last_name_resa');
+        this.getStationName = $('.station_name');
+        this.infoResaOn = $('#infosResaOn');
 
         this.getAvailableBikesInfo = $('#info_available_bikes');
-
         this.noAvailableBikeMsg =  $('#if_no_bike_available'); 
 
         this.maskMap = $('#mask_map');
         this.infoConfirmationResa = $('#infos_resa');
+
+        this.cancelResaBtn = $('#buttonCancelledResa');
+        this.cancelledResaMsg = $('#cancelledResaMsg');
 
         // on instancie la classe Canvas
         this.canvasForSign = new Canvas();
@@ -21,7 +27,16 @@ class Form {
         // on ajoute le compte à rebours
         this.resaCountdown = new Timer();
 
-        this.saveResa();   
+        this.saveResa();
+        this.checkResa();  
+        this.cancelResa(); 
+    }
+    checkResa() {
+        console.log(sessionStorage.getItem("stationName"));
+        console.log(sessionStorage.getItem("remainingTime"));
+        if (sessionStorage.getItem("stationName") && sessionStorage.getItem("remainingTime")) {
+            showConfirmation();
+        } 
     }
     // condition: si pas de velo, on affiche pas le formulaire de resas
     showForm(availableBikesInfo) {
@@ -57,28 +72,42 @@ class Form {
             localStorage.setItem("last_name", this.getLastName.val());
         });
     }
-    saveResa(stationName, getFirstName, getLastName) {
+    saveResa() {
         // au clic sur btn valider la resa 
         this.form.off('submit');
         this.form.on('submit', (e) => {
             e.preventDefault(); // pour arrêter le comportement normal de submit 
             console.log("ok pour click sur btn");
             // mettre en place le session storage
-            sessionStorage.setItem('canvas', this.canvasForSign.context.val());
+            sessionStorage.setItem('canvas', this.canvasForSign.getCanvas().toDataURL()); // retourne contenu img en base 64
             //remettre le compte à rebours à 0
             clearInterval(this.resaCountdown.timerAnim);
             // Afficher le message de confirmation 
-            this.showConfirmation(stationName, getFirstName, getLastName    );
+            this.showConfirmation();
             //appeler le timer de l'instanciation
             this.resaCountdown.setTimer();
         });  
     }
-    showConfirmation(stationName, getFirstName, getLastName) {
+    showConfirmation() {
         //Afficher le message d'info
         this.maskMap.css('display', 'block');
-        this.infoConfirmationResa.css('display', 'block');
-        this.infoConfirmationResa.append("<p> Vélo réservé à la station" + station_name + "au nom de" + firstName + lastName + "</p>");
-        this.infoConfirmationResa.append("Temps restant: ");         
+        this.infoConfirmationResa.css('display','flex');
+        this.getStationName.html(sessionStorage.getItem("stationName"));
+        console.log(sessionStorage.getItem("stationName"));
+        this.firstNameResaOn.html(sessionStorage.getItem("first_name"));
+        this.lastNameResaOn.html(sessionStorage.getItem("last_name"));
+        /*
+        this.infoConfirmationResa.append("<p> Vélo réservé à la station" + sessionStorage.getItem("stationName") + "au nom de" + sessionStorage.getItem("first_name") + sessionStorage.getItem("last_name") + "</p>");
+        this.infoConfirmationResa.append("Temps restant:" + sessionStorage.getItem("remainingTime"));
+        */         
+    }
+    cancelResa() {
+        this.cancelResaBtn.on('click', (e) => {
+            this.infoResaOn.css('display', 'none');
+            this.cancelledResaMsg.css('display', 'block');
+            //vider la partie session storage
+            sessionStorage.clear();
+        });
     }
 }
 

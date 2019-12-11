@@ -94,4 +94,7 @@ class Canvas {
             this.maskOnStationInfos.css('display', 'none');    
         });
     } 
+    getCanvas() {
+        return this.canvas;
+    }
 }

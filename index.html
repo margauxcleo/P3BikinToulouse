@@ -33,7 +33,7 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
-            <a class="navbar-brand" id="main-brand"href="#">
+            <a class="navbar-brand" id="main-brand" href="index.html">
                 <span class="logo">
                     <i class="fas fa-biking"></i>
                     Bik'in Toulouse
@@ -187,7 +187,7 @@
             <div id="infos_stations">
                 <div id="mask_infos_stations"></div>
                 <div id="title_info">
-                    <h2 id="station_name"></h2>
+                    <h2 class="station_name"></h2>
                     <span>
                         <i class="fas fa-times-circle" id="close_infos_cross"></i>
                     </span>
@@ -258,8 +258,32 @@
                 <p id="if_no_bike_available">Désolé, aucun vélo n'est disponible à la réservation !</p>
             </div>
             <div id="infos_resa">
-                <p id="timer"></p>
-                <p id="cancelledResa"></p>
+                <div id="infosResaOn">
+                    <p> 
+                        <i class="fas fa-check"></i>
+                        Super ! Un vélo est réservé à la station 
+                        <span class="station_name"></span> 
+                        au nom de 
+                        <span id="first_name_resa"></span> 
+                        <span id="last_name_resa" ></span>
+                    </p>
+                    <p id="timerInfo">
+                        <i class="fas fa-hourglass-start"></i>
+                        Temps restant :
+                        <span id="timer"></span>
+                    </p>
+                    <button type="button" class="btn btn-primary btn-footer" id="buttonCancelledResa"> 
+                        <i class="fas fa-undo"></i>
+                        Annuler la réservation 
+                    </button>
+                </div>
+                <p id="timeOut"> Vous avez dépassé le délai de 20 minutes, votre réservation est annulée et le vélo est à nouveau disponible !</p>
+                <div id="cancelledResaMsg">
+                    <p> Votre réservation a été annulé. </p> 
+                    <a class="btn btn-primary btn-footer" type="button" href="index.html">
+                    Cliquer ici pour revenir à la carte.
+                    </a>
+                </div>
             </div>
         </div>
         

@@ -24,7 +24,7 @@ class Map {
 
         this.stationInfos = $('#infos_stations');
         this.closeInfos = $('#close_infos_cross');
-        this.getStationName = $('#station_name');
+        this.getStationName = $('.station_name');
         this.getStationAddress = $('#info_station_address');
         this.getAvailableBikesInfo = $('#info_available_bikes');
         this.getAvailableBikeStandsInfo = $('#info_available_bike_stands');
@@ -100,6 +100,7 @@ class Map {
 
             //on incrémente avec les infos de JC DECAUX
             this.getStationName.html(stationName); // TEST on remplace station.name par stationName
+            localStorage.setItem("stationName", stationName);
             if (stationStatut === 'OPEN') {
                 this.statutOpenMsg.css('display', 'block');
             } else {
@@ -116,7 +117,7 @@ class Map {
             this.formForResa.saveLastName(); 
 
             //partie réservation - affichage du message de confirmation 
-            this.formForResa.saveResa(stationName);
+            this.formForResa.saveResa();
 
             /*          
             // HELP - ne fonctionne pas - session storage sur canvas
