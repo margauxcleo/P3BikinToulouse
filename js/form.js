@@ -26,6 +26,7 @@ class Form {
 
         // on ajoute le compte à rebours
         this.resaCountdown = new Timer();
+        this.timerBlock = $('#timer');
 
         this.saveResa();
         this.checkResa();  
@@ -35,7 +36,7 @@ class Form {
         console.log(sessionStorage.getItem("stationName"));
         console.log(sessionStorage.getItem("remainingTime"));
         if (sessionStorage.getItem("stationName") && sessionStorage.getItem("remainingTime")) {
-            showConfirmation();
+            this.showConfirmation();
         } 
     }
     // condition: si pas de velo, on affiche pas le formulaire de resas
@@ -85,7 +86,7 @@ class Form {
             // Afficher le message de confirmation 
             this.showConfirmation();
             //appeler le timer de l'instanciation
-            this.resaCountdown.setTimer();
+            //this.resaCountdown.setTimer();
         });  
     }
     showConfirmation() {
@@ -93,9 +94,19 @@ class Form {
         this.maskMap.css('display', 'block');
         this.infoConfirmationResa.css('display','flex');
         this.getStationName.html(sessionStorage.getItem("stationName"));
-        console.log(sessionStorage.getItem("stationName"));
-        this.firstNameResaOn.html(sessionStorage.getItem("first_name"));
-        this.lastNameResaOn.html(sessionStorage.getItem("last_name"));
+        this.firstNameResaOn.html(localStorage.getItem("first_name"));
+        this.lastNameResaOn.html(localStorage.getItem("last_name"));
+        
+        //appeler le timer de l'instanciation
+        if (sessionStorage.getItem("remainingTime", this.remainingTime)) {
+            this.resaCountdown.getExistingTimer();
+        } else {
+            this.resaCountdown.setTimer();
+        }
+        
+        /*
+        this.timerBlock.html(sessionStorage.getItem("remainingMinutes") +" mn " + sessionStorage.getItem("remainingSeconds") + " s");
+        */
         /*
         this.infoConfirmationResa.append("<p> Vélo réservé à la station" + sessionStorage.getItem("stationName") + "au nom de" + sessionStorage.getItem("first_name") + sessionStorage.getItem("last_name") + "</p>");
         this.infoConfirmationResa.append("Temps restant:" + sessionStorage.getItem("remainingTime"));

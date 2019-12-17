@@ -191,7 +191,7 @@ nav .fa-biking {
 	border-radius: 30px;
 	text-align: center;
 }
-#slider h3, #timerInfo {
+#slider h3 {
 	font-size: 1.1em;
 	color: #D14153;
 }
@@ -312,7 +312,7 @@ nav .fa-biking {
 			list-style: square;
 		}
 		/* slide 4 - step 3 */
-		#text_step_4 h2, #infosResaOn {
+		#text_step_4 h2 {
 			color: #71fb9a;
 		}
 		/* mask */
@@ -550,12 +550,14 @@ nav .fa-biking {
 	bottom: 0;
 	overflow: auto;
 	border-radius: 25px;
+	background-color: #FFF;
 }
 #infosResaOn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	color: #4CD7D0;
 }
 #cancelledResaMsg, #timeOut {
 	display: none;
@@ -564,6 +566,10 @@ nav .fa-biking {
 #cancelledResaMsg p {
 	padding: 15px;
 }
+#timerInfo {
+	color: #D14153;
+}
+
 
 /* ---------------------------------------- */ 
 /* == ADMIN PAGES (legal notices, privacy policy,...) */ 

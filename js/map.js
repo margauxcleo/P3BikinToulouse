@@ -100,7 +100,7 @@ class Map {
 
             //on incrémente avec les infos de JC DECAUX
             this.getStationName.html(stationName); // TEST on remplace station.name par stationName
-            localStorage.setItem("stationName", stationName);
+            sessionStorage.setItem("stationName", stationName);
             if (stationStatut === 'OPEN') {
                 this.statutOpenMsg.css('display', 'block');
             } else {
