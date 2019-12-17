@@ -515,6 +515,7 @@ nav .fa-biking {
 		#canvas_error_msg {
 			display: none;
 			color: #ff7077;
+			text-align: center;
 		}
 
  

@@ -20,7 +20,7 @@ class Form {
 
         this.cancelResaBtn = $('#buttonCancelledResa');
         this.cancelledResaMsg = $('#cancelledResaMsg');
-        this.canvasErrorMsg = $('canvas_error_msg');
+        this.canvasErrorMsg = $('#canvas_error_msg');
 
         // on instancie la classe Canvas
         this.canvasForSign = new Canvas();
@@ -34,7 +34,7 @@ class Form {
         this.cancelResa(); 
     }
     checkResa() {
-        if (sessionStorage.getItem("stationName") && sessionStorage.getItem("remainingTime")) {
+        if (sessionStorage.getItem("remainingTime")) {
             this.showConfirmation();
         } 
     }
@@ -102,19 +102,7 @@ class Form {
         this.lastNameResaOn.html(localStorage.getItem("last_name"));
         
         //appeler le timer de l'instanciation
-        if (sessionStorage.getItem("remainingTime", this.remainingTime)) {
-            this.resaCountdown.getExistingTimer();
-        } else {
-            this.resaCountdown.setTimer();
-        }
-        
-        /*
-        this.timerBlock.html(sessionStorage.getItem("remainingMinutes") +" mn " + sessionStorage.getItem("remainingSeconds") + " s");
-        */
-        /*
-        this.infoConfirmationResa.append("<p> Vélo réservé à la station" + sessionStorage.getItem("stationName") + "au nom de" + sessionStorage.getItem("first_name") + sessionStorage.getItem("last_name") + "</p>");
-        this.infoConfirmationResa.append("Temps restant:" + sessionStorage.getItem("remainingTime"));
-        */         
+        this.resaCountdown.setTimer();        
     }
     cancelResa() {
         this.cancelResaBtn.on('click', (e) => {
