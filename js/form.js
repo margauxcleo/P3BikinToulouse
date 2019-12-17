@@ -20,6 +20,7 @@ class Form {
 
         this.cancelResaBtn = $('#buttonCancelledResa');
         this.cancelledResaMsg = $('#cancelledResaMsg');
+        this.canvasErrorMsg = $('canvas_error_msg');
 
         // on instancie la classe Canvas
         this.canvasForSign = new Canvas();
@@ -76,14 +77,20 @@ class Form {
         this.form.off('submit');
         this.form.on('submit', (e) => {
             e.preventDefault(); // pour arrêter le comportement normal de submit 
-            // mettre en place le session storage
-            sessionStorage.setItem('canvas', this.canvasForSign.getCanvas().toDataURL()); // retourne contenu img en base 64
-            //remettre le compte à rebours à 0
-            clearInterval(this.resaCountdown.timerAnim);
-            // Afficher le message de confirmation 
-            this.showConfirmation();
-            //appeler le timer de l'instanciation
-            //this.resaCountdown.setTimer();
+            // condition pour vérifier que le canvas a été signé
+            if (this.canvasForSign.getCanvas().toDataURL() == "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABkCAYAAADDhn8LAAACnklEQVR4Xu3VsRHAMAzEsHj/pTOBXbB9pFchyLycz0eAwFXgsCFA4C4gEK+DwENAIJ4HAYF4AwSagD9IczM1IiCQkUNbswkIpLmZGhEQyMihrdkEBNLcTI0ICGTk0NZsAgJpbqZGBAQycmhrNgGBNDdTIwICGTm0NZuAQJqbqREBgYwc2ppNQCDNzdSIgEBGDm3NJiCQ5mZqREAgI4e2ZhMQSHMzNSIgkJFDW7MJCKS5mRoREMjIoa3ZBATS3EyNCAhk5NDWbAICaW6mRgQEMnJoazYBgTQ3UyMCAhk5tDWbgECam6kRAYGMHNqaTUAgzc3UiIBARg5tzSYgkOZmakRAICOHtmYTEEhzMzUiIJCRQ1uzCQikuZkaERDIyKGt2QQE0txMjQgIZOTQ1mwCAmlupkYEBDJyaGs2AYE0N1MjAgIZObQ1m4BAmpupEQGBjBzamk1AIM3N1IiAQEYObc0mIJDmZmpEQCAjh7ZmExBIczM1IiCQkUNbswkIpLmZGhEQyMihrdkEBNLcTI0ICGTk0NZsAgJpbqZGBAQycmhrNgGBNDdTIwICGTm0NZuAQJqbqREBgYwc2ppNQCDNzdSIgEBGDm3NJiCQ5mZqREAgI4e2ZhMQSHMzNSIgkJFDW7MJCKS5mRoREMjIoa3ZBATS3EyNCAhk5NDWbAICaW6mRgQEMnJoazYBgTQ3UyMCAhk5tDWbgECam6kRAYGMHNqaTUAgzc3UiIBARg5tzSYgkOZmakRAICOHtmYTEEhzMzUiIJCRQ1uzCQikuZkaERDIyKGt2QQE0txMjQgIZOTQ1mwCAmlupkYEBDJyaGs2AYE0N1MjAgIZObQ1m4BAmpupEQGBjBzamk1AIM3N1IiAQEYObc0mIJDmZmpE4Af1gABlH0hlGgAAAABJRU5ErkJggg==") {
+                console.log("le canvas est vide");
+                this.canvasErrorMsg.css('display', 'block');
+            } else {
+                //cacher le msg d'erreur
+                this.canvasErrorMsg.css('display', 'none');
+                // mettre en place le session storage
+                sessionStorage.setItem('canvas', this.canvasForSign.getCanvas().toDataURL()); // retourne contenu img en base 64 
+                //remettre le compte à rebours à 0
+                clearInterval(this.resaCountdown.timerAnim);
+                // Afficher le message de confirmation 
+                this.showConfirmation();
+            }
         });  
     }
     showConfirmation() {

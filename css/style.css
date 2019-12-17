@@ -512,6 +512,10 @@ nav .fa-biking {
 		#buttonClear {
 			margin-left: 1px;
 		}
+		#canvas_error_msg {
+			display: none;
+			color: #ff7077;
+		}
 
  
 /*     MARKERS     */ 
