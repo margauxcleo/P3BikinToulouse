@@ -57,7 +57,7 @@ class Form {
             // Restauration du contenu du champ
             this.getFirstName.val(localStorage.getItem("first_name"));
         }
-        this.getFirstName.on("change", function() {
+        this.getFirstName.on("change", () => {
             // Enregistrement de la saisie utilisateur dans le stockage de session
             localStorage.setItem("first_name", this.getFirstName.val());
         });
@@ -68,7 +68,7 @@ class Form {
             // Restauration du contenu du champ
             this.getLastName.val(localStorage.getItem("last_name"));
         }
-        this.getLastName.on("change", function() {
+        this.getLastName.on("change", () => {
             // Enregistrement de la saisie utilisateur dans le stockage de session
             localStorage.setItem("last_name", this.getLastName.val());
         });
@@ -78,7 +78,6 @@ class Form {
         this.form.off('submit');
         this.form.on('submit', (e) => {
             e.preventDefault(); // pour arrêter le comportement normal de submit 
-            console.log("ok pour click sur btn");
             // mettre en place le session storage
             sessionStorage.setItem('canvas', this.canvasForSign.getCanvas().toDataURL()); // retourne contenu img en base 64
             //remettre le compte à rebours à 0
