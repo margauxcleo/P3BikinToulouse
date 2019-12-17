@@ -33,8 +33,6 @@ class Form {
         this.cancelResa(); 
     }
     checkResa() {
-        console.log(sessionStorage.getItem("stationName"));
-        console.log(sessionStorage.getItem("remainingTime"));
         if (sessionStorage.getItem("stationName") && sessionStorage.getItem("remainingTime")) {
             this.showConfirmation();
         } 
