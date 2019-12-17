@@ -2,10 +2,12 @@ class Timer {
     constructor() {
         this.timerBlock = $('#timer');
         this.timeOut = $('#timeOut');
+        this.infoResaOn = $('#infosResaOn');
+        this.cancelledResaMsg = $('#cancelledResaMsg');
     }
 
 	setTimer() {
-        this.finishTime = new Date().getTime() + 1200000; //20 minutes
+        this.finishTime = new Date().getTime() + 20000; //1200000 20 minutes !!!!!! pour le process mit à 20sec
 
         this.timerAnim = setInterval( () => {
             this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
@@ -17,7 +19,6 @@ class Timer {
                 this.remainingTime = this.finishTime - this.now;
                 console.log(this.remainingTime);
             }
-
             sessionStorage.setItem("remainingTime", this.remainingTime);
 
             // this.timerBlock = $('#timer');
@@ -34,14 +35,22 @@ class Timer {
 
             // Si le compte à rebours est fini : afficher le texte
             if (this.remainingTime < 0) {
-                clearInterval(this.timerAnim); // on arrête le compte à rebours
-                this.timeOut.css('display', 'block');
-                this.timerBlock.css('display', 'none');
+                // on arrête le compte à rebours
+                this.clearAnim();
+                // on cache la confirm de résa
+                this.infoResaOn.css('display', 'none'); 
+                this.cancelledResaMsg.css('display', 'none')
+                this.timeOut.css('display', 'flex');
+                //vider la partie session storage
+                sessionStorage.clear();
             }
         }, 999); // toutes les secondes 
     };
     getExistingTimer() {
         this.timerAnim
+    }
+    clearAnim() {
+        clearInterval(this.timerAnim); 
     }
     /*
     getExistingTimer() {

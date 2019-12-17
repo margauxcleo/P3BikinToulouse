@@ -552,9 +552,16 @@ nav .fa-biking {
 	border-radius: 25px;
 	color: #767D80;
 }
-#infosResaOn p, #cancelledResaMsg, #timeOut {
-	margin: 20px;
+#timeOut {
+	justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+   
+#infosResaOn p, #cancelledResaMsg, #timeOut, #timerInfo {
 	background-color: #FFF;
+	padding: 20px;
+	margin-bottom: 0px!important;
 } 
 #infosResaOn {
 	display: flex;

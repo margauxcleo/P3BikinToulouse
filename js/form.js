@@ -113,6 +113,8 @@ class Form {
         this.cancelResaBtn.on('click', (e) => {
             this.infoResaOn.css('display', 'none');
             this.cancelledResaMsg.css('display', 'block');
+            // on arrête le compte à rebours
+            this.resaCountdown.clearAnim();
             //vider la partie session storage
             sessionStorage.clear();
         });
