@@ -36,6 +36,7 @@ class Form {
     checkResa() {
         if (sessionStorage.getItem("remainingTime")) {
             this.showConfirmation();
+            this.resaCountdown.getTimer();
         } 
     }
     // condition: si pas de velo, on affiche pas le formulaire de resas
@@ -90,6 +91,8 @@ class Form {
                 clearInterval(this.resaCountdown.timerAnim);
                 // Afficher le message de confirmation 
                 this.showConfirmation();
+                //appeler le timer de l'instanciation
+                this.resaCountdown.setTimer();
             }
         });  
     }
@@ -99,10 +102,7 @@ class Form {
         this.infoConfirmationResa.css('display','flex');
         this.getStationName.html(sessionStorage.getItem("stationName"));
         this.firstNameResaOn.html(localStorage.getItem("first_name"));
-        this.lastNameResaOn.html(localStorage.getItem("last_name"));
-        
-        //appeler le timer de l'instanciation
-        this.resaCountdown.setTimer();        
+        this.lastNameResaOn.html(localStorage.getItem("last_name"));        
     }
     cancelResa() {
         this.cancelResaBtn.on('click', (e) => {

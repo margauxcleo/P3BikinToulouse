@@ -7,31 +7,22 @@ class Timer {
     }
 
 	setTimer() {
-        this.finishTime = new Date().getTime() + 120000; //1200000 20 minutes !!!!!! pour le process mit à 20sec
+        this.finishTime = new Date().getTime() + 120000; //1200000 20 minutes !!!!!! pour le process mit à 2 mn
         sessionStorage.setItem("reloadedFinishTime", this.finishTime);
 
         this.timerAnim = setInterval( () => {
             this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
 
-            // condition si compte à rebours déjà définit 
-            if (sessionStorage.getItem("reloadedFinishTime")) {
-                this.remainingTime = this.finishTime - this.now;
-                console.log("temps départ sauvegarder");
-            } else {
-                this.remainingTime = this.finishTime - this.now;
-                console.log("erreur avec temps de fin");
-            }
-
+            this.remainingTime = this.finishTime - this.now;
             sessionStorage.setItem("remainingTime", this.remainingTime);
 
-            // this.timerBlock = $('#timer');
             // si remaining time, récupérer le remaining time session storage et faire le calcul 
 
             this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
             this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
 
             // Afficher le résultat dans l'élément timer du DOM
-            this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
+            this.showTimer();
 
             // Si le compte à rebours est fini : afficher le texte
             if (this.remainingTime < 0) {
@@ -43,22 +34,46 @@ class Timer {
                 this.timeOut.css('display', 'flex');
                 //vider la partie session storage
                 sessionStorage.clear();
-            }
+            }       
         }, 999); // toutes les secondes 
     };
-    /*
-    getExistingTimer() {
-        sessionStorage.getItem("remainingTime");
-        while (this.remainingTime >= 0) {
-            this.remainingTime--;
+    showTimer() {
+        // Afficher le résultat dans l'élément timer du DOM
+        this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
+    }
+    getTimer() {
+        this.timerAnim = setInterval( () => {
+            this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
+
+            // condition si compte à rebours déjà définit 
+            if (sessionStorage.getItem("reloadedFinishTime")) {
+                this.remainingTime = this.finishTime - this.now;
+                console.log("temps départ sauvegardé");
+            } else {
+                this.remainingTime = this.finishTime - this.now;
+                console.log("erreur avec temps de fin");
+            }
+            // si remaining time, récupérer le remaining time session storage et faire le calcul 
+
             this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
             this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
 
             // Afficher le résultat dans l'élément timer du DOM
-            this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
-        }
+            this.showTimer();
+
+            // Si le compte à rebours est fini : afficher le texte
+            if (this.remainingTime < 0) {
+                // on arrête le compte à rebours
+                this.clearAnim();
+                // on cache la confirm de résa
+                this.infoResaOn.css('display', 'none'); 
+                this.cancelledResaMsg.css('display', 'none')
+                this.timeOut.css('display', 'flex');
+                //vider la partie session storage
+                sessionStorage.clear();
+            }       
+        }, 999); // toutes les secondes
     }
-    */
     clearAnim() {
         clearInterval(this.timerAnim); 
     }
