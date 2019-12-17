@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> Bik'in Toulouse </title>
         <meta name="description" content="La plateforme toulousaine de location de vélo!">
-        <link rel="shortcut icon" type="image/x-icon" href="" /> <!-- ==à renseigner -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/icon.png"/> 
 
          
         <!-- CDN Bootstrap -->
@@ -34,7 +34,7 @@
     <body class="container-fluid" id="home_page">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
-                <a class="navbar-brand" id="main-brand" href="index.html">
+                <a class="navbar-brand" id="main-brand" href="http://bikin-toulouse.fr/">
                     <span class="logo">
                         <i class="fas fa-biking"></i>
                         Bik'in Toulouse
@@ -47,7 +47,7 @@
                     
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html"> Carte <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="http://bikin-toulouse.fr/"> Carte <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                    
@@ -277,7 +277,12 @@
                         Annuler la réservation 
                     </button>
                 </div>
-                <p id="timeOut"> Vous avez dépassé le délai de 20 minutes, votre réservation est annulée et le vélo est à nouveau disponible !</p>
+                <p id="timeOut"> 
+                    Vous avez dépassé le délai de 20 minutes, votre réservation est annulée et le vélo est à nouveau disponible !
+                    <a class="btn btn-primary btn-footer" type="button" href="index.html">
+                    Cliquer ici pour revenir à la carte.
+                    </a>
+                </p>
                 <div id="cancelledResaMsg">
                     <p> Votre réservation a été annulé. </p> 
                     <a class="btn btn-primary btn-footer" type="button" href="index.html">
