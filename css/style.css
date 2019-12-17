@@ -552,7 +552,7 @@ nav .fa-biking {
 	border-radius: 25px;
 	color: #767D80;
 }
-#infosResaOn, #cancelledResaMsg, #timeOut {
+#infosResaOn p, #cancelledResaMsg, #timeOut {
 	margin: 20px;
 	background-color: #FFF;
 } 
