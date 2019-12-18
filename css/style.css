@@ -277,6 +277,7 @@ nav .fa-biking {
 		#text_step_3 ul {
 			text-align: left;
 			list-style: square;
+		    padding-top: 10px;
 		}
 		/* slide 4 - step 3 */
 		#text_step_4 h2 {
@@ -395,6 +396,9 @@ nav .fa-biking {
 	}
 	#station_name, #infos_stations .fa-biking, #infos_stations .fa-parking {
 		font-size: 1.2em;
+	}
+	.station_name, #first_name_resa, #last_name_resa {
+		font-weight: bold;
 	}
 	/* ---- velos et parkings ---- */
 	.badge {
@@ -574,7 +578,7 @@ footer h3 {
 }
 .div-footer ul {
 	list-style: none;
-	padding-inline-start: 0px;
+	padding: 0px;
 }
 
 /* ---- buttons footer ---- */ 
@@ -660,6 +664,9 @@ footer h3 {
 	#text_step_1 h1 { 
 		width: 70%;
 	}
+	#text_step_3 ul {
+	    padding-left: 150px;
+	}
 
 	/* ---- mask map et volet ---- */
 	#mask_map {
@@ -697,6 +704,9 @@ footer h3 {
 	}
 	#text_step_1 h1 { 
 		width: 60%;
+	}
+	#text_step_3 ul {
+	    padding-left: 310px;
 	}
 	
 	/* ---- mask map et volet ---- */
