@@ -25,57 +25,59 @@ class Timer {
             this.showTimer();
 
             // Si le compte à rebours est fini : afficher le texte
-            if (this.remainingTime < 0) {
-                // on arrête le compte à rebours
-                this.clearAnim();
-                // on cache la confirm de résa
-                this.infoResaOn.css('display', 'none'); 
-                this.cancelledResaMsg.css('display', 'none')
-                this.timeOut.css('display', 'flex');
-                //vider la partie session storage
-                sessionStorage.clear();
-            }       
+            this.checkRemainingTime();
+
         }, 999); // toutes les secondes 
     };
     showTimer() {
         // Afficher le résultat dans l'élément timer du DOM
+        console.log("set timer ok");
         this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
     }
     getTimer() {
-        this.timerAnim = setInterval( () => {
-            this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
+        // condition si compte à rebours déjà définit 
+        console.log("getTimer()", sessionStorage.getItem("reloadedFinishTime")); 
+        if (sessionStorage.getItem("reloadedFinishTime") != null) {
+            console.log(sessionStorage.getItem("reloadedFinishTime"));
+            this.finishTime = parseInt(sessionStorage.getItem("reloadedFinishTime"));
+            console.log(this.finishTime);
+            console.log("temps départ sauvegardé");
 
-            // condition si compte à rebours déjà définit 
-            if (sessionStorage.getItem("reloadedFinishTime")) {
-                this.remainingTime = this.finishTime - this.now;
-                console.log("temps départ sauvegardé");
-            } else {
-                this.remainingTime = this.finishTime - this.now;
-                console.log("erreur avec temps de fin");
-            }
-            // si remaining time, récupérer le remaining time session storage et faire le calcul 
+            this.timerAnim = setInterval( () => {
+                this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
+                console.log(this.now);
+                // si remaining time, récupérer le remaining time session storage et faire le calcul
+                this.remainingTime = this.finishTime - this.now; 
 
-            this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-            this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
+                console.log("in set interval");
+                console.log(this.remainingTime);
+                this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
 
-            // Afficher le résultat dans l'élément timer du DOM
-            this.showTimer();
+                // Afficher le résultat dans l'élément timer du DOM
+                
+                this.showTimer();
 
-            // Si le compte à rebours est fini : afficher le texte
-            if (this.remainingTime < 0) {
-                // on arrête le compte à rebours
-                this.clearAnim();
-                // on cache la confirm de résa
-                this.infoResaOn.css('display', 'none'); 
-                this.cancelledResaMsg.css('display', 'none')
-                this.timeOut.css('display', 'flex');
-                //vider la partie session storage
-                sessionStorage.clear();
-            }       
-        }, 999); // toutes les secondes
+                this.checkRemainingTime();
+                  
+            }, 999); // toutes les secondes
+        }   
     }
     clearAnim() {
         clearInterval(this.timerAnim); 
+    }
+    checkRemainingTime() {
+        // Si le compte à rebours est fini : afficher le texte
+        if (this.remainingTime < 0) {
+            // on arrête le compte à rebours
+            this.clearAnim();
+            // on cache la confirm de résa
+            this.infoResaOn.css('display', 'none'); 
+            this.cancelledResaMsg.css('display', 'none')
+            this.timeOut.css('display', 'flex');
+            //vider la partie session storage
+            sessionStorage.clear();
+        } 
     }
     /*
     getExistingTimer() {
