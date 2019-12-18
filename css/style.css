@@ -12,26 +12,14 @@
 /* 
 
 White (body background): #FFF;
-Coral (nav, step 1/intro, step 2): #ff7077;
-Coral (pale-pour background info station):#fdeaeb;
-Cyan: (markers) #4CD7D0
-Yellow (step 3): #F8EA8C; 
-Shiny Green (step 4): #71fb9a;
-Slate Gray (volet station): #767D80;
+Coral (nav, footer, intro, step 1, closed marker, badge parkings): #ff7077;
+Slate Gray (border slider, main color infos, main color form): #767D80;
+Cyan: (open markers, step 3 slider, hover arrow, badge available bikes): #4CD7D0;
+Yellow (step 2): #E1C340; 
 
-non utilisés:
-
-Tiffany Blue: #A4E8E0;
-Blue Gray: #90ADC6;
-Mint: #B4F8C8;
-Gold:#FEDE00;
-Rose Red: #D14153;
-Charcoal (jaune pale): #FBE5C0;
-
-
-*/ 
+*/
 /* ---------------------------------------- */ 
-/* == DÉFINITIONS DES POLICES*/ 
+/* ==          FONTS                        */ 
 /*---------------------------------------- */ 
  
 @font-face
@@ -57,7 +45,7 @@ Charcoal (jaune pale): #FBE5C0;
 }
 
 /* ---------------------------------------- */ 
-/* == ÉLÉMENTS PRINCIPAUX */ 
+/* == MAIN ELEMENTS */ 
 /*---------------------------------------- */ 
 
 body {
@@ -92,28 +80,19 @@ h3 {
 	text-decoration: underline;
 }
 
-/*     sous partie      */ 
- 
-/*     sous partie      */ 
- 
-/*     sous partie      */ 
-
 /* ---------------------------------------- */ 
 /* ==            HEADER                */ 
 /*---------------------------------------- */ 
  
 /*     Navigation      */ 
-
-nav .fa-biking, nav .nav-link {
+nav .fa-biking, nav .nav-link, .navbar-brand {
 	color: #ff7077!important;
+}
+nav .fa-biking, nav .nav-link {
 	font-weight: bold;
 }
-
 nav .fa-biking {
 	font-size: 2em;
-}
-.navbar-brand {
-	color: #ff7077!important;
 }
 #main-nav #main-brand {
 	text-transform: uppercase;
@@ -126,33 +105,21 @@ nav .fa-biking {
 	border-bottom: 2mm #ff7077 solid;
 	border-radius: 30px;
 }
-
 	/* button */
 	/*---- header (+footer idem)----*/
 
-    .btn-header
-    {
+    .btn-header, .btn-header:not(:disabled):not(.disabled):active {
         background-color: #FFF;
         border-color: #ff7077;
     }
-    .btn-header:hover
-    {
+    .btn-header:hover {
         background-color: #ff7077;
         border-color: #ff7077;
         color: #FFF!important;
     }
-    .btn-header:not(:disabled):not(.disabled):active
-    {
-        background-color: #FFF;
-        border-color: #ff7077;
-    }
-    .btn-header:not(:disabled):not(.disabled).active:focus, .btn-header:not(:disabled):not(.disabled):active:focus, .show>.btn-header.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
+    .btn-header:not(:disabled):not(.disabled).active:focus, .btn-header:not(:disabled):not(.disabled):active:focus, .show>.btn-header.dropdown-toggle:focus, .btn-header:focus {
+    	box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
 	}
-    .btn-header:focus
-    {
-       box-shadow: 0 0 0 0.2rem rgba(255,112,119,.5);
-    }
     footer [type=button], footer [type=reset], footer [type=submit], footer button, header [type=button], header [type=reset], header [type=submit], header button {
     -webkit-appearance: none;
     }
@@ -313,7 +280,7 @@ nav .fa-biking {
 		}
 		/* slide 4 - step 3 */
 		#text_step_4 h2 {
-			color: #71fb9a;
+			color: #4CD7D0;
 		}
 		/* mask */
 		.mask {
@@ -327,51 +294,52 @@ nav .fa-biking {
 		}
 
 /* ---------------------------------------- */ 
-/* ==           HOME PAGE - MAP                */ 
+/* ==           HOME PAGE - MAP             */ 
 /*---------------------------------------- */ 
 
-/* Div map + volet */
+/* ----- Div map + volet ----- */
 #map_and_volet_infos {
 	display: flex;
 	position: relative;
 }
-/* mask */
+
+/* ---- mask ---- */
 #mask_map {
 	display: none;
 	background-color: rgba(255, 255, 255, 0.8);
 	width: 100%;
 	height: 400px;
-	z-index: 5000; /*met masque devant volet*/
+	z-index: 5000; /*met masque devant carte et volet */
 	position: absolute;
 	top: 0;
 	right: 0;
 	overflow: auto;
 	border-radius: 25px;
 } 
-/*     Leaf Let MAP      */ 
 
+/* ---- Leaf Let MAP ---- */
+/*------------------------ */ 
 #map_id {
 	height: 400px; 
 	width: 100%;
 	border-radius: 30px;
 }
  
-/* masque infos stations */
-
+/* ---- masque infos stations ---- */
 #mask_infos_stations {
 	display: none;
 	background-color: rgba(255, 255, 255, 0.6);
 	width: 100%;
 	height: 400px;
-	z-index: 5000; /*met masque devant volet*/
+	z-index: 3000; /*met masque devant volet*/
 	position: absolute;
 	top: 0;
 	right: 0;
 	overflow: auto;
 	border-radius: 25px;
 } 
-/*     bloc infos stations      */ 
 
+/* ---- bloc infos stations ---- */ 
 #infos_stations {
 	display: none;
 	position: relative;
@@ -390,7 +358,7 @@ nav .fa-biking {
 	border-radius: 25px;
 	font-size: 1em;
 }
-#infos_stations h2 {
+#infos_stations h2, #station_status_closed, #title_info, .fa-times-circle, #if_no_bike_available {
 	color: #ff7077!important;
 }
 #station_name, #station_address, #station_status_open, #station_status_closed, #available_bikes, #available_bike_stands, #form_title {
@@ -403,9 +371,6 @@ nav .fa-biking {
 #station_status_open {
 	color: #4CD7D0;
 }
-#station_status_closed {
-	color: #ff7077;
-}
 #available_bikes .fa-biking, #available_bikes_stands .fa-parking {
 	color: #FFF;	
 }
@@ -415,7 +380,7 @@ nav .fa-biking {
 #station_address {
 	font-style: italic;
 }
-	/* div nom station + croix */
+	/* ---- div nom station + croix ---- */
 	#title_info {
 		width: 100%;
 		display: flex;
@@ -423,17 +388,15 @@ nav .fa-biking {
 		align-items: baseline;
 	}
 	#title_info {
-		color: #ff7077;
 		margin-top: 10px;
 	}
 	.fa-times-circle {
 		font-size: 1.5em;
-		color: #ff7077;
 	}
 	#station_name, #infos_stations .fa-biking, #infos_stations .fa-parking {
 		font-size: 1.2em;
 	}
-	/* velos et parkings */
+	/* ---- velos et parkings ---- */
 	.badge {
 		font-size: 1.1em;
 	}
@@ -443,19 +406,17 @@ nav .fa-biking {
 	.badge-secondary { 
 		background-color: #ff7077;
 	}
-	/* if no bikes available */
-	#if_no_bike_available {
-		color: #ff7077;
-		font-weight: bold;
-	}
-	/* form */ 
+		/* ---- if no bikes available ---- */
+		#if_no_bike_available {
+			font-weight: bold;
+		}
+	/* ---- FORM ---- */ 
 	#form_resa {
 		color: #767D80;
 		width: 100%;
 		position: relative;
 	}
 	#form_resa h3 {
-		color: #767D80;
 		text-align: center;
 		padding: 10px;
 	}
@@ -472,7 +433,7 @@ nav .fa-biking {
 		border-bottom: ridge #767D80 2px;
 		text-transform: uppercase;
 	}
-		/* CANVAS */
+		/* ---- CANVAS ---- */
 		#div_canvas {
 			background-color: #FFF;
 			border: solid #767D80 2px;
@@ -484,7 +445,7 @@ nav .fa-biking {
 			align-items: center;
 			flex-direction: column;
 			top: 35px; /* à adapter media queries */
-			z-index: 5000;
+			z-index: 4000;
 			color: #767D80;
 		}
 		#title_canvas {
@@ -519,29 +480,26 @@ nav .fa-biking {
 		}
 
  
-/*     MARKERS     */ 
+/* ---- MARKERS ---- */ 
 .open_marker, .closed_marker {
 	text-align: center;
 	/* Horizontally center the text (icon) */
 	line-height: 20px;
 	/* Vertically center the text (icon) */
 	font-size: 1.5em;
-	text-shadow: 0.1em 0.1em 0.2em black; /* à conserver pour l'ombre */
+	text-shadow: 0.1em 0.1em 0.2em black;
 	border: 0.5mm solid rgba(195, 195, 195, .6);
 }
-
 .open_marker {
 	color: #4CD7D0;
 }
-
 .closed_marker {
 	color: #ff7077;
 }
 
-/* infos resa */ 
+/* ---- infos resa ---- */ 
 #infos_resa {
 	display: none;
-	z-index: 6000; /* etre au dessus du mask */
 	width: 100%;
 	height: 100%;
 	z-index: 5000; /*met masque devant volet*/
@@ -618,10 +576,8 @@ footer h3 {
 	list-style: none;
 	padding-inline-start: 0px;
 }
-/*     buttons      */ 
-/* button */
-	/*---- footer ----*/
 
+/* ---- buttons footer ---- */ 
     .btn-footer
     {
         background-color: #FFF;
@@ -645,20 +601,17 @@ footer h3 {
     }
     .btn-footer:not(:disabled):not(.disabled).active:focus, .btn-footer:not(:disabled):not(.disabled):active:focus, .show>.btn-footer.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
-	}
- 
-/*     sous partie      */ 
- 
+	} 
 
 /* ---------------------------------------- */ 
 /* ==       MEDIAS QUERIS        */ 
 /*---------------------------------------- */ 
  
-/*    à partir de 768 px    */ 
+/* ---- à partir de 768 px ---- */ 
 
 @media(min-width:767.98px) {
 
-	/* slider */
+	/* ---- slider ---- */
     #slider {
         height: 300px;
     }
@@ -671,11 +624,13 @@ footer h3 {
 	#text_step_1 h1, #text_step_1 h2 {
 		width: 80%;
 	}
-	/* mask map et volet */
+
+	/* ---- mask map et volet ---- */
 	#mask_map {
 		height: 300px;
 	}
-	/* map */
+
+	/* ---- map ---- */
 	#map_id {
 		height: 300px;
 	}
@@ -688,11 +643,11 @@ footer h3 {
 	}
 }
  
-/*  à partir de 1024 px      */
+/* ---- à partir de 1024 px ---- */
 
 @media(min-width:1024px) {
 
-	/* slider */
+	/* ---- slider ---- */
 	#slider {
 	    height: 400px;
 	}
@@ -706,12 +661,12 @@ footer h3 {
 		width: 70%;
 	}
 
-	/* mask map et volet */
+	/* ---- mask map et volet ---- */
 	#mask_map {
 		height: 400px;
 	}
 
-	/* map */
+	/* ---- map ---- */
 	#map_id {
 		height: 400px;
 	}
@@ -726,11 +681,11 @@ footer h3 {
 	}
 }
 
-/*  à partir de 1350 px      */
+/* ---- à partir de 1350 px ---- */
 
 @media(min-width:1350px) {
 
-	/* slider */
+	/* ---- slider ---- */
     #slider {
         height: 600px;
     }
@@ -744,12 +699,12 @@ footer h3 {
 		width: 60%;
 	}
 	
-	/* mask map et volet */
+	/* ---- mask map et volet ---- */
 	#mask_map {
 		height: 600px;
 	}
 
-	/* map */
+	/* ---- map ---- */
 	#map_id {
 		height: 600px;
 	}
