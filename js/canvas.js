@@ -1,4 +1,4 @@
-//Fonctionnement du canvas
+    //Fonctionnement du canvas
 class Canvas {
     constructor() {
         this.canvas = $('#canvas')[0];
@@ -66,9 +66,9 @@ class Canvas {
         });
 
         this.canvas.addEventListener("touchmove", (e) => {
-            var clientRect = this.canvas.getBoundingClientRect();
-            var clientX = clientRect.left;
-            var clientY = clientRect.top;
+            let clientRect = this.canvas.getBoundingClientRect();
+            let clientX = clientRect.left;
+            let clientY = clientRect.top;
             e.offsetX = e.targetTouches[0].clientX - clientX;
             e.offsetY = e.targetTouches[0].clientY - clientY;
             console.log("clientX", clientX);

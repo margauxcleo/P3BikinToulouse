@@ -32,7 +32,7 @@ class Slider {
 
     clickOnRightArrow() {
         // au clic fleche gauche 
-        this.previous.on('click', (event) => {
+        this.previous.on('click', (event) => {  
             this.currentSlide--;
             if (this.currentSlide < 0) {
                 this.currentSlide = this.totalSlide - 1  

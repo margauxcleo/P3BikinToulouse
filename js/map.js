@@ -44,17 +44,18 @@ class Map {
             stations.forEach( (station) => {
                 // creer 2 icones
                 // si station = OPEN 
-                var openMarker = L.divIcon({
+                let openMarker = L.divIcon({
                     html: '<i class="fas fa-map-marker-alt"></i>',
                     iconSize: [20, 20],
                     className: 'open_marker'
                 });
                 // si station = CLOSED
-                var closedMarker = L.divIcon({
+                let closedMarker = L.divIcon({
                     html: '<i class="fas fa-map-marker-alt"></i>',
                     iconSize: [20, 20],
                     className: 'closed_marker'
                 });
+
                 // mettre conditions pour type icones
                 let marker;
                 if (station.status === 'OPEN') {
@@ -63,35 +64,43 @@ class Map {
                     marker = L.marker([station.position.lat, station.position.lng], {icon: closedMarker}).addTo(this.map);
                 }
 
-                this.getMarkersPopUp(marker, station.name);
-                this.getMarkersHover(marker);
+                this.setMarkersPopUp(marker, station.name);
+                this.getMarkersHoverOn(marker);
+                // fonction non utilisée mais créé si besoin
+                //this.getMarkersHoverOff(marker);
                 this.setStationBlock(marker, station.name, station.status, station.address, station.available_bikes, station.available_bike_stands);
                 this.closeInfosStation();             
             });
         });        
     }
 
-    // pop up au clic sur le marker
-    getMarkersPopUp(marker, stationName) {
+    // définition pop up au clic sur le marker
+    setMarkersPopUp(marker, stationName) {
         // INFO = VOLET STATION 
-        marker.bindPopup("<b>" + stationName + "</b>");
+        marker.bindPopup("<b>" + stationName + "</b>");   
     }
 
     //pop up au hover sur le marker
-    getMarkersHover(marker) {
+    getMarkersHoverOn(marker) {
         marker.on('mouseover', function(e) {
             marker.openPopup();
         });
+    }
+    getMarkersHoverOff(marker) {
         marker.on('mouseout', function(e)  {
             marker.closePopup();
         });
-    } 
+    }
+
 
     // au clic sur un marker, affichage du volet station 
     setStationBlock(marker, stationName, stationStatut, stationAddress, availableBikesInfo, availableBikeStandsInfo) {
         marker.on('click', (e) => {
             // on affiche le pop up sur le marker
-            marker.openPopup(); 
+            //marker.bindPopup("<b>" + stationName + "</b>");
+            //marker.openPopup();
+        
+            marker.openPopup();
 
             // on affiche/masque au besoin
             this.maskOnStationInfos.css('display', 'none'); // on remet à zéro
