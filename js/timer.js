@@ -79,38 +79,4 @@ class Timer {
             sessionStorage.clear();
         } 
     }
-    /*
-    getExistingTimer() {
-        this.getStationName.html(sessionStorage.getItem("remainingMinutes"));
-        this.getStationName.html(sessionStorage.getItem("remainingSeconds"));
-        this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-        this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
-    };
-
-    relauchTimer() {
-        this.timerAnim = setInterval( () => {
-            this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
-
-            // remaining time = temps enregistré en session - now 
-            this.remainingTime = sessionStorage.getItem("remainingTime") - (this.finishTime - this.now);
-            sessionStorage.setItem("remainingTime", this.remainingTime);
-
-            // this.timerBlock = $('#timer');
-            // si remaining time, récupérer le remaining time session storage et faire le calcul 
-
-            this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-            this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
-            
-            // Afficher le résultat dans l'élément timer du DOM
-            this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
-
-            // Si le compte à rebours est fini : afficher le texte
-            if (this.remainingTime < 0) {
-                clearInterval(this.timerAnim); // on arrête le compte à rebours
-                this.timeOut.css('display', 'block');
-                this.timerBlock.css('display', 'none');
-            }
-        }, 999); // toutes les secondes
-    }
-    */
 }

@@ -1,10 +1,3 @@
-// LEAF LET = MAP 
-
-// appel AJAX
-    // constructor
-    // les stations 
-    //getMap = methode 
-
 class Map {
     constructor (mapId, lat, lng, zoom) {
         this.map = L.map('map_id').setView([lat, lng], zoom);

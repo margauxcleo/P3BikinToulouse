@@ -1,4 +1,3 @@
-    //Fonctionnement du canvas
 class Canvas {
     constructor() {
         this.canvas = $('#canvas')[0];
