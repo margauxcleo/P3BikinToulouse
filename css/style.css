@@ -4,13 +4,13 @@
  
 /* L - 16 - COLOR CODES */
 /* L - 28 - FONTS */ 
-/* L - 54 - MAIN ELEMENTS */ 
-/* L - 90 - HEADER */
-/* L - 134 - HOME PAGE - SLIDER */
-/* L - 305 - HOME PAGE - MAP */
-/* L - 559 - ADMIN PAGES (legal notices, privacy policy,...) */
-/* L - 573 - FOOTER */
-/* L - 618 - MEDIAS QUERIS */
+/* L - 44 - MAIN ELEMENTS */ 
+/* L - 80 - HEADER */
+/* L - 124 - HOME PAGE - SLIDER */
+/* L - 295 - HOME PAGE - MAP */
+/* L - 549 - ADMIN PAGES (legal notices, privacy policy,...) */
+/* L - 563 - FOOTER */
+/* L - 608 - MEDIAS QUERIS */
  
 /* ---------------------------------------- */
 /* ==       COLOR CODES           */
@@ -28,24 +28,14 @@ Yellow (step 2): #E1C340;
 /* ==          FONTS                        */ 
 /*---------------------------------------- */ 
  
-@font-face
-{
-    font-family: 'BallparkWeiner';
-    src: url('polices/ballpark.eot');
-    src: url('polices/ballpark.eot?#iefix') format('embedded-opentype'),
-         url('polices/ballpark.woff') format('woff'),
-         url('polices/ballpark.ttf') format('truetype'),
-         url('polices/ballpark.svg#BallparkWeiner') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face
-{
-    font-family: 'Dayrom';
-    src: url('polices/dayrom.eot');
-    src: url('polices/dayrom.eot?#iefix') format('embedded-opentype'),
-         url('polices/dayrom.svg#Dayrom') format('svg');
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../polices/open_sans_regular/OpenSans-Regular-webfont.eot');
+    src: url('../polices/open_sans_regular/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../polices/open_sans_regular/OpenSans-Regular-webfont.woff2') format('woff2'),
+         url('../polices/open_sans_regular/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../polices/open_sans_regular/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../polices/open_sans_regular/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -56,7 +46,7 @@ Yellow (step 2): #E1C340;
 
 body {
 	background-color: #FFF;
-	font-family: "Dayrom", sans-serif;
+	font-family: 'open_sansregular', sans-serif!important ;
 	padding: 0px!important;
 }
 img {
