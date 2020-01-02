@@ -7,7 +7,7 @@ class Timer {
     }
 
 	setTimer() {
-        this.finishTime = new Date().getTime() + 120000; //1200000 20 minutes !!!!!! pour le process mit à 2 mn
+        this.finishTime = new Date().getTime() + 1200000; //1200000 20 minutes !!!!!! pour le process mit à 2 mn
         sessionStorage.setItem("reloadedFinishTime", this.finishTime);
 
         this.timerAnim = setInterval( () => {
