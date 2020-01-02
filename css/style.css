@@ -153,7 +153,7 @@ nav .fa-biking {
     object-fit: cover;
     height: 350px; /* même données que slider-img pour que l'object-fit fonctionne */
 }
-#slider h1, #slider h2, #slider h3 {
+#slider h1, #slider h2, #slider h3, #bloc_step_3 {
 	padding: 15px;
 	border-radius: 30px;
 	text-align: center;
@@ -243,11 +243,11 @@ nav .fa-biking {
 	    flex-direction: column;
 	    flex-wrap: wrap;	
 	}
-	#text_step_1 h1, #text_step_1 h2, #text_step_2 h2, #text_step_3 h2, #text_step_4 h2, #text_step_4 h3 {
+	#text_step_1 h1, #text_step_1 h2, #text_step_2 h2, #bloc_step_3, #text_step_4 h2, #text_step_4 h3 {
 		width: 80%;
 	}
 
-	.welcome, #text_step_2 h2, #text_step_3 h2, #text_step_4 h2, #text_step_4 h3 {
+	.welcome, #text_step_2 h2, #bloc_step_3, #text_step_4 h2, #text_step_4 h3 {
 		background-color: rgba(255, 255, 255, 0.9);
 	}
 
@@ -271,10 +271,11 @@ nav .fa-biking {
 			color: #ff7077;
 		}
 		/* slide 3 - step 2 */
-		#text_step_3 h2 {
+		#text_step_3 h2, #text_step_3 ul {
 			color: #E1C340;
 		}
 		#text_step_3 ul {
+			font-size: 1.3em;
 			text-align: left;
 			list-style: square;
 		    padding-top: 10px;

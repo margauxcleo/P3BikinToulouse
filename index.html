@@ -40,9 +40,9 @@
                         Bik'in Toulouse
                     </span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
                     <ul class="navbar-nav mr-auto">
@@ -52,9 +52,9 @@
                     </ul>
                    
                     <ul class="navbar-nav ml-auto" id="nav-networks">
-                        <a class="navbar-brand" href="#">
+                        <li class="navbar-brand">
                             Suivez-nous !
-                        </a>
+                        </li>
                         <li class="nav-item"> 
                             <a class="nav-link btn btn-primary btn-header"
                             href="https://www.facebook.com/" type="button"> 
@@ -125,11 +125,13 @@
                     </div>
                     <div class="mask"></div>
                     <div id="text_step_3" class="slider-step">
-                        <h2>
-                            <i class="fab fa-wpforms"></i>
-                            Etape 2:
-                            <br/>
-                            Une fois la station choisie, remplis le formulaire avec:
+                        <div id="bloc_step_3">
+                            <h2>
+                                <i class="fab fa-wpforms"></i>
+                                Etape 2:
+                                <br/>
+                                Une fois la station choisie, remplis le formulaire avec:
+                            </h2>
                             <ul>
                                 <li>
                                     <i class="fas fa-user"></i>
@@ -143,7 +145,7 @@
                                     <i class="fas fa-file-signature"></i>Ta signature
                                 </li>
                             </ul>
-                        </h2>
+                        </div>
                     </div>
                 </div>
                 <div id="step_4">
@@ -242,7 +244,7 @@
                             </span>
                         </div>
                         <p id="canvas_error_msg"> Attention, la signature est obligatoire. </p>
-                        <canvas id="canvas" name="canvas"></canvas>
+                        <canvas id="canvas"></canvas>
                         <div id="btns_canvas">
                             <button type="submit" class="btn btn-primary" id="buttonAccept"> 
                                 <i class="fas fa-check"></i>
@@ -273,16 +275,16 @@
                         Temps restant :
                         <span id="timer"></span>
                     </p>
-                    <button type="button" class="btn btn-primary btn-footer" id="buttonCancelledResa"> 
+                    <a type="button" class="btn btn-primary btn-footer" id="buttonCancelledResa"> 
                         <i class="fas fa-undo"></i>
                         Annuler la réservation 
-                    </button>
+                    </a>
                 </div>
                 <div id="timeOut"> 
                     <p> Vous avez dépassé le délai de 20 minutes, votre réservation est annulée et le vélo est à nouveau disponible ! </p>
-                    <a class="btn btn-primary btn-footer" type="button" href="index.html">
+                    <button class="btn btn-primary btn-footer" type="button" href="index.html">
                     Cliquer ici pour revenir à la carte.
-                    </a>
+                    </button>
                 </div>
                 <div id="cancelledResaMsg">
                     <p> Votre réservation a été annulée. </p> 
