@@ -61,7 +61,6 @@ class Canvas {
         });
         this.canvas.addEventListener("touchstart", (e) => {          
             this.appuie(e);
-            console.log('touchstart', e);
         });
 
         this.canvas.addEventListener("touchmove", (e) => {
@@ -70,22 +69,12 @@ class Canvas {
             let clientY = clientRect.top;
             e.offsetX = e.targetTouches[0].clientX - clientX;
             e.offsetY = e.targetTouches[0].clientY - clientY;
-            console.log("clientX", clientX);
-            console.log("clientY", clientY);
-            console.log("e.targetTouches[0].pageX", e.targetTouches[0].pageX);
-            console.log("e.targetTouches[0].pageY", e.targetTouches[0].pageY);
-            console.log("e.targetTouches[0].clientX", e.targetTouches[0].clientX);
-            console.log("e.targetTouches[0].clientY", e.targetTouches[0].clientY);
-            console.log("e.offsetX", e.offsetX);
-            console.log("e.offsetY", e.offsetY);
 
-            this.deplacement(e); 
-            console.log('touchmove', e);         
+            this.deplacement(e);          
         });
 
         this.canvas.addEventListener("touchend", (e) => {          
-            this.relache(); 
-            console.log('touchend', e);         
+            this.relache();          
         });
     }; 
 

@@ -31,26 +31,18 @@ class Timer {
     };
     showTimer() {
         // Afficher le résultat dans l'élément timer du DOM
-        console.log("set timer ok");
         this.timerBlock.html(this.minutes +" mn " + this.seconds + " s");
     }
     getTimer() {
         // condition si compte à rebours déjà définit 
-        console.log("getTimer()", sessionStorage.getItem("reloadedFinishTime")); 
         if (sessionStorage.getItem("reloadedFinishTime") != null) {
-            console.log(sessionStorage.getItem("reloadedFinishTime"));
             this.finishTime = parseInt(sessionStorage.getItem("reloadedFinishTime"));
-            console.log(this.finishTime);
-            console.log("temps départ sauvegardé");
-
             this.timerAnim = setInterval( () => {
                 this.now = new Date().getTime(); // on récupère l'heure de l'utilisateur
-                console.log(this.now);
+
                 // si remaining time, récupérer le remaining time session storage et faire le calcul
                 this.remainingTime = this.finishTime - this.now; 
 
-                console.log("in set interval");
-                console.log(this.remainingTime);
                 this.minutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
                 this.seconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
 
